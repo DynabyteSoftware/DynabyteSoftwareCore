@@ -1,0 +1,8 @@
+set(TESTING_INCLUDE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+file(GLOB_RECURSE TESTING_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB_RECURSE TESTING_HEADERS "${CORE_INCLUDE}/*.h")
+add_executable(Testing ${TESTING_SOURCE})
+source_group("Headers" FILES ${TESTING_HEADERS})
+source_group("Sources" FILES ${TESTING_SOURCE})
+target_link_libraries(Testing CoreDynamic)
+target_include_directories(Testing PUBLIC "${TESTING_INCLUDE}")
