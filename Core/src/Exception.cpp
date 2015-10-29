@@ -8,9 +8,10 @@ using std::clog;
 using std::endl;
 using std::string;
 using std::stringstream;
+using std::exception;
 
 Exception::Exception(string const sFunctionName, string const sSourceFilename, unsigned int unSourceLineNumber,
-										 string const sMessage, Exception* const pInnerException)
+										 string const sMessage, exception* const pInnerException)
 {
 	m_sMessage = sMessage;
 	m_sFunctionName = sFunctionName;
@@ -60,7 +61,7 @@ void Exception::createStringValue()
 
 	if(m_pInnerException)
 	{
- 		ssException << endl << '\t' << m_pInnerException->toString();
+ 		ssException << endl << '\t' << m_pInnerException->what();
 	}
 
 	m_sStringValue = ssException.str();
@@ -76,7 +77,7 @@ unsigned int Exception::getSourceLineNumber() const
 	return m_unSourceLineNumber;
 }
 
-Exception* const Exception::getInnerException() const
+exception* const Exception::getInnerException() const
 {
 	return m_pInnerException;
 }

@@ -75,7 +75,7 @@ namespace DynabyteSoftware
 		 * @param pInnerException[in] Optionally, the caught exception that caused this exception to be thrown
 		 **/
 		Exception(std::string const sFunctionName, std::string const sSourceFilename, unsigned int unSourceLineNumber,
-							std::string const sMessage, Exception* const pInnerException = nullptr);
+							std::string const sMessage, std::exception* const pInnerException = nullptr);
 		/**
 		 * Virtual destructor for an Exception object
 		 **/
@@ -105,7 +105,7 @@ namespace DynabyteSoftware
 		 * @return The inner exception that caused this exception to be thrown
 		 * @note Could return a nullptr if no inner exception
 		 **/
-		Exception* const getInnerException() const;
+		std::exception* const getInnerException() const;
 
 		/**
 		 * @return A description of this Exception
@@ -117,7 +117,7 @@ namespace DynabyteSoftware
 		std::string m_sMessage;
 		std::string m_sFunctionName;
 		std::string m_sSourceFilename;
-		Exception *m_pInnerException;
+		std::exception *m_pInnerException;
 
 		void createStringValue();
 	};
