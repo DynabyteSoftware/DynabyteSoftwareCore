@@ -1,15 +1,13 @@
 /***********************************************************************************************************************
  * @file Exception.h
  * @author Rod Leonard
- * @version 0.0.1
+ * @version 0.0.2
  * @date 2015/10/27
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * @brief Header file for DynabyteSoftware's Exception object
  **********************************************************************************************************************/
 
 #pragma once
-#pragma warning(disable: 4251) //microsoft is dumb, because stl components are a standard part of c++
-#pragma warning(disable: 4275) //microsoft is dumb, because exception is a standard part of c++
 
 #include <string>
 #include <exception>
@@ -62,7 +60,7 @@ namespace DynabyteSoftware
 	 * the required parameters.  This setup ensures your exceptions will be able to use the THROW macro to automatically
 	 * populate that information
 	 ********************************************************************************************************************/
-	class CORE_EXPORT Exception : public std::exception
+	class Exception : public std::exception
 	{
 	public:
 		/**
@@ -74,52 +72,55 @@ namespace DynabyteSoftware
 		 * @param sMessage[in] The message associated with this exception
 		 * @param pInnerException[in] Optionally, the caught exception that caused this exception to be thrown
 		 **/
-		Exception(std::string const sFunctionName, std::string const sSourceFilename, unsigned int unSourceLineNumber,
-							std::string const sMessage, std::exception* const pInnerException = nullptr);
+    CORE_EXPORT
+		Exception(const std::string& sFunctionName, const std::string& sSourceFilename, unsigned int unSourceLineNumber,
+							const std::string& sMessage);
 		/**
 		 * Virtual destructor for an Exception object
 		 **/
+    CORE_EXPORT
 		virtual ~Exception() throw();
 
 		/**
 		 * @return The exception message
 		 **/
-		std::string const& getMessage() const;
+    CORE_EXPORT
+		const std::string& getMessage() const;
 		/**
 		 * @return The function name where the exception was thrown
 		 **/
-		std::string const& getFunctionName() const;
+    CORE_EXPORT
+		const std::string& getFunctionName() const;
 		/**
 		 * @return The source filename where the exception was thrown
 		 **/
-		std::string const& getSourceFilename() const;
+    CORE_EXPORT
+		const std::string& getSourceFilename() const;
 		/**
 		 * @return A string representation of this Exception
 		 **/
-		std::string const toString() const;
+    CORE_EXPORT
+		const std::string& toString() const;
 		/**
 		 * @return The line number in the source file where th exception was thrown
 		 **/
+    CORE_EXPORT
 		unsigned int getSourceLineNumber() const;
-		/**
-		 * @return The inner exception that caused this exception to be thrown
-		 * @note Could return a nullptr if no inner exception
-		 **/
-		std::exception* const getInnerException() const;
 
+    /****** exception ******/
 		/**
 		 * @return A description of this Exception
 		 **/
-		virtual const char* what() const noexcept;
+    CORE_EXPORT
+		virtual const char* what() const noexcept override;
 	private:
+    void createStringValue();
+  private:
 		unsigned int m_unSourceLineNumber;
 		std::string m_sStringValue;
 		std::string m_sMessage;
 		std::string m_sFunctionName;
 		std::string m_sSourceFilename;
-		std::exception *m_pInnerException;
-
-		void createStringValue();
 	};
 }
 

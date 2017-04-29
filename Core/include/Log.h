@@ -1,14 +1,13 @@
 /***********************************************************************************************************************
  * @file Log.h
  * @author Rod Leonard
- * @version 0.0.1
+ * @version 0.0.2
  * @date 2015/10/27
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * @brief Header file for DynabyteSoftware's Log framework
  **********************************************************************************************************************/
 
 #pragma once
-#pragma warning(disable: 4251)
 
 #include <fstream>
 #include <map>
@@ -54,7 +53,7 @@ namespace DynabyteSoftware
 	 * @note
 	 * Not thread-safe
 	 ********************************************************************************************************************/
-  class CORE_EXPORT Log final : public std::streambuf
+  class Log final : public std::streambuf
   {
   public:
 		/**
@@ -72,11 +71,13 @@ namespace DynabyteSoftware
 		/**
 		 * Destructor for the Log buffer
 		 **/
+    CORE_EXPORT
 		~Log();
   public:
 		/**
 		 * @return Reference to the log buffer associated with clog.  This is a *reference*, so don't copy it.
 		 **/
+    CORE_EXPORT
 		static Log& getLogger();
 		/**
 		 * Stops logging and reverts clog to its default buffer
@@ -87,6 +88,7 @@ namespace DynabyteSoftware
 		 * to not grow the log file unnecessarily. If the developer intends to keep log files indefinitely, they should
 		 * include date and time in the filename.
 		 **/
+    CORE_EXPORT
 		static void endLogger();
 	
 		/**
@@ -94,6 +96,7 @@ namespace DynabyteSoftware
 		 * @param sFilename[in] The filename of the log file
 		 * @return true if file was successfully opened and associated, false otherwise
 		 **/
+    CORE_EXPORT
 		bool assignLogFile(const std::string& sFilename);
 		/**
 		 * Assigns a log file to the specified log levels
@@ -101,6 +104,7 @@ namespace DynabyteSoftware
 		 * @param sFilename[in] The filename of the log file
 		 * @return true if file was successfully opened and associated, false otherwise
 		 **/
+    CORE_EXPORT
 		bool assignLogFile(enum LogType eLogType, const std::string& sFilename);
   private:
 		static Log *m_pLogger;
@@ -116,19 +120,17 @@ namespace DynabyteSoftware
 		int overflow(int nCharacter = EOF) override;
 		void closeAllExistingStreams();
 	
+    /**
+    * Overrides the stream operator to allow for assignment of log type to a Log stream buffer
+    * @see Log
+    * @see Log::LogType
+    *
+    * @param OutputSream[in,out] The output stream we're writing a log type to.
+    * @param eLogType[in] The log type to assign to the output stream
+    * @return Reference to the output stream, modified to expect the specified log type
+    *
+    * @note If the OutputStream is not of type Log, eLogType will be ignored
+    **/
 		CORE_EXPORT friend std::ostream& operator<<(std::ostream& oOutputStream, enum LogType eLogType);                               
   };
-  
-	/**
-	 * Overrides the stream operator to allow for assignment of log type to a Log stream buffer
-	 * @see Log
-	 * @see Log::LogType
-	 * 
-	 * @param OutputSream[in,out] The output stream we're writing a log type to.
-	 * @param eLogType[in] The log type to assign to the output stream
-	 * @return Reference to the output stream, modified to expect the specified log type
-	 * 
-	 * @note If the OutputStream is not of type Log, eLogType will be ignored
-	 **/
-  CORE_EXPORT std::ostream& operator<<(std::ostream& OutputStream, enum Log::LogType eLogType);
 }

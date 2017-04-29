@@ -2,7 +2,7 @@
  * @defgroup DynabyteSoftwareCore DynabyteSoftware Core
  * @brief Core library with generally useful utilities
  * @author Rod Leonard
- * @version 0.0.1
+ * @version 0.0.2
  * @date 2015/10/27
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * 
@@ -19,15 +19,17 @@
 
 #pragma once
 #ifdef _WIN32
-#ifdef COREDYNAMIC_EXPORTS
-#define CORE_EXPORT __declspec(dllexport)
+#define SHARED_EXPORT __declspec(dllexport)
+#define SHARED_IMPORT __declspec(dllimport)
 #else
-#ifdef COREDYNAMIC_IMPORTS
-#define CORE_EXPORT __declspec(dllimport)
-#else
-#define CORE_EXPORT
+#define SHARED_EXPORT
+#define SHARED_IMPORT
 #endif
-#endif
-#else
+
+#ifdef CORE_STATIC
 #define CORE_EXPORT
+#elif CORE_DYNAMIC
+#define CORE_EXPORT SHARED_EXPORT
+#else
+#define CORE_EXPORT SHARED_IMPORT
 #endif

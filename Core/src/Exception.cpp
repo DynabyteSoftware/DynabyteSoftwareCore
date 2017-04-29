@@ -10,14 +10,13 @@ using std::string;
 using std::stringstream;
 using std::exception;
 
-Exception::Exception(string const sFunctionName, string const sSourceFilename, unsigned int unSourceLineNumber,
-										 string const sMessage, exception* const pInnerException)
+Exception::Exception(const string& sFunctionName, const string& sSourceFilename, unsigned int unSourceLineNumber,
+										 const string& sMessage)
 {
 	m_sMessage = sMessage;
 	m_sFunctionName = sFunctionName;
 	m_sSourceFilename = sSourceFilename;
 	m_unSourceLineNumber = unSourceLineNumber;
-	m_pInnerException = pInnerException;
 
 	createStringValue();
 	clog << Log::Error << what() << endl;
@@ -33,22 +32,22 @@ Exception::~Exception()
 	*/
 }
 
-string const& Exception::getMessage() const
+const string& Exception::getMessage() const
 {
 	return m_sMessage;
 }
 
-string const& Exception::getFunctionName() const
+const string& Exception::getFunctionName() const
 {
 	return m_sFunctionName;
 }
 
-string const& Exception::getSourceFilename() const
+const string& Exception::getSourceFilename() const
 {
 	return m_sSourceFilename;
 }
 
-string const Exception::toString() const
+const string& Exception::toString() const
 {
 	return m_sStringValue;
 }
@@ -58,11 +57,6 @@ void Exception::createStringValue()
 	stringstream ssException;
 	ssException << "Exception:  " << m_sMessage << " (" << m_sFunctionName << "(), " << m_sSourceFilename
 		    << ", Line " << m_unSourceLineNumber << ")";
-
-	if(m_pInnerException)
-	{
- 		ssException << endl << '\t' << m_pInnerException->what();
-	}
 
 	m_sStringValue = ssException.str();
 }
@@ -75,9 +69,4 @@ const char* Exception::what() const noexcept
 unsigned int Exception::getSourceLineNumber() const
 {
 	return m_unSourceLineNumber;
-}
-
-exception* const Exception::getInnerException() const
-{
-	return m_pInnerException;
 }
