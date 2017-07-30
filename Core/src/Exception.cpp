@@ -24,12 +24,6 @@ Exception::Exception(const string& sFunctionName, const string& sSourceFilename,
 
 Exception::~Exception()
 {
-  /*
-	if(m_pInnerException)
- 	{
- 		delete m_pInnerException;
-	}
-	*/
 }
 
 const string& Exception::getMessage() const

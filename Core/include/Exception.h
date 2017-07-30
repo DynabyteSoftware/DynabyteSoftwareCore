@@ -70,7 +70,6 @@ namespace DynabyteSoftware
 		 * @param sSourceFilename[in] The filename where the exception was thrown
 		 * @param unSourceLineNumber[in] The line number where the exception was thrown
 		 * @param sMessage[in] The message associated with this exception
-		 * @param pInnerException[in] Optionally, the caught exception that caused this exception to be thrown
 		 **/
     CORE_EXPORT
 		Exception(const std::string& sFunctionName, const std::string& sSourceFilename, unsigned int unSourceLineNumber,
