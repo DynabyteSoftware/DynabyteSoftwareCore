@@ -10,14 +10,11 @@ using std::string;
 using std::stringstream;
 using std::exception;
 
-Exception::Exception(const string& sFunctionName, const string& sSourceFilename, unsigned int unSourceLineNumber,
-										 const string& sMessage)
+Exception::Exception(const string& functionName, const string& sourceFilename, unsigned int sourceLineNumber,
+										 const string& message)
+         : message(message), functionName(functionName), sourceFilename(sourceFilename),
+           sourceLineNumber(sourceLineNumber)
 {
-	m_sMessage = sMessage;
-	m_sFunctionName = sFunctionName;
-	m_sSourceFilename = sSourceFilename;
-	m_unSourceLineNumber = unSourceLineNumber;
-
 	createStringValue();
 	clog << Log::Error << what() << endl;
 }
@@ -28,39 +25,39 @@ Exception::~Exception()
 
 const string& Exception::getMessage() const
 {
-	return m_sMessage;
+	return message;
 }
 
 const string& Exception::getFunctionName() const
 {
-	return m_sFunctionName;
+	return functionName;
 }
 
 const string& Exception::getSourceFilename() const
 {
-	return m_sSourceFilename;
+	return sourceFilename;
 }
 
 const string& Exception::toString() const
 {
-	return m_sStringValue;
+	return stringValue;
 }
 
-void Exception::createStringValue()
+void Exception::createStringValue() const
 {
 	stringstream ssException;
-	ssException << "Exception:  " << m_sMessage << " (" << m_sFunctionName << "(), " << m_sSourceFilename
-		    << ", Line " << m_unSourceLineNumber << ")";
+	ssException << "Exception:  " << message << " (" << functionName << "(), " << sourceFilename
+		    << ", Line " << sourceLineNumber << ")";
 
-	m_sStringValue = ssException.str();
+	stringValue = ssException.str();
 }
 
 const char* Exception::what() const noexcept
 {
-	return m_sStringValue.c_str();
+	return stringValue.c_str();
 }
 
 unsigned int Exception::getSourceLineNumber() const
 {
-	return m_unSourceLineNumber;
+	return sourceLineNumber;
 }

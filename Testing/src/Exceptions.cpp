@@ -15,7 +15,7 @@ int main()
   {
     THROW(Exception, "test")
   }
-  catch(const Exception& exception)
+  catch(const Exception& except)
   {
     return OK;
   }

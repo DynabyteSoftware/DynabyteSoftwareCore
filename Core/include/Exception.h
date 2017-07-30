@@ -66,14 +66,14 @@ namespace DynabyteSoftware
 		/**
 		 * Constructor for an Exception object
 		 * 
-		 * @param sFunctionName[in] The function name where the exception was thrown
-		 * @param sSourceFilename[in] The filename where the exception was thrown
-		 * @param unSourceLineNumber[in] The line number where the exception was thrown
-		 * @param sMessage[in] The message associated with this exception
+		 * @param functionName[in] The function name where the exception was thrown
+		 * @param sourceFilename[in] The filename where the exception was thrown
+		 * @param sourceLineNumber[in] The line number where the exception was thrown
+		 * @param message[in] The message associated with this exception
 		 **/
     CORE_EXPORT
-		Exception(const std::string& sFunctionName, const std::string& sSourceFilename, unsigned int unSourceLineNumber,
-							const std::string& sMessage);
+		Exception(const std::string& functionName, const std::string& sourceFilename, unsigned int sourceLineNumber,
+							const std::string& message);
 		/**
 		 * Virtual destructor for an Exception object
 		 **/
@@ -113,13 +113,14 @@ namespace DynabyteSoftware
     CORE_EXPORT
 		virtual const char* what() const noexcept override;
 	private:
-    void createStringValue();
+    void createStringValue() const;
   private:
-		unsigned int m_unSourceLineNumber;
-		std::string m_sStringValue;
-		std::string m_sMessage;
-		std::string m_sFunctionName;
-		std::string m_sSourceFilename;
+		const unsigned int sourceLineNumber;
+		const std::string message;
+		const std::string functionName;
+		const std::string sourceFilename;
+
+    mutable std::string stringValue;
 	};
 }
 
