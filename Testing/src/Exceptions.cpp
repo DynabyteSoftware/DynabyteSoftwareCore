@@ -1,4 +1,5 @@
 #include "Exception.h"
+#include <iostream>
 
 enum ErrorCodes
 {
@@ -17,6 +18,7 @@ int main()
   }
   catch(const Exception& except)
   {
+    std::cout << except.getMessage() << std::endl;
     return OK;
   }
 
