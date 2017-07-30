@@ -45,11 +45,11 @@ const string& Exception::toString() const
 
 void Exception::createStringValue() const
 {
-	stringstream ssException;
-	ssException << "Exception:  " << message << " (" << functionName << "(), " << sourceFilename
-		    << ", Line " << sourceLineNumber << ")";
+	stringstream exceptionString;
+	exceptionString << "Exception:  " << message << " (" << functionName << "(), " << sourceFilename
+	          	    << ", Line " << sourceLineNumber << ")";
 
-	stringValue = ssException.str();
+	stringValue = exceptionString.str();
 }
 
 const char* Exception::what() const noexcept
