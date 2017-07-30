@@ -1,7 +1,7 @@
 /***********************************************************************************************************************
  * @file Exception.h
  * @author Rod Leonard
- * @version 0.0.2
+ * @version 0.0.3
  * @date 2015/10/27
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * @brief Header file for DynabyteSoftware's Exception object
@@ -74,6 +74,7 @@ namespace DynabyteSoftware
     CORE_EXPORT
 		Exception(const std::string& functionName, const std::string& sourceFilename, unsigned int sourceLineNumber,
 							const std::string& message);
+
 		/**
 		 * Virtual destructor for an Exception object
 		 **/
