@@ -4,7 +4,7 @@ using namespace DynabyteSoftware;
 
 DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day, unsigned short hour,
                    unsigned short minute, unsigned short second, unsigned short millisecond,
-                   DateTimeKind kind = DateTimeKind::UTC)
+                   DateTimeKind kind)
         : implementation(createDateTimeImplementation(year, month, day, hour, minute, second, millisecond, kind))
 {
 
