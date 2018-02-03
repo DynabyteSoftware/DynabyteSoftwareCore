@@ -27,8 +27,6 @@ DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day
   _date.tm_min = minute;
   _date.tm_sec = second;
   _date.tm_wday = 0;
-  _date.tm_yday = 0;
-  _date.tm_isdst = -1;
 
   //we do this to allow the library to set wday and isdst for us
   lock_guard<mutex> lock(timeMutex);

@@ -18,8 +18,8 @@ int main()
   DateTime local = DateTime::now(DateTimeKind::Local);
   clog << local << endl;
   clog << "converted: " << local.toUniversalTime() << endl;
-  DateTime preEpoch(1971, 10, 29);
-  clog << preEpoch << endl;
+  DateTime postEpoch(1971, 10, 29);
+  clog << postEpoch << endl;
 
   return errorCode;
 }
