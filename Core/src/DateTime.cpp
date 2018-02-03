@@ -44,10 +44,13 @@ DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day
   _date.tm_sec = second;
   _date.tm_wday = 0;
 
+  #pragma warning(push)
+  #pragma warning(disable:4996) //microsoft warnts to use non-standard localtime_s and gmtime_s functions
   //we do this to allow the library to set wday and isdst for us
   lock_guard<mutex> lock(timeMutex);
   time_t time = mktime(&_date);
   _date = *localtime(&time);
+  #pragma warning(pop)
 }
 
 DateTime::DateTime(const struct tm& date, unsigned int millisecond, DateTimeKind kind)
@@ -108,7 +111,11 @@ DateTime DateTime::toLocalTime() const
   #else
   local = timegm(&datecopy);
   #endif
+
+  #pragma warning(push)
+  #pragma warning(disable:4996) //microsoft warnts to use non-standard localtime_s and gmtime_s functions
   return DateTime(*localtime(&local), _millisecond, DateTimeKind::Local);
+  #pragma warning(pop)
 }
 
 DateTime DateTime::toUniversalTime() const
@@ -119,7 +126,11 @@ DateTime DateTime::toUniversalTime() const
   struct tm datecopy = _date;
   lock_guard<mutex> lock(timeMutex);
   time_t utc = mktime(&datecopy);
+
+  #pragma warning(push)
+  #pragma warning(disable:4996) //microsoft warnts to use non-standard localtime_s and gmtime_s functions
   return DateTime(*gmtime(&utc), _millisecond, DateTimeKind::UTC);
+  #pragma warning(pop)
 }
 
 DateTime DateTime::now(DateTimeKind kind)

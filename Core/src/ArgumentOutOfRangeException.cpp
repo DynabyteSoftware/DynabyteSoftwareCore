@@ -10,8 +10,14 @@ ArgumentOutOfRangeException::ArgumentOutOfRangeException(const string& functionN
                                                          const string& message)
                            : //exception((message + " (" + paramName + ")").c_str()),
                              Exception(EXCEPTION_NAME, functionName, sourceFilename, sourceLineNumber,
-                                       paramName + " " + message)//,
+                                       paramName + " " + message),
                              //out_of_range(getMessage())
+                             _paramName(paramName)
 {
 
+}
+
+const string& ArgumentOutOfRangeException::getParameterName() const
+{
+  return _paramName;
 }

@@ -1,7 +1,7 @@
 /***********************************************************************************************************************
  * @file DateTime.h
  * @author Rod Leonard
- * @version 0.0.1
+ * @version 0.0.2
  * @date 2017/07/30
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * @brief Header file for DynabyteSoftware's DateTime object
