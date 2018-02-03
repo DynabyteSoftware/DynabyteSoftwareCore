@@ -5,7 +5,6 @@ enum ErrorCodes
 {
   OK = 0,
   ExceptionNotThrown = -1,
-  BadExceptionConstruction = -2
 };
 
 using namespace DynabyteSoftware;
