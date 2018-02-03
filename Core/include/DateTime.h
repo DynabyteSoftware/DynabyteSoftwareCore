@@ -111,16 +111,13 @@ namespace DynabyteSoftware
       **/
       CORE_EXPORT
       static DateTime now(DateTimeKind kind = DateTimeKind::UTC);
-
-      friend CORE_EXPORT std::ostream& operator<<(std::ostream&, const DateTime&);
   private:
     DateTime(const struct tm& date, unsigned int millisecond, DateTimeKind kind);
 
     struct tm _date;
     unsigned int _millisecond;
     DateTimeKind _kind;
-  };
 
-  CORE_EXPORT
-  std::ostream& operator<<(std::ostream& stream, const DateTime& dateTime);
+    friend CORE_EXPORT std::ostream& operator<<(std::ostream&, const DateTime&);
+  };
 }

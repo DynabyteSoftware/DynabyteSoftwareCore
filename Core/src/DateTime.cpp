@@ -77,14 +77,21 @@ DateTime DateTime::now(DateTimeKind kind)
   system_clock::duration sinceEpoch = exactTime.time_since_epoch();
   time_t time = system_clock::to_time_t(exactTime);
   
+  #pragma warning(push)
+  #pragma warning(disable:4996) //microsoft warnts to use non-standard localtime_s and gmtime_s functions
   struct tm date;
   lock_guard<mutex> lock(timeMutex); //localtime and gmtime are not threadsafe
   if(kind == DateTimeKind::Local)
     date = *localtime(&time);
   else
     date = *gmtime(&time);
+  #pragma warning(pop)
 
-  return DateTime(date, (duration_cast<milliseconds>(sinceEpoch) - duration_cast<seconds>(sinceEpoch)).count(), kind);
+  return
+    DateTime(date,
+             static_cast<unsigned int>((duration_cast<milliseconds>(sinceEpoch) -
+                                        duration_cast<seconds>(sinceEpoch)).count()),
+             kind);
 }
 
 ostream& DynabyteSoftware::operator<<(ostream& stream, const DateTime& dateTime)
