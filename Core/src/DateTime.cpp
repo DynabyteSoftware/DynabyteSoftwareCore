@@ -1,68 +1,98 @@
 #include "DateTime.h"
+#include <chrono>
+#include <mutex>
+#include <iomanip>
 
 using namespace DynabyteSoftware;
+using namespace std;
+using namespace std::chrono;
+
+static const unsigned short EPOCH_YEAR = 1900;
+static const unsigned short EPOCH_MONTH = 1;
+//static const unsigned short DST_NO_INFO = -1;
+
+static mutex timeMutex;
 
 DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day, unsigned short hour,
-                   unsigned short minute, unsigned short second, unsigned short millisecond,
+                   unsigned short minute, unsigned short second, unsigned int millisecond,
                    DateTimeKind kind)
-        : implementation(createDateTimeImplementation(year, month, day, hour, minute, second, millisecond, kind))
+        : _kind(kind)
 {
-
+  _date.tm_year = year - EPOCH_YEAR;
+  _date.tm_mon = month - EPOCH_MONTH;
+  _date.tm_mday = day;
+  _date.tm_hour = hour;
+  _date.tm_min = minute;
+  _date.tm_sec = second;
 }
 
-DateTime::DateTime(const DateTime& source)
-        : DateTime(source.getYear(), source.getMonth(), source.getDay(), source.getHour(), source.getMinute(),
-                   source.getSecond(), source.getMillisecond(), source.getKind())
+DateTime::DateTime(const struct tm& date, unsigned int millisecond, DateTimeKind kind)
+        : _date(date), _millisecond(millisecond), _kind(kind)
 {
-}
-
-DateTime::DateTime(DateTime&& source)
-        : implementation(source.implementation)
-{
-  source.implementation = nullptr;
-}
-
-DateTime::~DateTime()
-{
-  destroyDateTimeImplementation(implementation);
 }
 
 unsigned short DateTime::getYear() const
 {
-  return implementation->getYear();
+  return _date.tm_year + EPOCH_YEAR;
 }
 
 unsigned short DateTime::getMonth() const
 {
-  return implementation->getMonth();
+  return _date.tm_mon + EPOCH_MONTH;
 }
 
 unsigned short DateTime::getDay() const
 {
-  return implementation->getDay();
+  return _date.tm_mday;
 }
 
 unsigned short DateTime::getHour() const
 {
-  return implementation->getHour();
+  return _date.tm_hour;
 }
 
 unsigned short DateTime::getMinute() const
 {
-  return implementation->getMinute();
+  return _date.tm_min;
 }
 
 unsigned short DateTime::getSecond() const
 {
-  return implementation->getSecond();
+  return _date.tm_sec;
 }
 
-unsigned short DateTime::getMillisecond() const
+unsigned int DateTime::getMillisecond() const
 {
-  return implementation->getMillisecond();
+  return _millisecond;
 }
 
 DateTimeKind DateTime::getKind() const
 {
-  return implementation->getKind();
+  return _kind;
+}
+
+DateTime DateTime::now(DateTimeKind kind)
+{
+  system_clock::time_point exactTime = system_clock::now();
+  system_clock::duration sinceEpoch = exactTime.time_since_epoch();
+  time_t time = system_clock::to_time_t(exactTime);
+  
+  struct tm date;
+  lock_guard<mutex> lock(timeMutex); //localtime and gmtime are not threadsafe
+  if(kind == DateTimeKind::Local)
+    date = *localtime(&time);
+  else
+    date = *gmtime(&time);
+
+  return DateTime(date, (duration_cast<milliseconds>(sinceEpoch) - duration_cast<seconds>(sinceEpoch)).count(), kind);
+}
+
+ostream& DynabyteSoftware::operator<<(ostream& stream, const DateTime& dateTime)
+{
+  stream << put_time(&dateTime._date, "%a %b %d %Y %OH:%OI:%OM:%OS.") << dateTime._millisecond << ' ';
+  if(dateTime._kind == DateTimeKind::Local)
+    stream << put_time(&dateTime._date, "%Z");
+  else
+    stream << "UTC";
+  return stream;
 }

@@ -9,6 +9,8 @@
 
 #pragma once
 #include "CoreExports.h"
+#include <ctime>
+#include <ostream>
 
 namespace DynabyteSoftware
 {
@@ -50,30 +52,8 @@ namespace DynabyteSoftware
        **/
       CORE_EXPORT
       DateTime(unsigned short year, unsigned short month, unsigned short day, unsigned short hour = 0,
-               unsigned short minute = 0, unsigned short second = 0, unsigned short millisecond = 0,
+               unsigned short minute = 0, unsigned short second = 0, unsigned int millisecond = 0,
                DateTimeKind kind = DateTimeKind::UTC);
-
-      /**
-       * Copy-constructor for a DateTime object
-       *
-       * @param source[in] The DateTime instance to copy
-       **/
-      CORE_EXPORT
-      DateTime(const DateTime& source);
-
-      /**
-       * Move-constructor for a DateTime object
-       *
-       * @param source[in] The DateTime instance to move
-       **/
-      CORE_EXPORT
-      DateTime(DateTime&& source);
-
-      /**
-       * Destructor for DateTime object
-       **/
-      CORE_EXPORT
-      ~DateTime();
 
       /**
        * @return the year
@@ -115,7 +95,7 @@ namespace DynabyteSoftware
        * @return the millisecond
        **/
       CORE_EXPORT
-      unsigned short getMillisecond() const;
+      unsigned int getMillisecond() const;
 
       /**
        * @return the kind (local or UTC)
@@ -123,26 +103,24 @@ namespace DynabyteSoftware
        **/
       CORE_EXPORT
       DateTimeKind getKind() const;
+
+      /**
+      * Returns the current DateTime
+      * @param kind[in] Whether to return DateTime in local time or UTC
+      * @return the current DateTime
+      **/
+      CORE_EXPORT
+      static DateTime now(DateTimeKind kind = DateTimeKind::UTC);
+
+      friend CORE_EXPORT std::ostream& operator<<(std::ostream&, const DateTime&);
   private:
-    class DateTimeImplementation
-    {
-    public:
-      inline virtual ~DateTimeImplementation() {};
+    DateTime(const struct tm& date, unsigned int millisecond, DateTimeKind kind);
 
-      virtual unsigned short getYear() const = 0;
-      virtual unsigned short getMonth() const = 0;
-      virtual unsigned short getDay() const = 0;
-      virtual unsigned short getHour() const = 0;
-      virtual unsigned short getMinute() const = 0;
-      virtual unsigned short getSecond() const = 0;
-      virtual unsigned short getMillisecond() const = 0;
-      virtual DateTimeKind getKind() const = 0;
-    } const *implementation;
-
-    DateTimeImplementation* createDateTimeImplementation(unsigned short year, unsigned short month, unsigned short day,
-                                                         unsigned short hour, unsigned short minute,
-                                                         unsigned short second, unsigned short millisecond,
-                                                         DateTimeKind kind);
-    void destroyDateTimeImplementation(const DateTimeImplementation *&dateTime);
+    struct tm _date;
+    unsigned int _millisecond;
+    DateTimeKind _kind;
   };
+
+  CORE_EXPORT
+  std::ostream& operator<<(std::ostream& stream, const DateTime& dateTime);
 }
