@@ -23,12 +23,18 @@ static constexpr const char* const LINE_LABEL = "Line ";
 
 Exception::Exception(const string& functionName, const string& sourceFilename, unsigned int sourceLineNumber,
 										 const string& message)
-         : _exceptionName(EXCEPTION_NAME), _message(message), _functionName(functionName),
+         : Exception(EXCEPTION_NAME, functionName, sourceFilename, sourceLineNumber, message)
+{
+}
+
+Exception::Exception(const string& exceptionName, const string& functionName, const string& sourceFilename,
+                     unsigned int sourceLineNumber, const string& message)
+         : _exceptionName(exceptionName), _message(message), _functionName(functionName),
            _sourceFilename(sourceFilename), _sourceLineNumber(sourceLineNumber)
 {
-	createStringValue();
-	clog << Log::Error << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << " " << what()
-       << endl;
+  createStringValue();
+  clog << Log::Error << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << " " << what()
+    << endl;
 }
 
 Exception::~Exception()

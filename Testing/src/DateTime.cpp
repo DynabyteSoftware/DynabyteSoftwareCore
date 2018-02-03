@@ -20,6 +20,15 @@ int main()
   clog << "converted: " << local.toUniversalTime() << endl;
   DateTime postEpoch(1971, 10, 29);
   clog << postEpoch << endl;
+  
+  try
+  {
+    DateTime preEpoch(1870, 10, 29);
+  }
+  catch (...)
+  {
+
+  }
 
   return errorCode;
 }

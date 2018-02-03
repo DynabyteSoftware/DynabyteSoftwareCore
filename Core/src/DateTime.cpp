@@ -1,3 +1,4 @@
+#include "ArgumentOutOfRangeException.h"
 #include "DateTime.h"
 #include <chrono>
 #include <mutex>
@@ -20,6 +21,21 @@ DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day
                    DateTimeKind kind)
         : _millisecond(millisecond), _kind(kind)
 {
+  if(year < 1970 || year > 2038)
+    THROW(ArgumentOutOfRangeException, "year", "must be between 1970 and 2038")
+  if(month < 1 || month > 12)
+    THROW(ArgumentOutOfRangeException, "month", "must be between 1 and 12")
+  if(day < 1 || day > 31)
+    THROW(ArgumentOutOfRangeException, "day", "must be between 1 and 31")
+  if(hour > 23)
+    THROW(ArgumentOutOfRangeException, "hour", "must be between 0 and 23")
+  if(minute > 59)
+    THROW(ArgumentOutOfRangeException, "minute", "must be between 0 and 59")
+  if(second > 59)
+    THROW(ArgumentOutOfRangeException, "second", "must be between 0 and 59")
+  if(millisecond > 999)
+    THROW(ArgumentOutOfRangeException, "millisecond", "must be between 0 and 999")
+
   _date.tm_year = year - EPOCH_YEAR;
   _date.tm_mon = month - EPOCH_MONTH;
   _date.tm_mday = day;
