@@ -1,7 +1,7 @@
 /***********************************************************************************************************************
  * @file Exception.h
  * @author Rod Leonard
- * @version 0.0.3
+ * @version 0.0.4
  * @date 2015/10/27
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * @brief Header file for DynabyteSoftware's Exception object
