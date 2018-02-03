@@ -9,7 +9,8 @@ ArgumentOutOfRangeException::ArgumentOutOfRangeException(const string& functionN
                                                          unsigned int sourceLineNumber, const string& paramName,
                                                          const string& message)
                            : //exception((message + " (" + paramName + ")").c_str()),
-                             Exception(EXCEPTION_NAME, functionName, sourceFilename, sourceLineNumber, message + " (" + paramName + ")")//,
+                             Exception(EXCEPTION_NAME, functionName, sourceFilename, sourceLineNumber,
+                                       paramName + " " + message)//,
                              //out_of_range(getMessage())
 {
 
