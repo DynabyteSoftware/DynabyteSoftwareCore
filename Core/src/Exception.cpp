@@ -11,7 +11,15 @@ using std::string;
 using std::stringstream;
 using std::exception;
 
-static const char* const EXCEPTION_NAME = "Exception";
+static constexpr const char* const EXCEPTION_NAME = "Exception";
+static constexpr const char* const TIME_OPEN_BRACKET = "[";
+static constexpr const char* const TIME_CLOSE_BRACKET = "]";
+static constexpr const char* const EXCEPTION_TYPE_DELIMITER = ": ";
+static constexpr const char* const DETAIL_OPEN_BRACKET = "(";
+static constexpr const char* const DETAIL_CLOSE_BRACKET = ")";
+static constexpr const char* const FUNCTION_DECORATION = "()";
+static constexpr const char* const DETAIL_DELIMITER = ", ";
+static constexpr const char* const LINE_LABEL = "Line ";
 
 Exception::Exception(const string& functionName, const string& sourceFilename, unsigned int sourceLineNumber,
 										 const string& message)
@@ -19,7 +27,8 @@ Exception::Exception(const string& functionName, const string& sourceFilename, u
            _sourceFilename(sourceFilename), _sourceLineNumber(sourceLineNumber)
 {
 	createStringValue();
-	clog << Log::Error << "[" << DateTime::now(DateTimeKind::UTC) << "] " << what() << endl;
+	clog << Log::Error << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << " " << what()
+       << endl;
 }
 
 Exception::~Exception()
@@ -49,8 +58,11 @@ const string& Exception::toString() const
 void Exception::createStringValue() const
 {
 	stringstream exceptionString;
-	exceptionString << _exceptionName << ":  " << _message << " (" << _functionName << "(), " << _sourceFilename
-	          	    << ", Line " << _sourceLineNumber << ")";
+	exceptionString << _exceptionName << EXCEPTION_TYPE_DELIMITER
+                  << _message << " " << DETAIL_OPEN_BRACKET
+                  << _functionName << FUNCTION_DECORATION << DETAIL_DELIMITER
+                  << _sourceFilename << DETAIL_DELIMITER
+	          	    << LINE_LABEL << _sourceLineNumber << DETAIL_CLOSE_BRACKET;
 
 	_stringValue = exceptionString.str();
 }

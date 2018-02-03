@@ -7,9 +7,11 @@ using namespace DynabyteSoftware;
 using namespace std;
 using namespace std::chrono;
 
-static const unsigned short EPOCH_YEAR = 1900;
-static const unsigned short EPOCH_MONTH = 1;
-//static const unsigned short DST_NO_INFO = -1;
+static constexpr const unsigned short EPOCH_YEAR = 1900;
+static constexpr const unsigned short EPOCH_MONTH = 1;
+static constexpr const char* const UTC = "UTC";
+static constexpr const char* const DATE_FORMAT = "%a %b %d %Y %OH:%OI:%OM:%OS.";
+static constexpr const char* const TIME_ZONE_FORMAT = "%Z";
 
 static mutex timeMutex;
 
@@ -96,10 +98,10 @@ DateTime DateTime::now(DateTimeKind kind)
 
 ostream& DynabyteSoftware::operator<<(ostream& stream, const DateTime& dateTime)
 {
-  stream << put_time(&dateTime._date, "%a %b %d %Y %OH:%OI:%OM:%OS.") << dateTime._millisecond << ' ';
+  stream << put_time(&dateTime._date, DATE_FORMAT) << dateTime._millisecond << ' ';
   if(dateTime._kind == DateTimeKind::Local)
-    stream << put_time(&dateTime._date, "%Z");
+    stream << put_time(&dateTime._date, TIME_ZONE_FORMAT);
   else
-    stream << "UTC";
+    stream << UTC;
   return stream;
 }

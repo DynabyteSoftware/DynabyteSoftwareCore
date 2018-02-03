@@ -18,7 +18,6 @@ int main()
   }
   catch(const Exception& except)
   {
-    std::cout << except.getMessage() << std::endl;
     return OK;
   }
 
