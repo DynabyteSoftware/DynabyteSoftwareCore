@@ -18,7 +18,7 @@ static mutex timeMutex;
 DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day, unsigned short hour,
                    unsigned short minute, unsigned short second, unsigned int millisecond,
                    DateTimeKind kind)
-        : _kind(kind)
+        : _millisecond(millisecond), _kind(kind)
 {
   _date.tm_year = year - EPOCH_YEAR;
   _date.tm_mon = month - EPOCH_MONTH;
@@ -26,6 +26,14 @@ DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day
   _date.tm_hour = hour;
   _date.tm_min = minute;
   _date.tm_sec = second;
+  _date.tm_wday = 0;
+  _date.tm_yday = 0;
+  _date.tm_isdst = -1;
+
+  //we do this to allow the library to set wday and isdst for us
+  lock_guard<mutex> lock(timeMutex);
+  time_t time = mktime(&_date);
+  _date = *localtime(&time);
 }
 
 DateTime::DateTime(const struct tm& date, unsigned int millisecond, DateTimeKind kind)
