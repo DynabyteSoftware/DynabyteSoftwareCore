@@ -34,7 +34,7 @@ Exception::Exception(const string& exceptionName, const string& functionName, co
 {
   createStringValue();
   clog << Log::Error << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << " " << what()
-    << endl;
+       << endl;
 }
 
 Exception::~Exception()
