@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include "DateTime.h"
 #include "Exception.h"
 #include "Log.h"
 
@@ -10,13 +11,15 @@ using std::string;
 using std::stringstream;
 using std::exception;
 
+static const char* const EXCEPTION_NAME = "Exception";
+
 Exception::Exception(const string& functionName, const string& sourceFilename, unsigned int sourceLineNumber,
 										 const string& message)
-         : message(message), functionName(functionName), sourceFilename(sourceFilename),
-           sourceLineNumber(sourceLineNumber)
+         : _exceptionName(EXCEPTION_NAME), _message(message), _functionName(functionName),
+           _sourceFilename(sourceFilename), _sourceLineNumber(sourceLineNumber)
 {
 	createStringValue();
-	clog << Log::Error << what() << endl;
+	clog << Log::Error << "[" << DateTime::now(DateTimeKind::UTC) << "] " << what() << endl;
 }
 
 Exception::~Exception()
@@ -25,39 +28,39 @@ Exception::~Exception()
 
 const string& Exception::getMessage() const
 {
-	return message;
+	return _message;
 }
 
 const string& Exception::getFunctionName() const
 {
-	return functionName;
+	return _functionName;
 }
 
 const string& Exception::getSourceFilename() const
 {
-	return sourceFilename;
+	return _sourceFilename;
 }
 
 const string& Exception::toString() const
 {
-	return stringValue;
+	return _stringValue;
 }
 
 void Exception::createStringValue() const
 {
 	stringstream exceptionString;
-	exceptionString << "Exception:  " << message << " (" << functionName << "(), " << sourceFilename
-	          	    << ", Line " << sourceLineNumber << ")";
+	exceptionString << _exceptionName << ":  " << _message << " (" << _functionName << "(), " << _sourceFilename
+	          	    << ", Line " << _sourceLineNumber << ")";
 
-	stringValue = exceptionString.str();
+	_stringValue = exceptionString.str();
 }
 
 const char* Exception::what() const noexcept
 {
-	return stringValue.c_str();
+	return _stringValue.c_str();
 }
 
 unsigned int Exception::getSourceLineNumber() const
 {
-	return sourceLineNumber;
+	return _sourceLineNumber;
 }

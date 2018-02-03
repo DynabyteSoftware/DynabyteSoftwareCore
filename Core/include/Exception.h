@@ -113,15 +113,20 @@ namespace DynabyteSoftware
 		 **/
     CORE_EXPORT
 		virtual const char* what() const noexcept override;
+  protected:
+    CORE_EXPORT
+    Exception(const std::string& exceptionName, const std::string& functionName, const std::string& sourceFilename,
+              unsigned int sourceLineNumber, const std::string& message);
 	private:
     void createStringValue() const;
   private:
-		const unsigned int sourceLineNumber;
-		const std::string message;
-		const std::string functionName;
-		const std::string sourceFilename;
+		const unsigned int _sourceLineNumber;
+    const std::string _exceptionName;
+		const std::string _message;
+		const std::string _functionName;
+		const std::string _sourceFilename;
 
-    mutable std::string stringValue;
+    mutable std::string _stringValue;
 	};
 }
 
