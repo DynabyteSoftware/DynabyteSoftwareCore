@@ -1,16 +1,9 @@
-cmake_minimum_required (VERSION 3.0)
-#set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/CMakeModules)
+cmake_minimum_required (VERSION 3.8)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 project (DynabyteSoftware)
 enable_testing()
-include(CheckCXXCompilerFlag)
 set(CMAKE_CXX_STANDARD 17)
-
-check_cxx_compiler_flag(-mtune=native NATIVE_TARGET)
-if(NATIVE_TARGET)
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mtune=native")
-endif()
 
 add_subdirectory(Core)
 add_subdirectory(Testing)

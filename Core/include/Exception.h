@@ -1,7 +1,7 @@
 /***********************************************************************************************************************
  * @file Exception.h
  * @author Rod Leonard
- * @version 0.0.2
+ * @version 0.0.4
  * @date 2015/10/27
  * @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
  * @brief Header file for DynabyteSoftware's Exception object
@@ -74,6 +74,7 @@ namespace DynabyteSoftware
     CORE_EXPORT
 		Exception(const std::string& functionName, const std::string& sourceFilename, unsigned int sourceLineNumber,
 							const std::string& message);
+
 		/**
 		 * Virtual destructor for an Exception object
 		 **/
@@ -112,15 +113,20 @@ namespace DynabyteSoftware
 		 **/
     CORE_EXPORT
 		virtual const char* what() const noexcept override;
+  protected:
+    CORE_EXPORT
+    Exception(const std::string& exceptionName, const std::string& functionName, const std::string& sourceFilename,
+              unsigned int sourceLineNumber, const std::string& message);
 	private:
     void createStringValue() const;
   private:
-		const unsigned int sourceLineNumber;
-		const std::string message;
-		const std::string functionName;
-		const std::string sourceFilename;
+		const unsigned int _sourceLineNumber;
+    const std::string _exceptionName;
+		const std::string _message;
+		const std::string _functionName;
+		const std::string _sourceFilename;
 
-    mutable std::string stringValue;
+    mutable std::string _stringValue;
 	};
 }
 

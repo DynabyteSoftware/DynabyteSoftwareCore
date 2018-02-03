@@ -5,7 +5,6 @@ enum ErrorCodes
 {
   OK = 0,
   ExceptionNotThrown = -1,
-  BadExceptionConstruction = -2
 };
 
 using namespace DynabyteSoftware;
@@ -16,9 +15,8 @@ int main()
   {
     THROW(Exception, "test")
   }
-  catch(const Exception& except)
+  catch(const Exception&)
   {
-    std::cout << except.getMessage() << std::endl;
     return OK;
   }
 
