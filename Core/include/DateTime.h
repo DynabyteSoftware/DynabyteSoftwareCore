@@ -105,6 +105,18 @@ namespace DynabyteSoftware
       DateTimeKind getKind() const;
 
       /**
+       *@return a copy of this DateTime in the local timezone
+       **/
+      CORE_EXPORT
+      DateTime toLocalTime() const;
+
+      /**
+       *@return a copy of this DateTime in UTC
+       **/
+      CORE_EXPORT
+      DateTime toUniversalTime() const;
+
+      /**
       * Returns the current DateTime
       * @param kind[in] Whether to return DateTime in local time or UTC
       * @return the current DateTime

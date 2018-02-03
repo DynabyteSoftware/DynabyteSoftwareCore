@@ -12,8 +12,12 @@ enum ErrorCodes
 int main()
 {
   int errorCode = OK;
-  clog << DateTime::now() << endl;
-  clog << DateTime::now(DateTimeKind::Local) << endl;
+  DateTime utc = DateTime::now();
+  clog << utc << endl;
+  clog << "converted: " << utc.toLocalTime() << endl;
+  DateTime local = DateTime::now(DateTimeKind::Local);
+  clog << local << endl;
+  clog << "converted: " << local.toUniversalTime() << endl;
 
   return errorCode;
 }

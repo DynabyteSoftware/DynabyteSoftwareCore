@@ -73,6 +73,33 @@ DateTimeKind DateTime::getKind() const
   return _kind;
 }
 
+DateTime DateTime::toLocalTime() const
+{
+  if(_kind == DateTimeKind::Local)
+    return DateTime(*this);
+
+  struct tm datecopy = _date;
+  lock_guard<mutex> lock(timeMutex);
+  time_t local;
+  #ifdef _WINDOWS
+  local = _mkgmtime(&datecopy);
+  #else
+  local = timegm(&datecopy);
+  #endif
+  return DateTime(*localtime(&local), _millisecond, DateTimeKind::Local);
+}
+
+DateTime DateTime::toUniversalTime() const
+{
+  if(_kind == DateTimeKind::UTC)
+    return DateTime(*this);
+
+  struct tm datecopy = _date;
+  lock_guard<mutex> lock(timeMutex);
+  time_t utc = mktime(&datecopy);
+  return DateTime(*gmtime(&utc), _millisecond, DateTimeKind::UTC);
+}
+
 DateTime DateTime::now(DateTimeKind kind)
 {
   system_clock::time_point exactTime = system_clock::now();
