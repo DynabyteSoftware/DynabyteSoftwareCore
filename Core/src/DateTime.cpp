@@ -156,12 +156,15 @@ DateTime DateTime::now(DateTimeKind kind)
              kind);
 }
 
-ostream& DynabyteSoftware::operator<<(ostream& stream, const DateTime& dateTime)
+namespace DynabyteSoftware
 {
-  stream << put_time(&dateTime._date, DATE_FORMAT) << dateTime._millisecond << ' ';
-  if(dateTime._kind == DateTimeKind::Local)
-    stream << put_time(&dateTime._date, TIME_ZONE_FORMAT);
-  else
-    stream << UTC;
-  return stream;
+  ostream& operator<<(ostream& stream, const DateTime& dateTime)
+  {
+    stream << put_time(&dateTime._date, DATE_FORMAT) << dateTime._millisecond << ' ';
+    if(dateTime._kind == DateTimeKind::Local)
+      stream << put_time(&dateTime._date, TIME_ZONE_FORMAT);
+    else
+      stream << UTC;
+    return stream;
+  }
 }
