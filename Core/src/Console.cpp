@@ -7,6 +7,8 @@
 
 static HANDLE STDIN = GetStdHandle(STD_INPUT_HANDLE);
 static const size_t RECORD_SIZE = 1;
+#else
+#include <termios.h>
 #endif
 
 using namespace DynabyteSoftware;
@@ -49,6 +51,46 @@ const ConsoleKeyInfo Console::readKey(bool intercept)
   key = (ConsoleKey)input->Event.KeyEvent.wVirtualKeyCode;
   keyChar = input->Event.KeyEvent.uChar.AsciiChar;
   SetConsoleMode(STDIN, currentConsoleMode);
+  #else
+  struct termios current, temp;
+  tcgetattr(0, &current); /* grab old terminal i/o settings */
+  temp = current; /* make new settings same as old settings */
+  temp.c_lflag &= ~ICANON; /* disable buffered i/o */
+  temp.c_lflag &= ~ECHO; /* set echo mode */
+  tcsetattr(0, TCSANOW, &temp); /* use these new terminal i/o settings now */
+  keyChar = getchar();
+  if(keyChar <= 26)
+  {
+    modifiers = ConsoleModifiers::Control;
+    int offset = keyChar - 1;    
+    keyChar = 'a' + offset;
+    key = (ConsoleKey)((int)ConsoleKey::A + offset);
+  }
+  else if(keyChar <= 52)
+  {
+    modifiers = ConsoleModifiers::Alt;
+    int offset = keyChar - 27;
+    keyChar = 'a' + offset;
+    key = (ConsoleKey)((int)ConsoleKey::A + offset);
+  }
+  else if(keyChar >= 'a' && keyChar <= 'z')
+  {
+    modifiers = ConsoleModifiers::None;
+    int offset = keyChar - 'a';
+    key = (ConsoleKey)((int)ConsoleKey::A + offset);
+  }
+  else if(keyChar >= 'A' && keyChar <= 'Z')
+  {
+    modifiers = ConsoleModifiers::Shift;
+    key = (ConsoleKey)keyChar;
+  }
+  else
+  {
+    modifiers = ConsoleModifiers::None;
+    key = (ConsoleKey)keyChar;
+  }
+  
+  tcsetattr(0, TCSANOW, &current);
   #endif
 
   if(!intercept)
