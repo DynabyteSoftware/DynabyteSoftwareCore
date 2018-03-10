@@ -15,8 +15,9 @@ using namespace std;
 int main()
 {
   ErrorCodes errorCode = ErrorCodes::OK;
-  const auto key = Console::readKey();
-  cout << "Got key " << endl;
+  cout << "Press any key to continue...";
+  const auto key = Console::readKey(true);
+  cout << "\nGot key (" << key.KeyChar << ")" << endl;
 
   return static_cast<int>(errorCode);
 }

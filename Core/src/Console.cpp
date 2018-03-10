@@ -53,5 +53,5 @@ const ConsoleKeyInfo Console::readKey(bool intercept)
 
   if(!intercept)
     cout << keyChar;
-  return {modifiers, key};
+  return {modifiers, key, keyChar};
 }
