@@ -21,7 +21,7 @@ Log::Log()
 Log::~Log()
 {
   clog.rdbuf(cerr.rdbuf());
-	closeAllExistingStreams();
+  closeAllExistingStreams();
 }
 
 Log& Log::getLogger()
@@ -43,24 +43,24 @@ void Log::endLogger()
 
 bool Log::assignLogFile(const std::string& sFilename)
 {
-	closeAllExistingStreams();
+  closeAllExistingStreams();
 
-	return assignLogFile(Information, sFilename) && assignLogFile(Warning, sFilename) && assignLogFile(Error, sFilename);
+  return assignLogFile(Information, sFilename) && assignLogFile(Warning, sFilename) && assignLogFile(Error, sFilename);
 }
 
 bool Log::assignLogFile(enum LogType eLogType, const std::string& sFilename)
 {
-	auto oFileStream = m_oFileStreams.find(sFilename);
-	if (oFileStream == m_oFileStreams.end())
-	{
-		ofstream *pStream = new ofstream(sFilename.c_str());
-		if (!pStream)
-			return false;
+  auto oFileStream = m_oFileStreams.find(sFilename);
+  if (oFileStream == m_oFileStreams.end())
+  {
+    ofstream *pStream = new ofstream(sFilename.c_str());
+    if (!pStream)
+      return false;
 
-		m_oFileStreams[sFilename] = pStream;
-	}
+    m_oFileStreams[sFilename] = pStream;
+  }
 
-	m_oOutputStreamsMap[eLogType] = sFilename;
+  m_oOutputStreamsMap[eLogType] = sFilename;
   
   return true;
 }
@@ -76,7 +76,7 @@ int Log::sync()
   }
   else
   {
-		pStream = m_oFileStreams[oFilenameMap->second];
+    pStream = m_oFileStreams[oFilenameMap->second];
   }
   
   switch(m_eCurrentLogType)
@@ -114,27 +114,27 @@ int Log::overflow(int nCharacter)
 
 void Log::closeAllExistingStreams()
 {
-	for (auto& oFileStream : m_oFileStreams)
-	{
-		if (oFileStream.second->is_open())
-			oFileStream.second->close();
+  for (auto& oFileStream : m_oFileStreams)
+  {
+    if (oFileStream.second->is_open())
+      oFileStream.second->close();
 
-		delete oFileStream.second;
-	}
+    delete oFileStream.second;
+  }
 
-	m_oFileStreams.clear();
-	m_oOutputStreamsMap.clear();
+  m_oFileStreams.clear();
+  m_oOutputStreamsMap.clear();
 }
 
 namespace DynabyteSoftware
 {
   std::ostream& operator<<(std::ostream& oOutputStream, enum Log::LogType eLogType)
   {
-		if(Log *pLog = dynamic_cast<Log*>(oOutputStream.rdbuf()))
-		{
-			pLog->m_eCurrentLogType = eLogType;
-		}
-	
-		return oOutputStream;
+    if(Log *pLog = dynamic_cast<Log*>(oOutputStream.rdbuf()))
+    {
+      pLog->m_eCurrentLogType = eLogType;
+    }
+  
+    return oOutputStream;
   }
 }
