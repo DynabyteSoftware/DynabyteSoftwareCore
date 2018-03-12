@@ -1,5 +1,14 @@
+/***********************************************************************************************************************
+* @file ContainerIteratorWrapper.h
+* @author Rod Leonard
+* @version 0.0.1
+* @date 2018/03/11
+* @copyright Dynabyte Software LLC, licensed under LGPL 3.0 so later
+* @brief Header file for DynabyteSoftware's ContainerIteratorWrapper definition class
+**********************************************************************************************************************/
+
 #pragma once
-#include "Collections/Definitions/ContainerIteratorWrapper-def.h"
+#include "Collections/Declaration/ContainerIteratorWrapper-decl.h"
 
 namespace DynabyteSoftware
 {
