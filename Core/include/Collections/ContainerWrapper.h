@@ -67,5 +67,11 @@ namespace DynabyteSoftware
     private:
       Container& _container;
     };
+
+    template<typename Container>
+    ContainerWrapper<Container> make_container_wrapper(Container& container)
+    {
+      return ContainerWrapper<Container>(container);
+    }
   }
 }

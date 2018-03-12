@@ -8,8 +8,7 @@ using namespace std;
 int main()
 {
   vector<int> original = {2,5,3,1,7};
-  ContainerWrapper<vector<int>> wrapper(original);
-  TransformEnumerator<int, typename ContainerWrapper<vector<int>>::iterator>::transform_function test;
+  auto wrapper = make_container_wrapper(original);
   for (const auto& value : wrapper.select<int>([](const int& value){return value+1;}))
   {
     cout << value;
