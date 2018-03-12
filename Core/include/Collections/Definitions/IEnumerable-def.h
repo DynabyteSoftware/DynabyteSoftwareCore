@@ -1,5 +1,6 @@
 #pragma once
 #include "Collections/FilterEnumerator.h"
+#include "Collections/TransformEnumerator.h"
 
 namespace DynabyteSoftware
 {
@@ -28,6 +29,10 @@ namespace DynabyteSoftware
       const_iterator cbegin() const;
       const_iterator cend() const;
       reference front() const;
+
+      template<typename ValueType>
+      ContainerIteratorWrapper<TransformEnumerator<ValueType, iterator>>
+        select(typename const TransformEnumerator<ValueType, iterator>::transform_function& transform);
       ContainerIteratorWrapper<filter_iterator> where(typename const filter_iterator::filter_function& filter);
     };
   }

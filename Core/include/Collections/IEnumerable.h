@@ -36,6 +36,19 @@ namespace DynabyteSoftware
     }
 
     template<typename IteratorType>
+    template<typename ValueType>
+    ContainerIteratorWrapper<TransformEnumerator<ValueType, IteratorType>>
+      IEnumerable<IteratorType>
+      ::select(typename const TransformEnumerator<ValueType, IteratorType>::transform_function& transform)
+    {
+      return
+        ContainerIteratorWrapper<
+          TransformEnumerator<ValueType,
+                              IteratorType>>(TransformEnumerator<ValueType, IteratorType>(begin(), transform),
+                                             TransformEnumerator<ValueType, IteratorType>(end(), transform));
+    }
+
+    template<typename IteratorType>
     ContainerIteratorWrapper<typename IEnumerable<IteratorType>::filter_iterator>
       IEnumerable<IteratorType>::where(typename const filter_iterator::filter_function& filter)
     {
