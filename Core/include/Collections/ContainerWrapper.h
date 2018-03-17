@@ -56,7 +56,8 @@ namespace DynabyteSoftware
     };
 
     template<typename Container>
-    class ContainerWrapper : public IEnumerable<IteratorWrapper<typename Container::iterator>>
+    class ContainerWrapper
+      : public IEnumerable<ContainerWrapper<Container>, IteratorWrapper<typename Container::iterator>>
     {
     public:
       ContainerWrapper(Container& container)

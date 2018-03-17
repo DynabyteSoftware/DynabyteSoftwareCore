@@ -16,7 +16,7 @@ namespace DynabyteSoftware
   namespace Collections
   {
     template<typename> class ContainerIteratorWrapper;
-    template<typename IteratorType>
+    template<typename Container, typename IteratorType>
     class IEnumerable
     {
     public:

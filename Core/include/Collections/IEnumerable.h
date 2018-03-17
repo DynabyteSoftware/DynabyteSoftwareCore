@@ -14,8 +14,8 @@ namespace DynabyteSoftware
 {
   namespace Collections
   {
-    template<typename IteratorType>
-    bool IEnumerable<IteratorType>::any(typename const filter_iterator::filter_function& filter)
+    template<typename Container, typename IteratorType>
+    bool IEnumerable<Container, IteratorType>::any(typename const filter_iterator::filter_function& filter)
     {
       for (const auto& value : *this)
       {
@@ -26,28 +26,28 @@ namespace DynabyteSoftware
       return false;
     }
 
-    template<typename IteratorType>
-    typename IEnumerable<IteratorType>::const_iterator IEnumerable<IteratorType>::cbegin() const
+    template<typename Container, typename IteratorType>
+    typename IEnumerable<Container, IteratorType>::const_iterator IEnumerable<Container, IteratorType>::cbegin() const
     {
       return begin();
     }
 
-    template<typename IteratorType>
-    typename IEnumerable<IteratorType>::const_iterator IEnumerable<IteratorType>::cend() const
+    template<typename Container, typename IteratorType>
+    typename IEnumerable<Container, IteratorType>::const_iterator IEnumerable<Container, IteratorType>::cend() const
     {
       return end();
     }
 
-    template<typename IteratorType>
-    typename IEnumerable<IteratorType>::reference IEnumerable<IteratorType>::front() const
+    template<typename Container, typename IteratorType>
+    typename IEnumerable<Container, IteratorType>::reference IEnumerable<Container, IteratorType>::front() const
     {
       return *begin();
     }
 
-    template<typename IteratorType>
+    template<typename Container, typename IteratorType>
     template<typename ValueType>
     ContainerIteratorWrapper<TransformEnumerator<ValueType, IteratorType>>
-      IEnumerable<IteratorType>
+      IEnumerable<Container, IteratorType>
       ::select(typename const TransformEnumerator<ValueType, IteratorType>::transform_function& transform)
     {
       return
@@ -57,9 +57,9 @@ namespace DynabyteSoftware
                                              TransformEnumerator<ValueType, IteratorType>(end(), transform));
     }
 
-    template<typename IteratorType>
-    ContainerIteratorWrapper<typename IEnumerable<IteratorType>::filter_iterator>
-      IEnumerable<IteratorType>::where(typename const filter_iterator::filter_function& filter)
+    template<typename Container, typename IteratorType>
+    ContainerIteratorWrapper<typename IEnumerable<Container, IteratorType>::filter_iterator>
+      IEnumerable<Container, IteratorType>::where(typename const filter_iterator::filter_function& filter)
     {
       return ContainerIteratorWrapper<filter_iterator>(filter_iterator(begin(), end(), filter),
                                                        filter_iterator(end(), end(), filter));
