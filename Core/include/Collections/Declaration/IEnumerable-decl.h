@@ -16,6 +16,8 @@ namespace DynabyteSoftware
   namespace Collections
   {
     template<typename> class ContainerIteratorWrapper;
+    template<typename> class ContainerFilterWrapper;
+    template<typename,typename> class ContainerTransformWrapper;
     template<typename Container, typename IteratorType>
     class IEnumerable
     {
@@ -40,9 +42,10 @@ namespace DynabyteSoftware
       reference front() const;
 
       template<typename ValueType>
-      ContainerIteratorWrapper<TransformEnumerator<ValueType, iterator>>
+      ContainerTransformWrapper<Container, ValueType>
         select(typename const TransformEnumerator<ValueType, iterator>::transform_function& transform);
-      ContainerIteratorWrapper<filter_iterator> where(typename const filter_iterator::filter_function& filter);
+
+      ContainerFilterWrapper<Container> where(typename const filter_iterator::filter_function& filter);
     };
   }
 }

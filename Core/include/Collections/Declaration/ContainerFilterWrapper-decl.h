@@ -8,6 +8,7 @@
 **********************************************************************************************************************/
 #pragma once
 #include "Collections/FilterEnumerator.h"
+#include "Collections/Declaration/IEnumerable-decl.h"
 
 namespace DynabyteSoftware
 {
@@ -15,27 +16,16 @@ namespace DynabyteSoftware
   {
     template<typename Container>
     class ContainerFilterWrapper
-      : public IEnumerable<ContainerFilterWrapper<Container>, FilterEnumerator<Container::iterator>>
+      : public IEnumerable<ContainerFilterWrapper<Container>, FilterEnumerator<typename Container::iterator>>
     {
     public:
-      ContainerFilterWrapper(Container container, iterator::filter_function filterFunction)
-        : _container(container), _filterFunction(filterFunction)
-      {
+      ContainerFilterWrapper(Container& container, const typename iterator::filter_function& filter);
 
-      }
-
-      virtual iterator begin() override
-      {
-        return iterator(_container.begin(), _container.end(), _filterFunction);
-      }
-
-      virtual iterator end() override
-      {
-        return iterator(_container.end(), _container.end(), _filterFunction);
-      }
+      virtual iterator begin() override;
+      virtual iterator end() override;
     private:
       Container& _container;
-      iterator::filter_function _filterFunction;
+      typename iterator::filter_function _filter;
     };
   }
 }

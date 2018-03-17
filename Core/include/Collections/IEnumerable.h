@@ -9,6 +9,8 @@
 
 #pragma once
 #include "Collections/ContainerIteratorWrapper.h"
+#include "Collections/ContainerFilterWrapper.h"
+#include "Collections/ContainerTransformWrapper.h"
 
 namespace DynabyteSoftware
 {
@@ -46,23 +48,17 @@ namespace DynabyteSoftware
 
     template<typename Container, typename IteratorType>
     template<typename ValueType>
-    ContainerIteratorWrapper<TransformEnumerator<ValueType, IteratorType>>
-      IEnumerable<Container, IteratorType>
+    ContainerTransformWrapper<Container, ValueType> IEnumerable<Container, IteratorType>
       ::select(typename const TransformEnumerator<ValueType, IteratorType>::transform_function& transform)
     {
-      return
-        ContainerIteratorWrapper<
-          TransformEnumerator<ValueType,
-                              IteratorType>>(TransformEnumerator<ValueType, IteratorType>(begin(), transform),
-                                             TransformEnumerator<ValueType, IteratorType>(end(), transform));
+      return ContainerTransformWrapper<Container, ValueType>(*dynamic_cast<Container*>(this), transform);
     }
 
     template<typename Container, typename IteratorType>
-    ContainerIteratorWrapper<typename IEnumerable<Container, IteratorType>::filter_iterator>
+    ContainerFilterWrapper<Container>
       IEnumerable<Container, IteratorType>::where(typename const filter_iterator::filter_function& filter)
     {
-      return ContainerIteratorWrapper<filter_iterator>(filter_iterator(begin(), end(), filter),
-                                                       filter_iterator(end(), end(), filter));
+      return ContainerFilterWrapper<Container>(*dynamic_cast<Container*>(this), filter);
     }
   }
 }
