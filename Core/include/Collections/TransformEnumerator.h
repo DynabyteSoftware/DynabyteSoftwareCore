@@ -53,6 +53,9 @@ namespace DynabyteSoftware
 
       virtual pointer operator->() const override
       {
+        if constexpr (std::is_reference<ValueType>::value)
+          return &_transform(*_current);
+
         _value = _transform(*_current);
         return &_value;
       }
