@@ -9,7 +9,7 @@ int main()
 {
   vector<int> original = {2,5,3,1,7};
   auto wrapper = make_container_wrapper(original);
-  for (const auto& value : wrapper.select<int>([](const int& value){return value+1;}))
+  for (const auto& value : wrapper.select<const int&>([](const int& value)->const int&{return value;}))
   {
     cout << value << " ";
   }

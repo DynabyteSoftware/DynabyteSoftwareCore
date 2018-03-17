@@ -44,6 +44,9 @@ namespace DynabyteSoftware
 
       virtual reference operator*() const override
       {
+        if constexpr (std::is_reference<ValueType>::value)
+          return _transform(*_current);
+        
         _value = _transform(*_current);
         return _value;
       }
@@ -62,7 +65,7 @@ namespace DynabyteSoftware
     private:
       IteratorType _current;
       transform_function _transform;
-      mutable ValueType _value;
+      mutable typename std::remove_const<typename std::remove_reference<ValueType>::type>::type _value;
     };
   }
 }
