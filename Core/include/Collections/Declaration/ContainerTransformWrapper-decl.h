@@ -30,6 +30,7 @@ namespace DynabyteSoftware
                            TransformEnumerator<ValueType, typename Container::iterator>>
     {
     public:
+      typedef TransformEnumerator<ValueType, typename Container::iterator> iterator;
       /**
        * Constructor for a ContainerTransformWrapper object
        *

@@ -108,17 +108,19 @@ namespace DynabyteSoftware
     {
     public:
       typedef std::input_iterator_tag iterator_category;
+      typedef typename IValueEnumerator<ValueType>::reference reference;
+      typedef typename IValueEnumerator<ValueType>::pointer pointer;
 
       /**
        * Dereferences the iterator
        * @return Reference to the value this enumerator is pointing to
        **/
-      virtual typename reference operator*() const = 0;
+      virtual reference operator*() const = 0;
       /**
        * Retrieves address of the pointed value
        * @return Pointer to the value this enumerator is pointing to
        **/
-      virtual typename pointer operator->() const = 0;
+      virtual pointer operator->() const = 0;
     };
     #pragma endregion
 
@@ -171,6 +173,8 @@ namespace DynabyteSoftware
     {
     public:
       typedef std::output_iterator_tag iterator_category;
+      typedef typename IValueEnumerator<ValueType>::reference reference;
+      typedef typename IValueEnumerator<ValueType>::pointer pointer;
 
       /**
        * Dereferences the iterator
@@ -216,7 +220,10 @@ namespace DynabyteSoftware
     template<typename ValueType>
     class ForwardEnumerator : public virtual OutputEnumerator<ValueType>, public virtual InputEnumerator<ValueType>
     {
+    public:
       typedef std::forward_iterator_tag iterator_category;
+      typedef typename OutputEnumerator<ValueType>::reference reference;
+      typedef typename OutputEnumerator<ValueType>::pointer pointer;
     };
     #pragma endregion
 
@@ -236,6 +243,9 @@ namespace DynabyteSoftware
       : public virtual OutputIterator<ValueType, DerivedIterator>,
       public virtual InputIterator<ValueType, DerivedIterator>, public virtual ForwardEnumerator<ValueType>
     {
+    public:
+      typedef typename ForwardEnumerator<ValueType>::reference reference;
+      typedef typename ForwardEnumerator<ValueType>::pointer pointer;
     };
     #pragma endregion
   }

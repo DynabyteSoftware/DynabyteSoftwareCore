@@ -26,6 +26,8 @@ namespace DynabyteSoftware
     class ContainerIteratorWrapper : public IEnumerable<ContainerIteratorWrapper<IteratorType>, IteratorType>
     {
     public:
+      typedef typename IEnumerable<ContainerIteratorWrapper<IteratorType>, IteratorType>::iterator iterator;
+      
       /**
        * Constructor for a ContainerIteratorWrapper object
        *

@@ -70,7 +70,7 @@ namespace DynabyteSoftware
        *                   true if the value should be returned, false if the value should be skipped
        * @return true if any element in the sequence satisfies the condition in the filter
        **/
-      bool any(typename const filter_iterator::filter_function& filter);
+      bool any(const typename filter_iterator::filter_function& filter);
       /**
        * @return constant iterator to the beginning of the sequence
        **/
@@ -97,7 +97,7 @@ namespace DynabyteSoftware
        **/
       template<typename ValueType>
       ContainerTransformWrapper<Container, ValueType>
-        select(typename const TransformEnumerator<ValueType, iterator>::transform_function& transform);
+        select(const typename TransformEnumerator<ValueType, iterator>::transform_function& transform);
 
       /**
       * Returns only the values of this container that pass the filter function evaluation
@@ -110,7 +110,7 @@ namespace DynabyteSoftware
       * @note The wrapper returned by this function is valid for as long as the container is valid. It holds a
       *       reference to the container, not a copy, so changes to the container affect the results of the wrapper.
       **/
-      ContainerFilterWrapper<Container> where(typename const filter_iterator::filter_function& filter);
+      ContainerFilterWrapper<Container> where(const typename filter_iterator::filter_function& filter);
       #pragma endregion
     };
   }

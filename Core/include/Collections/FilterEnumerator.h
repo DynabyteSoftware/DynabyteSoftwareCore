@@ -29,7 +29,10 @@ namespace DynabyteSoftware
     {
     public:
       #pragma region Type Definitions
-      typedef std::function<bool(const typename value_type&)> filter_function;
+      typedef typename IteratorType::value_type value_type;
+      typedef typename ForwardIterator<value_type, FilterEnumerator<IteratorType>>::reference reference;
+      typedef typename ForwardIterator<value_type, FilterEnumerator<IteratorType>>::pointer pointer;
+      typedef std::function<bool(const value_type&)> filter_function;
       #pragma endregion
 
       #pragma region Constructors

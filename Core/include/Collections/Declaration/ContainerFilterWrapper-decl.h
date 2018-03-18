@@ -29,6 +29,7 @@ namespace DynabyteSoftware
       : public IEnumerable<ContainerFilterWrapper<Container>, FilterEnumerator<typename Container::iterator>>
     {
     public:
+      typedef FilterEnumerator<typename Container::iterator> iterator;
       /**
        * Constructor for a ContainerFilterWrapper object
        *

@@ -28,12 +28,19 @@ namespace DynabyteSoftware
       : public ForwardIterator<typename IteratorType::value_type, IteratorWrapper<IteratorType>>
     {
     public:
+      #pragma region Type Definitions
+      typedef typename ForwardIterator<typename IteratorType::value_type,
+                                       IteratorWrapper<IteratorType>>::reference reference;
+      typedef typename ForwardIterator<typename IteratorType::value_type,
+                                       IteratorWrapper<IteratorType>>::pointer pointer;
+      #pragma endregion
+      
       #pragma region Constructor
       /**
        * Constructor for an iterator wrapper
        * @param iterator The iterator being wrapped
        **/
-      IteratorWrapper(IteratorType& iterator)
+      IteratorWrapper(const IteratorType& iterator)
         : _iterator(iterator)
       {
       }
@@ -109,6 +116,10 @@ namespace DynabyteSoftware
       : public IEnumerable<ContainerWrapper<Container>, IteratorWrapper<typename Container::iterator>>
     {
     public:
+      #pragma region Type Definitions
+      typedef IteratorWrapper<typename Container::iterator> iterator;
+      #pragma endregion
+      
       #pragma region Constructor
       /**
        * Constructor to a ContainerWrapper object

@@ -31,6 +31,8 @@ namespace DynabyteSoftware
     public:
       #pragma region Type Definition
       typedef std::function<ValueType(const typename IteratorType::value_type&)> transform_function;
+      typedef typename ForwardIterator<ValueType, TransformEnumerator<ValueType, IteratorType>>::reference reference;
+      typedef typename ForwardIterator<ValueType, TransformEnumerator<ValueType, IteratorType>>::pointer pointer;
       #pragma endregion
 
       #pragma region Constructors and Destructors

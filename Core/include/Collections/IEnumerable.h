@@ -17,7 +17,7 @@ namespace DynabyteSoftware
   namespace Collections
   {
     template<typename Container, typename IteratorType>
-    bool IEnumerable<Container, IteratorType>::any(typename const filter_iterator::filter_function& filter)
+    bool IEnumerable<Container, IteratorType>::any(const typename filter_iterator::filter_function& filter)
     {
       for (const auto& value : *this)
       {
@@ -49,14 +49,14 @@ namespace DynabyteSoftware
     template<typename Container, typename IteratorType>
     template<typename ValueType>
     ContainerTransformWrapper<Container, ValueType> IEnumerable<Container, IteratorType>
-      ::select(typename const TransformEnumerator<ValueType, IteratorType>::transform_function& transform)
+      ::select(const typename TransformEnumerator<ValueType, IteratorType>::transform_function& transform)
     {
       return ContainerTransformWrapper<Container, ValueType>(*dynamic_cast<Container*>(this), transform);
     }
 
     template<typename Container, typename IteratorType>
     ContainerFilterWrapper<Container>
-      IEnumerable<Container, IteratorType>::where(typename const filter_iterator::filter_function& filter)
+      IEnumerable<Container, IteratorType>::where(const typename filter_iterator::filter_function& filter)
     {
       return ContainerFilterWrapper<Container>(*dynamic_cast<Container*>(this), filter);
     }
