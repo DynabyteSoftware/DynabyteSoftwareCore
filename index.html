@@ -52,7 +52,18 @@
           the following macro.</p>
         <p>THROW(Exception, "Exception message")</p>
         <p>The exception will be self-logged when thrown.  If a Log has been initialized and assigned a file to the Error log type, every exception will be automatically logged to that file.</p>
-
+	<h4>Console</h4>
+	<p>The console class pretty much just offers getch() functionality without the need for a full curses library.</p>
+	<p>const ConsoleKeyInfo key = Console::readKey(true); //passing in true means readKey will intercept the keypress and it won't show up in the console.</p>
+	<p>The ConsoleKeyInfo struct provides the key pressed, the modifier pressed along with it (shift, alt, ctrl), and the char that it represents. This functionality really only works
+	   well in Windows, as most other terminals in unix systems don't provide that information separately. The char member of the struct will always contain the character representation,
+	   thus providing at least the equivalent of getch().</p>
+	<h4>IEnumerable</h4>
+	<p>A container base class for all other containers that enable extra functionality typically not available in C++ stl containers.</p>
+	<p>vector&lt;int&gt; numbers = {1,2,3,4,5,6,7,8};<br/>
+ 	   auto wrapper = make_container_wrapper(numbers); //creates a container wrapper that wraps the stl container and inherits from IEnumerable <br/>
+	   for(const auto& value : wrapper.where([](const int& value){return value % 2 == 0;})) // iterates only through even numbers <br/>
+	     &nbsp;cout << value << " "; //should print 2 4 6 8</p>
 <h3>
 <a aria-hidden="true" href="#support-or-contact" class="anchor" id="support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
 
