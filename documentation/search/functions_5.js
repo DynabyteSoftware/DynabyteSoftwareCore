@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['what',['what',['../classDynabyteSoftware_1_1Exception.html#ae4ae632af33e87093b26682be69078b6',1,'DynabyteSoftware::Exception']]]
+  ['filterenumerator',['FilterEnumerator',['../class_dynabyte_software_1_1_collections_1_1_filter_enumerator.html#a2da0bc08e83a8e099952942ef7845d22',1,'DynabyteSoftware::Collections::FilterEnumerator']]],
+  ['front',['front',['../class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#abf1fe8988205b5055ca4a5f1f4454fa0',1,'DynabyteSoftware::Collections::IEnumerable']]]
 ];

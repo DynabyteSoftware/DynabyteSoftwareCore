@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['log',['Log',['../classDynabyteSoftware_1_1Log.html',1,'DynabyteSoftware']]]
+  ['datetime',['DateTime',['../class_dynabyte_software_1_1_date_time.html',1,'DynabyteSoftware']]]
 ];

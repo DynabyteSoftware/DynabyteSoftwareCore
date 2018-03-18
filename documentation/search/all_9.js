@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7eexception',['~Exception',['../classDynabyteSoftware_1_1Exception.html#a6b214cd8627d0968bdeebc1fbb9556b8',1,'DynabyteSoftware::Exception']]],
-  ['_7elog',['~Log',['../classDynabyteSoftware_1_1Log.html#a0fbfda88fbee5027c89f6eb121059360',1,'DynabyteSoftware::Log']]]
+  ['log',['Log',['../class_dynabyte_software_1_1_log.html',1,'DynabyteSoftware']]],
+  ['logtype',['LogType',['../class_dynabyte_software_1_1_log.html#a1a3a20c167ae00c1a08bb4da3e25064c',1,'DynabyteSoftware::Log']]]
 ];
