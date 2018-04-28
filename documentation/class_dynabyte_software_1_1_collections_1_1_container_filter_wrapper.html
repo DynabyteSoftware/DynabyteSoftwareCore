@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +88,11 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_collection
 <div class="title">DynabyteSoftware::Collections::ContainerFilterWrapper&lt; Container &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Wraps an existing container into one that inhertis from <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> and provides additional functionality.  
+ <a href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DynabyteSoftware::Collections::ContainerFilterWrapper&lt; Container &gt;:</div>
 <div class="dyncontent">
@@ -160,7 +165,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeab37076125fa61e0e905e54700844c1 inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_i_enumerable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html">ContainerFilterWrapper</a>&lt; <a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html">ContainerFilterWrapper</a>&lt; Container &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#aeab37076125fa61e0e905e54700844c1">where</a> (const typename filter_iterator::filter_function &amp;filter)</td></tr>
 <tr class="separator:aeab37076125fa61e0e905e54700844c1 inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_i_enumerable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename Container&gt;<br />
+class DynabyteSoftware::Collections::ContainerFilterWrapper&lt; Container &gt;</h3>
+
+<p>Wraps an existing container into one that inhertis from <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> and provides additional functionality. </p>
+<p>Wraps an existing container into one that filters contents based on a given filter.</p>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> </dd>
+<dd>
+<a class="el" href="class_dynabyte_software_1_1_collections_1_1_iterator_wrapper.html" title="Wraps an existing iterator into one that inherits from an IIterator template. ">IteratorWrapper</a></dd></dl>
+<p>Wraps an existing container into one that inherits from <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> and provides additional functionality </p><dl class="section note"><dt>Note</dt><dd>Is only valid for as long as container passed in is valid. This container does not make a copy of the contents of the passed container</dd></dl>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> </dd>
+<dd>
+<a class="el" href="class_dynabyte_software_1_1_collections_1_1_filter_enumerator.html" title="Wraps an existing iterator into one that filters through the values it iterates. ">FilterEnumerator</a></dd></dl>
+<p>Wraps an existing container into one that uses filter iterators so that only values that satisfy the filter condition are iterated through </p>
+
+<p class="definition">Definition at line <a class="el" href="_container_filter_wrapper-decl_8h_source.html#l00028">28</a> of file <a class="el" href="_container_filter_wrapper-decl_8h_source.html">ContainerFilterWrapper-decl.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac15bf1cb9c0a3da12ef3f45eefc28ed2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac15bf1cb9c0a3da12ef3f45eefc28ed2">&#9670;&nbsp;</a></span>ContainerFilterWrapper()</h2>
 
@@ -188,7 +209,7 @@ template&lt;typename Container &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for a <a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html">ContainerFilterWrapper</a> object</p>
+<p>Constructor for a <a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html" title="Wraps an existing container into one that inhertis from IEnumerable and provides additional functiona...">ContainerFilterWrapper</a> object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">container[in,out]</td><td>The container being wrapped </td></tr>
@@ -196,6 +217,8 @@ template&lt;typename Container &gt; </div>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_container_filter_wrapper_8h_source.html#l00018">18</a> of file <a class="el" href="_container_filter_wrapper_8h_source.html">ContainerFilterWrapper.h</a>.</p>
 
 </div>
 </div>
@@ -228,6 +251,8 @@ template&lt;typename Container &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#aa1d3c04030d9955017f15f0fac50db30">DynabyteSoftware::Collections::IEnumerable&lt; ContainerFilterWrapper&lt; Container &gt;, FilterEnumerator&lt; Container::iterator &gt; &gt;</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_container_filter_wrapper_8h_source.html#l00024">24</a> of file <a class="el" href="_container_filter_wrapper_8h_source.html">ContainerFilterWrapper.h</a>.</p>
+
 </div>
 </div>
 <a id="ab81efe1afe5ac903a077a1055c52cae8"></a>
@@ -257,6 +282,8 @@ template&lt;typename Container &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>iterator past the end of the sequence </dd></dl>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#a464f049ddb6b2478e92511506c1f3323">DynabyteSoftware::Collections::IEnumerable&lt; ContainerFilterWrapper&lt; Container &gt;, FilterEnumerator&lt; Container::iterator &gt; &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_container_filter_wrapper_8h_source.html#l00030">30</a> of file <a class="el" href="_container_filter_wrapper_8h_source.html">ContainerFilterWrapper.h</a>.</p>
 
 </div>
 </div>

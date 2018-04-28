@@ -1,4 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
 <area shape="rect" id="node1" href="$class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="DynabyteSoftware::Collections\l::IEnumerable\&lt; ContainerFilterWrapper\l\&lt; Container \&gt;, FilterEnumerator\l\&lt; Container::iterator \&gt; \&gt;" alt="" coords="5,5,255,76"/>
-<area shape="rect" id="node2" href="$class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html" title="DynabyteSoftware::Collections\l::ContainerFilterWrapper\l\&lt; Container \&gt;" alt="" coords="303,13,505,69"/>
+<area shape="rect" id="node2" href="$class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html" title="Wraps an existing container into one that inhertis from IEnumerable and provides additional functiona..." alt="" coords="303,13,505,69"/>
 </map>

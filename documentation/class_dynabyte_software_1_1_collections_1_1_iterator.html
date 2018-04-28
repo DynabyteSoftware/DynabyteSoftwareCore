@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -87,15 +87,20 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_collection
 <div class="title">DynabyteSoftware::Collections::Iterator&lt; DerivedIterator &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base class to help iterators iterate through a sequence.  
+ <a href="class_dynabyte_software_1_1_collections_1_1_iterator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_enumerator_8h_source.html">IEnumerator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DynabyteSoftware::Collections::Iterator&lt; DerivedIterator &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dynabyte_software_1_1_collections_1_1_iterator__inherit__graph.png" border="0" usemap="#_dynabyte_software_1_1_collections_1_1_iterator_3_01_derived_iterator_01_4_inherit__map" alt="Inheritance graph"/></div>
 <map name="_dynabyte_software_1_1_collections_1_1_iterator_3_01_derived_iterator_01_4_inherit__map" id="_dynabyte_software_1_1_collections_1_1_iterator_3_01_derived_iterator_01_4_inherit__map">
-<area shape="rect" id="node3" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html" title="DynabyteSoftware::Collections\l::InputIterator\&lt; DerivedIterator \&gt;" alt="" coords="511,5,722,47"/>
-<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_output_iterator.html" title="DynabyteSoftware::Collections\l::OutputIterator\&lt; DerivedIterator \&gt;" alt="" coords="507,71,727,112"/>
-<area shape="rect" id="node2" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,39,208,80"/>
-<area shape="rect" id="node4" href="class_dynabyte_software_1_1_collections_1_1_forward_iterator.html" title="DynabyteSoftware::Collections\l::ForwardIterator\&lt; ValueType,\l DerivedIterator \&gt;" alt="" coords="775,31,977,87"/>
+<area shape="rect" id="node3" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html" title="Base class for objects that can enumerate through a sequence and read values from it..." alt="" coords="511,5,722,47"/>
+<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_output_iterator.html" title="Base class for objects that can iterator through a sequence and write values to it. " alt="" coords="507,71,727,112"/>
+<area shape="rect" id="node2" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,39,208,80"/>
+<area shape="rect" id="node4" href="class_dynabyte_software_1_1_collections_1_1_forward_iterator.html" title="Base class for objects that can iterate through a sequence and write values to it. " alt="" coords="775,31,977,87"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -103,7 +108,7 @@ Collaboration diagram for DynabyteSoftware::Collections::Iterator&lt; DerivedIte
 <div class="dyncontent">
 <div class="center"><img src="class_dynabyte_software_1_1_collections_1_1_iterator__coll__graph.png" border="0" usemap="#_dynabyte_software_1_1_collections_1_1_iterator_3_01_derived_iterator_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="_dynabyte_software_1_1_collections_1_1_iterator_3_01_derived_iterator_01_4_coll__map" id="_dynabyte_software_1_1_collections_1_1_iterator_3_01_derived_iterator_01_4_coll__map">
-<area shape="rect" id="node2" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,5,208,47"/>
+<area shape="rect" id="node2" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,5,208,47"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -126,7 +131,16 @@ Additional Inherited Members</h2></td></tr>
 typedef std::ptrdiff_t&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b></td></tr>
 <tr class="separator:a1daf27c67f11c24f5514b5633162ce10 inherit pub_types_class_dynabyte_software_1_1_collections_1_1_i_enumerator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename DerivedIterator&gt;<br />
+class DynabyteSoftware::Collections::Iterator&lt; DerivedIterator &gt;</h3>
+
+<p>Base class to help iterators iterate through a sequence. </p>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. ">IEnumerator</a></dd></dl>
+<p>This base class provides functionality for postincrementation of iterators and requires that any iterators that derive from this are copy-assignable, fulfilling the basic requirements of a C++ iterator </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerator_8h_source.html#l00055">55</a> of file <a class="el" href="_i_enumerator_8h_source.html">IEnumerator.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a946746c62a26336c2c2f8a435f771443"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a946746c62a26336c2c2f8a435f771443">&#9670;&nbsp;</a></span>operator++()</h2>
 
@@ -153,6 +167,8 @@ template&lt;typename DerivedIterator&gt; </div>
 </table>
 </div><div class="memdoc">
 <p>Post-increments the iterator </p><dl class="section return"><dt>Returns</dt><dd>an iterator that points to the next value in the sequence as this one </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerator_8h_source.html#l00062">62</a> of file <a class="el" href="_i_enumerator_8h_source.html">IEnumerator.h</a>.</p>
 
 </div>
 </div>

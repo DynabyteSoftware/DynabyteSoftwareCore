@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -88,12 +88,17 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_exception.
 <div class="title">DynabyteSoftware::Exception Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> base class that keeps additional information and self-logs.  
+ <a href="class_dynabyte_software_1_1_exception.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_exception_8h_source.html">Exception.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DynabyteSoftware::Exception:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_dynabyte_software_1_1_exception__inherit__graph.png" border="0" usemap="#_dynabyte_software_1_1_exception_inherit__map" alt="Inheritance graph"/></div>
 <map name="_dynabyte_software_1_1_exception_inherit__map" id="_dynabyte_software_1_1_exception_inherit__map">
-<area shape="rect" id="node3" href="class_dynabyte_software_1_1_argument_out_of_range_exception.html" title="DynabyteSoftware::Argument\lOutOfRangeException" alt="" coords="6,155,201,196"/>
+<area shape="rect" id="node3" href="class_dynabyte_software_1_1_argument_out_of_range_exception.html" title="Exception thrown when an argument has a value outside expected range. " alt="" coords="6,155,201,196"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -129,7 +134,20 @@ Protected Member Functions</h2></td></tr>
 CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> (const std::string &amp;exceptionName, const std::string &amp;functionName, const std::string &amp;sourceFilename, unsigned int sourceLineNumber, const std::string &amp;message)</td></tr>
 <tr class="separator:ac784e76265f7dcb50329de1eb6563a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> base class that keeps additional information and self-logs. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="_exception_8h.html#ae248139865aeca25425e1e7b3e8cc0c0" title="Macro intended to be used with any exceptions that inherit from DynabyteSoftware-derived exceptions...">THROW</a> </dd>
+<dd>
+Log </dd>
+<dd>
+std::clog</dd></dl>
+<p>This <a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> class is meant to provide additional information that std::exception does not (it does inherit from std::exception, so it can be handled normally)</p>
+<p>The additional information it contains is the function name, source filename, line number, and potentially inner exceptions in the case of cascaded exception-handling. If thrown using the intended THROW macro, this information is populated automatically</p>
+<p>In addition, this class also automatically self-logs whenever it is thrown, using std::clog. If Log has been initialized with a Log::Error logfile, clog will output to the selected file stream.</p>
+<dl class="section note"><dt>Note</dt><dd>When inheriting from this class, ensure the constructor parameters start by taking the function name, the source filename, and the line number&ndash;in this order. Additional parameters may be added as desired, after the required parameters. This setup ensures your exceptions will be able to use the THROW macro to automatically populate that information </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_exception_8h_source.html#l00063">63</a> of file <a class="el" href="_exception_8h_source.html">Exception.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa3e9979447daac0c542d39f6d05e0840"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa3e9979447daac0c542d39f6d05e0840">&#9670;&nbsp;</a></span>Exception()</h2>
 
@@ -167,7 +185,7 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for an <a class="el" href="class_dynabyte_software_1_1_exception.html">Exception</a> object</p>
+<p>Constructor for an <a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">functionName[in]</td><td>The function name where the exception was thrown </td></tr>
@@ -208,7 +226,9 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Virtual destructor for an <a class="el" href="class_dynabyte_software_1_1_exception.html">Exception</a> object </p>
+<p>Virtual destructor for an <a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> object </p>
+
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00040">40</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
 
 </div>
 </div>
@@ -229,6 +249,8 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>The function name where the exception was thrown </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00049">49</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
+
 </div>
 </div>
 <a id="aee5b51dbab2bd5513aeb462a8ac1d417"></a>
@@ -246,6 +268,8 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>The exception message </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00044">44</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
 
 </div>
 </div>
@@ -265,6 +289,8 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>The source filename where the exception was thrown </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00054">54</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
+
 </div>
 </div>
 <a id="a5dd928cc743a0f41ccbf9e24927cb0fe"></a>
@@ -283,6 +309,8 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>The line number in the source file where th exception was thrown </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00081">81</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
+
 </div>
 </div>
 <a id="ac23c80e8d57b989ea6831f3ba5d5230d"></a>
@@ -299,7 +327,9 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>A string representation of this <a class="el" href="class_dynabyte_software_1_1_exception.html">Exception</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A string representation of this <a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00059">59</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
 
 </div>
 </div>
@@ -325,13 +355,15 @@ CORE_EXPORT&#160;</td><td class="memItemRight" valign="bottom"><b>Exception</b> 
   </tr>
 </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>A description of this <a class="el" href="class_dynabyte_software_1_1_exception.html">Exception</a> </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A description of this <a class="el" href="class_dynabyte_software_1_1_exception.html" title="Exception base class that keeps additional information and self-logs. ">Exception</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_exception_8cpp_source.html#l00076">76</a> of file <a class="el" href="_exception_8cpp_source.html">Exception.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/kirk/Programming/DynabyteSoftwareCore/Core/include/<a class="el" href="_exception_8h_source.html">Exception.h</a></li>
-<li>/home/kirk/Programming/DynabyteSoftwareCore/Core/src/Exception.cpp</li>
+<li>/home/kirk/Programming/DynabyteSoftwareCore/Core/src/<a class="el" href="_exception_8cpp_source.html">Exception.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

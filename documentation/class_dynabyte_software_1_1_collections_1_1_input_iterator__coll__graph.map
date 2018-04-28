@@ -1,6 +1,6 @@
 <map id="DynabyteSoftware::Collections::InputIterator&lt; ValueType, DerivedIterator &gt;" name="DynabyteSoftware::Collections::InputIterator&lt; ValueType, DerivedIterator &gt;">
-<area shape="rect" id="node2" href="$class_dynabyte_software_1_1_collections_1_1_iterator.html" title="DynabyteSoftware::Collections\l::Iterator\&lt; DerivedIterator \&gt;" alt="" coords="529,5,731,47"/>
-<area shape="rect" id="node3" href="$class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,39,208,80"/>
-<area shape="rect" id="node5" href="$class_dynabyte_software_1_1_collections_1_1_i_value_enumerator.html" title="DynabyteSoftware::Collections\l::IValueEnumerator\&lt; ValueType \&gt;" alt="" coords="256,68,476,109"/>
-<area shape="rect" id="node4" href="$class_dynabyte_software_1_1_collections_1_1_input_enumerator.html" title="DynabyteSoftware::Collections\l::InputEnumerator\&lt; ValueType \&gt;" alt="" coords="524,71,736,112"/>
+<area shape="rect" id="node2" href="$class_dynabyte_software_1_1_collections_1_1_iterator.html" title="Base class to help iterators iterate through a sequence. " alt="" coords="529,5,731,47"/>
+<area shape="rect" id="node3" href="$class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,39,208,80"/>
+<area shape="rect" id="node5" href="$class_dynabyte_software_1_1_collections_1_1_i_value_enumerator.html" title="Base class for objects that can enumerate through a sequence of a particular value type..." alt="" coords="256,68,476,109"/>
+<area shape="rect" id="node4" href="$class_dynabyte_software_1_1_collections_1_1_input_enumerator.html" title="Base class for objects that can enumerate through a sequence and read values from it..." alt="" coords="524,71,736,112"/>
 </map>

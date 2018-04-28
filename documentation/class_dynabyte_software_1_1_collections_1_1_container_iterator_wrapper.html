@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +88,11 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_collection
 <div class="title">DynabyteSoftware::Collections::ContainerIteratorWrapper&lt; IteratorType &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Wraps existing iterators into an <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a>.  
+ <a href="class_dynabyte_software_1_1_collections_1_1_container_iterator_wrapper.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_container_iterator_wrapper-decl_8h_source.html">ContainerIteratorWrapper-decl.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DynabyteSoftware::Collections::ContainerIteratorWrapper&lt; IteratorType &gt;:</div>
 <div class="dyncontent">
@@ -160,7 +165,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeab37076125fa61e0e905e54700844c1 inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_i_enumerable"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html">ContainerFilterWrapper</a>&lt; <a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_iterator_wrapper.html">ContainerIteratorWrapper</a>&lt; IteratorType &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#aeab37076125fa61e0e905e54700844c1">where</a> (const typename filter_iterator::filter_function &amp;filter)</td></tr>
 <tr class="separator:aeab37076125fa61e0e905e54700844c1 inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_i_enumerable"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename IteratorType&gt;<br />
+class DynabyteSoftware::Collections::ContainerIteratorWrapper&lt; IteratorType &gt;</h3>
+
+<p>Wraps existing iterators into an <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a>. </p>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a></dd></dl>
+<p>Wraps existing iterators between a beginning and end point into an <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> container </p>
+
+<p class="definition">Definition at line <a class="el" href="_container_iterator_wrapper-decl_8h_source.html#l00026">26</a> of file <a class="el" href="_container_iterator_wrapper-decl_8h_source.html">ContainerIteratorWrapper-decl.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="add77ed98f4c91c39e694590511282d06"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add77ed98f4c91c39e694590511282d06">&#9670;&nbsp;</a></span>ContainerIteratorWrapper()</h2>
 
@@ -188,7 +202,7 @@ template&lt;typename IteratorType &gt; </div>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructor for a <a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_iterator_wrapper.html">ContainerIteratorWrapper</a> object</p>
+<p>Constructor for a <a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_iterator_wrapper.html" title="Wraps existing iterators into an IEnumerable. ">ContainerIteratorWrapper</a> object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">begin[in]</td><td>iterator to the beginning of a sequence </td></tr>
@@ -196,6 +210,8 @@ template&lt;typename IteratorType &gt; </div>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_container_iterator_wrapper_8h_source.html#l00018">18</a> of file <a class="el" href="_container_iterator_wrapper_8h_source.html">ContainerIteratorWrapper.h</a>.</p>
 
 </div>
 </div>
@@ -228,6 +244,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#aa1d3c04030d9955017f15f0fac50db30">DynabyteSoftware::Collections::IEnumerable&lt; ContainerIteratorWrapper&lt; IteratorType &gt;, IteratorType &gt;</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_container_iterator_wrapper_8h_source.html#l00025">25</a> of file <a class="el" href="_container_iterator_wrapper_8h_source.html">ContainerIteratorWrapper.h</a>.</p>
+
 </div>
 </div>
 <a id="abc380d17ca6fdd047af36fbe6de305e2"></a>
@@ -257,6 +275,8 @@ template&lt;typename IteratorType &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>iterator past the end of the container </dd></dl>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#a464f049ddb6b2478e92511506c1f3323">DynabyteSoftware::Collections::IEnumerable&lt; ContainerIteratorWrapper&lt; IteratorType &gt;, IteratorType &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_container_iterator_wrapper_8h_source.html#l00031">31</a> of file <a class="el" href="_container_iterator_wrapper_8h_source.html">ContainerIteratorWrapper.h</a>.</p>
 
 </div>
 </div>

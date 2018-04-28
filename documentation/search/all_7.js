@@ -1,11 +1,14 @@
 var searchData=
 [
   ['ienumerable',['IEnumerable',['../class_dynabyte_software_1_1_collections_1_1_i_enumerable.html',1,'DynabyteSoftware::Collections']]],
+  ['ienumerable_2ddecl_2eh',['IEnumerable-decl.h',['../_i_enumerable-decl_8h.html',1,'']]],
+  ['ienumerable_2eh',['IEnumerable.h',['../_i_enumerable_8h.html',1,'']]],
   ['ienumerable_3c_20containerfilterwrapper_3c_20container_20_3e_2c_20filterenumerator_3c_20container_3a_3aiterator_20_3e_20_3e',['IEnumerable&lt; ContainerFilterWrapper&lt; Container &gt;, FilterEnumerator&lt; Container::iterator &gt; &gt;',['../class_dynabyte_software_1_1_collections_1_1_i_enumerable.html',1,'DynabyteSoftware::Collections']]],
   ['ienumerable_3c_20containeriteratorwrapper_3c_20iteratortype_20_3e_2c_20iteratortype_20_3e',['IEnumerable&lt; ContainerIteratorWrapper&lt; IteratorType &gt;, IteratorType &gt;',['../class_dynabyte_software_1_1_collections_1_1_i_enumerable.html',1,'DynabyteSoftware::Collections']]],
   ['ienumerable_3c_20containertransformwrapper_3c_20container_2c_20valuetype_20_3e_2c_20transformenumerator_3c_20valuetype_2c_20container_3a_3aiterator_20_3e_20_3e',['IEnumerable&lt; ContainerTransformWrapper&lt; Container, ValueType &gt;, TransformEnumerator&lt; ValueType, Container::iterator &gt; &gt;',['../class_dynabyte_software_1_1_collections_1_1_i_enumerable.html',1,'DynabyteSoftware::Collections']]],
   ['ienumerable_3c_20containerwrapper_3c_20container_20_3e_2c_20iteratorwrapper_3c_20container_3a_3aiterator_20_3e_20_3e',['IEnumerable&lt; ContainerWrapper&lt; Container &gt;, IteratorWrapper&lt; Container::iterator &gt; &gt;',['../class_dynabyte_software_1_1_collections_1_1_i_enumerable.html',1,'DynabyteSoftware::Collections']]],
   ['ienumerator',['IEnumerator',['../class_dynabyte_software_1_1_collections_1_1_i_enumerator.html',1,'DynabyteSoftware::Collections']]],
+  ['ienumerator_2eh',['IEnumerator.h',['../_i_enumerator_8h.html',1,'']]],
   ['inputenumerator',['InputEnumerator',['../class_dynabyte_software_1_1_collections_1_1_input_enumerator.html',1,'DynabyteSoftware::Collections']]],
   ['inputenumerator_3c_20iteratortype_3a_3avalue_5ftype_20_3e',['InputEnumerator&lt; IteratorType::value_type &gt;',['../class_dynabyte_software_1_1_collections_1_1_input_enumerator.html',1,'DynabyteSoftware::Collections']]],
   ['inputiterator',['InputIterator',['../class_dynabyte_software_1_1_collections_1_1_input_iterator.html',1,'DynabyteSoftware::Collections']]],

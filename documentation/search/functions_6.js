@@ -4,7 +4,6 @@ var searchData=
   ['getfunctionname',['getFunctionName',['../class_dynabyte_software_1_1_exception.html#a2769a679c873b3fe0666b672a78a7a63',1,'DynabyteSoftware::Exception']]],
   ['gethour',['getHour',['../class_dynabyte_software_1_1_date_time.html#ae37010b3e93d3d4ff84160cf7ad4b500',1,'DynabyteSoftware::DateTime']]],
   ['getkind',['getKind',['../class_dynabyte_software_1_1_date_time.html#a970ba43132481c71aa85fdd4dfa9dc0f',1,'DynabyteSoftware::DateTime']]],
-  ['getlogger',['getLogger',['../class_dynabyte_software_1_1_log.html#ad12f856b90fe89eccf6f5fc4c392f53f',1,'DynabyteSoftware::Log']]],
   ['getmessage',['getMessage',['../class_dynabyte_software_1_1_exception.html#aee5b51dbab2bd5513aeb462a8ac1d417',1,'DynabyteSoftware::Exception']]],
   ['getmillisecond',['getMillisecond',['../class_dynabyte_software_1_1_date_time.html#afbd33ad56f7a1af8871249e5322f4cce',1,'DynabyteSoftware::DateTime']]],
   ['getminute',['getMinute',['../class_dynabyte_software_1_1_date_time.html#ae6b55d0e2f0b00b83bb05d9d8fb6e332',1,'DynabyteSoftware::DateTime']]],

@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +88,11 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_collection
 <div class="title">DynabyteSoftware::Collections::FilterEnumerator&lt; IteratorType &gt; Class Template Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Wraps an existing iterator into one that filters through the values it iterates.  
+ <a href="class_dynabyte_software_1_1_collections_1_1_filter_enumerator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DynabyteSoftware::Collections::FilterEnumerator&lt; IteratorType &gt;:</div>
 <div class="dyncontent">
@@ -97,7 +102,7 @@ Inheritance diagram for DynabyteSoftware::Collections::FilterEnumerator&lt; Iter
 <area shape="rect" id="node3" href="class_dynabyte_software_1_1_collections_1_1_output_iterator.html" title="DynabyteSoftware::Collections\l::OutputIterator\&lt; IteratorType\l::value_type, FilterEnumerator\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,100,1001,171"/>
 <area shape="rect" id="node4" href="class_dynabyte_software_1_1_collections_1_1_iterator.html" title="DynabyteSoftware::Collections\l::Iterator\&lt; FilterEnumerator\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="528,25,731,81"/>
 <area shape="rect" id="node8" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html" title="DynabyteSoftware::Collections\l::InputIterator\&lt; IteratorType\l::value_type, FilterEnumerator\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,5,1001,76"/>
-<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,76,208,117"/>
+<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,76,208,117"/>
 <area shape="rect" id="node7" href="class_dynabyte_software_1_1_collections_1_1_i_value_enumerator.html" title="DynabyteSoftware::Collections\l::IValueEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="256,105,472,161"/>
 <area shape="rect" id="node6" href="class_dynabyte_software_1_1_collections_1_1_output_enumerator.html" title="DynabyteSoftware::Collections\l::OutputEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="520,185,739,241"/>
 <area shape="rect" id="node10" href="class_dynabyte_software_1_1_collections_1_1_forward_enumerator.html" title="DynabyteSoftware::Collections\l::ForwardEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="787,195,1013,251"/>
@@ -113,7 +118,7 @@ Collaboration diagram for DynabyteSoftware::Collections::FilterEnumerator&lt; It
 <area shape="rect" id="node3" href="class_dynabyte_software_1_1_collections_1_1_output_iterator.html" title="DynabyteSoftware::Collections\l::OutputIterator\&lt; IteratorType\l::value_type, FilterEnumerator\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,100,1001,171"/>
 <area shape="rect" id="node4" href="class_dynabyte_software_1_1_collections_1_1_iterator.html" title="DynabyteSoftware::Collections\l::Iterator\&lt; FilterEnumerator\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="528,25,731,81"/>
 <area shape="rect" id="node8" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html" title="DynabyteSoftware::Collections\l::InputIterator\&lt; IteratorType\l::value_type, FilterEnumerator\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,5,1001,76"/>
-<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,76,208,117"/>
+<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,76,208,117"/>
 <area shape="rect" id="node7" href="class_dynabyte_software_1_1_collections_1_1_i_value_enumerator.html" title="DynabyteSoftware::Collections\l::IValueEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="256,105,472,161"/>
 <area shape="rect" id="node6" href="class_dynabyte_software_1_1_collections_1_1_output_enumerator.html" title="DynabyteSoftware::Collections\l::OutputEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="520,185,739,241"/>
 <area shape="rect" id="node10" href="class_dynabyte_software_1_1_collections_1_1_forward_enumerator.html" title="DynabyteSoftware::Collections\l::ForwardEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="787,195,1013,251"/>
@@ -211,7 +216,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a17f34647c054c7edd7a56995d0cea13b inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_input_iterator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html#a17f34647c054c7edd7a56995d0cea13b">operator!=</a> (const <a class="el" href="class_dynabyte_software_1_1_collections_1_1_filter_enumerator.html">FilterEnumerator</a>&lt; IteratorType &gt; &amp;rhs) const</td></tr>
 <tr class="separator:a17f34647c054c7edd7a56995d0cea13b inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_input_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename IteratorType&gt;<br />
+class DynabyteSoftware::Collections::FilterEnumerator&lt; IteratorType &gt;</h3>
+
+<p>Wraps an existing iterator into one that filters through the values it iterates. </p>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_forward_iterator.html" title="Base class for objects that can iterate through a sequence and write values to it. ">ForwardIterator</a></dd></dl>
+<p>Wraps an existing iterator into one that skips over any values that cannot pass a given filter condition </p>
+
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00027">27</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2da0bc08e83a8e099952942ef7845d22"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2da0bc08e83a8e099952942ef7845d22">&#9670;&nbsp;</a></span>FilterEnumerator()</h2>
 
@@ -253,7 +267,7 @@ template&lt;typename IteratorType &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Constructor for a <a class="el" href="class_dynabyte_software_1_1_collections_1_1_filter_enumerator.html">FilterEnumerator</a> object</p>
+<p>Constructor for a <a class="el" href="class_dynabyte_software_1_1_collections_1_1_filter_enumerator.html" title="Wraps an existing iterator into one that filters through the values it iterates. ">FilterEnumerator</a> object</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">begin[in]</td><td>The beginning of the iteration sequence. If the value it points to does not pass the filter condition, then the iterator self-iterates until it finds a value that does, or reaches the end position </td></tr>
@@ -262,6 +276,8 @@ template&lt;typename IteratorType &gt; </div>
   </table>
   </dd>
 </dl>
+
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00050">50</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
 
 </div>
 </div>
@@ -295,6 +311,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_enumerator.html#a0ee373d4d262775ba158588bb964082f">DynabyteSoftware::Collections::InputEnumerator&lt; IteratorType::value_type &gt;</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00091">91</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
+
 </div>
 </div>
 <a id="a80a1863c0b721925f618326b8170ee97"></a>
@@ -325,6 +343,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html#ae4fa89c7d7dee6b53318aa9aaaf507f4">DynabyteSoftware::Collections::IEnumerator</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00063">63</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
+
 </div>
 </div>
 <a id="af67f6eb1f36f337dc0d7882126ef046f"></a>
@@ -354,6 +374,8 @@ template&lt;typename IteratorType &gt; </div>
 <p>Gets the address of pointed value </p><dl class="section return"><dt>Returns</dt><dd>A pointer to the value this enumerator is pointing to </dd></dl>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_enumerator.html#a9c2791413d7aa91ae6eb8b47499f398f">DynabyteSoftware::Collections::InputEnumerator&lt; IteratorType::value_type &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00100">100</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
 
 </div>
 </div>
@@ -392,6 +414,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_iterator.html#ad854c9fdf1c4a0e73dc6eabb6b94bf9f">DynabyteSoftware::Collections::Iterator&lt; FilterEnumerator&lt; IteratorType &gt; &gt;</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00077">77</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
+
 </div>
 </div>
 <a id="a85d7a05e1902046abfca09f8c7ebcbd4"></a>
@@ -423,6 +447,8 @@ template&lt;typename IteratorType &gt; </div>
 <dl class="section note"><dt>Note</dt><dd>will return true even if filter is different, this evaluation is intended to be used to determine if the location in the sequence is a match only </dd></dl>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html#a8b6e0baf95270efd8e3c047dab614403">DynabyteSoftware::Collections::InputIterator&lt; IteratorType::value_type, FilterEnumerator&lt; IteratorType &gt; &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_filter_enumerator_8h_source.html#l00111">111</a> of file <a class="el" href="_filter_enumerator_8h_source.html">FilterEnumerator.h</a>.</p>
 
 </div>
 </div>

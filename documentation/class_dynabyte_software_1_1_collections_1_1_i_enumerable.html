@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +88,11 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_collection
 <div class="title">DynabyteSoftware::Collections::IEnumerable&lt; Container, IteratorType &gt; Class Template Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Base class for containers that provide additional features than stl containers.  
+ <a href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_i_enumerable-decl_8h_source.html">IEnumerable-decl.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -138,7 +143,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeab37076125fa61e0e905e54700844c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_container_filter_wrapper.html">ContainerFilterWrapper</a>&lt; Container &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html#aeab37076125fa61e0e905e54700844c1">where</a> (const typename filter_iterator::filter_function &amp;filter)</td></tr>
 <tr class="separator:aeab37076125fa61e0e905e54700844c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename Container, typename IteratorType&gt;<br />
+class DynabyteSoftware::Collections::IEnumerable&lt; Container, IteratorType &gt;</h3>
+
+<p>Base class for containers that provide additional features than stl containers. </p>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a></dd></dl>
+<p>Base class for containers that provides functionality to perform operations based on the entire sequence </p><dl class="section note"><dt>Note</dt><dd>Classes inheriting from <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> are not guaranteed to be thread-safe, that must be handled by the derived class. Operations such as select and where which return wrappers are never thread-safe </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerable-decl_8h_source.html#l00033">33</a> of file <a class="el" href="_i_enumerable-decl_8h_source.html">IEnumerable-decl.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a54fb91b5fa24bd598ddb7091e34d3ccc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54fb91b5fa24bd598ddb7091e34d3ccc">&#9670;&nbsp;</a></span>~IEnumerable()</h2>
 
@@ -163,7 +177,9 @@ template&lt;typename Container, typename IteratorType&gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Destructor for <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html">IEnumerable</a> </p>
+<p>Destructor for <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerable.html" title="Base class for containers that provide additional features than stl containers. ">IEnumerable</a> </p>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerable-decl_8h_source.html#l00051">51</a> of file <a class="el" href="_i_enumerable-decl_8h_source.html">IEnumerable-decl.h</a>.</p>
 
 </div>
 </div>
@@ -193,6 +209,8 @@ template&lt;typename Container , typename IteratorType &gt; </div>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if any element in the sequence satisfies the condition in the filter </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerable_8h_source.html#l00020">20</a> of file <a class="el" href="_i_enumerable_8h_source.html">IEnumerable.h</a>.</p>
 
 </div>
 </div>
@@ -244,6 +262,8 @@ template&lt;typename Container , typename IteratorType &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>constant iterator to the beginning of the sequence </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_i_enumerable_8h_source.html#l00032">32</a> of file <a class="el" href="_i_enumerable_8h_source.html">IEnumerable.h</a>.</p>
+
 </div>
 </div>
 <a id="a3fb2f9f3b1a4ec89aa310d84fe352bb8"></a>
@@ -263,6 +283,8 @@ template&lt;typename Container , typename IteratorType &gt; </div>
       </table>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>constant iterator past the beginning of the sequence </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerable_8h_source.html#l00038">38</a> of file <a class="el" href="_i_enumerable_8h_source.html">IEnumerable.h</a>.</p>
 
 </div>
 </div>
@@ -314,6 +336,8 @@ template&lt;typename Container , typename IteratorType &gt; </div>
 </div><div class="memdoc">
 <dl class="section return"><dt>Returns</dt><dd>reference to the first value in the sequence </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_i_enumerable_8h_source.html#l00044">44</a> of file <a class="el" href="_i_enumerable_8h_source.html">IEnumerable.h</a>.</p>
+
 </div>
 </div>
 <a id="afe016544aeacd2881cbbd92e2ea869f0"></a>
@@ -346,6 +370,8 @@ template&lt;typename ValueType &gt; </div>
 <dd>
 The wrapper returned by this function is valid for as long as the container is valid. It holds a reference to the container, not a copy, so changes to the container affect the results of the wrapper. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="_i_enumerable_8h_source.html#l00052">52</a> of file <a class="el" href="_i_enumerable_8h_source.html">IEnumerable.h</a>.</p>
+
 </div>
 </div>
 <a id="aeab37076125fa61e0e905e54700844c1"></a>
@@ -375,6 +401,8 @@ template&lt;typename Container , typename IteratorType &gt; </div>
 <dl class="section note"><dt>Note</dt><dd>The filter evaluation does not occur immediately. Instead the container wrapper and iterators are created such that a lazy evaluation is performed when the wrapper is iterated </dd>
 <dd>
 The wrapper returned by this function is valid for as long as the container is valid. It holds a reference to the container, not a copy, so changes to the container affect the results of the wrapper. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_i_enumerable_8h_source.html#l00059">59</a> of file <a class="el" href="_i_enumerable_8h_source.html">IEnumerable.h</a>.</p>
 
 </div>
 </div>

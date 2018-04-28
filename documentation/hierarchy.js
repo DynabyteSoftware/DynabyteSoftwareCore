@@ -90,8 +90,5 @@ var hierarchy =
           [ "DynabyteSoftware::Collections::OutputIterator< IteratorType::value_type, IteratorWrapper< IteratorType > >", "class_dynabyte_software_1_1_collections_1_1_output_iterator.html", null ]
         ] ]
       ] ]
-    ] ],
-    [ "streambuf", null, [
-      [ "DynabyteSoftware::Log", "class_dynabyte_software_1_1_log.html", null ]
     ] ]
 ];

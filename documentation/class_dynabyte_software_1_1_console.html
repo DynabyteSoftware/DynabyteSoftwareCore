@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -87,13 +87,23 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_console.ht
 <div class="title">DynabyteSoftware::Console Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class for dealing with console terminal.  
+ <a href="class_dynabyte_software_1_1_console.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_console_8h_source.html">Console.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a797f9634256b5d850a0de94a8aa7b081"><td class="memItemLeft" align="right" valign="top">static CORE_EXPORT const <a class="el" href="struct_dynabyte_software_1_1_console_key_info.html">ConsoleKeyInfo</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dynabyte_software_1_1_console.html#a797f9634256b5d850a0de94a8aa7b081">readKey</a> (bool intercept=false)</td></tr>
 <tr class="separator:a797f9634256b5d850a0de94a8aa7b081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class for dealing with console terminal. </p>
+<p>Class for performing console I/O operations not supported by iostream methods </p>
+
+<p class="definition">Definition at line <a class="el" href="_console_8h_source.html#l00024">24</a> of file <a class="el" href="_console_8h_source.html">Console.h</a>.</p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a797f9634256b5d850a0de94a8aa7b081"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a797f9634256b5d850a0de94a8aa7b081">&#9670;&nbsp;</a></span>readKey()</h2>
 
@@ -125,14 +135,16 @@ Static Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Details on the key pressed </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_dynabyte_software_1_1_console_key_info.html">ConsoleKeyInfo</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="struct_dynabyte_software_1_1_console_key_info.html" title="Struct containing key press info. ">ConsoleKeyInfo</a></dd></dl>
 <dl class="section note"><dt>Note</dt><dd>A lot of non-Windows terminals do not expose the information on the keypress, so only characters may be retrieved and Modifiers are reverse-engineeered from the character. If there is no ConsoleKey mapping for the key, the Key variable may be invalid. In all cases the KeyChar variables will be provided with the char entered by the user, even if the key and modifiers cannot be determined. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_console_8cpp_source.html#l00017">17</a> of file <a class="el" href="_console_8cpp_source.html">Console.cpp</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/kirk/Programming/DynabyteSoftwareCore/Core/include/<a class="el" href="_console_8h_source.html">Console.h</a></li>
-<li>/home/kirk/Programming/DynabyteSoftwareCore/Core/src/Console.cpp</li>
+<li>/home/kirk/Programming/DynabyteSoftwareCore/Core/src/<a class="el" href="_console_8cpp_source.html">Console.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

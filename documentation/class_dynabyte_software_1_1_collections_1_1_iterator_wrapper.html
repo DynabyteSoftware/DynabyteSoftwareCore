@@ -30,7 +30,7 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Dynabyte Software Core
    </div>
-   <div id="projectbrief">C++ Core Utilities</div>
+   <div id="projectbrief">Cross-Platform C++ Utilities</div>
   </td>
  </tr>
  </tbody>
@@ -88,6 +88,11 @@ $(document).ready(function(){initNavTree('class_dynabyte_software_1_1_collection
 <div class="title">DynabyteSoftware::Collections::IteratorWrapper&lt; IteratorType &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Wraps an existing iterator into one that inherits from an IIterator template.  
+ <a href="class_dynabyte_software_1_1_collections_1_1_iterator_wrapper.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for DynabyteSoftware::Collections::IteratorWrapper&lt; IteratorType &gt;:</div>
 <div class="dyncontent">
@@ -97,7 +102,7 @@ Inheritance diagram for DynabyteSoftware::Collections::IteratorWrapper&lt; Itera
 <area shape="rect" id="node3" href="class_dynabyte_software_1_1_collections_1_1_output_iterator.html" title="DynabyteSoftware::Collections\l::OutputIterator\&lt; IteratorType\l::value_type, IteratorWrapper\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,100,1001,171"/>
 <area shape="rect" id="node4" href="class_dynabyte_software_1_1_collections_1_1_iterator.html" title="DynabyteSoftware::Collections\l::Iterator\&lt; IteratorWrapper\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="528,25,731,81"/>
 <area shape="rect" id="node8" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html" title="DynabyteSoftware::Collections\l::InputIterator\&lt; IteratorType\l::value_type, IteratorWrapper\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,5,1001,76"/>
-<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,76,208,117"/>
+<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,76,208,117"/>
 <area shape="rect" id="node7" href="class_dynabyte_software_1_1_collections_1_1_i_value_enumerator.html" title="DynabyteSoftware::Collections\l::IValueEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="256,105,472,161"/>
 <area shape="rect" id="node6" href="class_dynabyte_software_1_1_collections_1_1_output_enumerator.html" title="DynabyteSoftware::Collections\l::OutputEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="520,185,739,241"/>
 <area shape="rect" id="node10" href="class_dynabyte_software_1_1_collections_1_1_forward_enumerator.html" title="DynabyteSoftware::Collections\l::ForwardEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="787,195,1013,251"/>
@@ -113,7 +118,7 @@ Collaboration diagram for DynabyteSoftware::Collections::IteratorWrapper&lt; Ite
 <area shape="rect" id="node3" href="class_dynabyte_software_1_1_collections_1_1_output_iterator.html" title="DynabyteSoftware::Collections\l::OutputIterator\&lt; IteratorType\l::value_type, IteratorWrapper\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,100,1001,171"/>
 <area shape="rect" id="node4" href="class_dynabyte_software_1_1_collections_1_1_iterator.html" title="DynabyteSoftware::Collections\l::Iterator\&lt; IteratorWrapper\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="528,25,731,81"/>
 <area shape="rect" id="node8" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html" title="DynabyteSoftware::Collections\l::InputIterator\&lt; IteratorType\l::value_type, IteratorWrapper\l\&lt; IteratorType \&gt; \&gt;" alt="" coords="799,5,1001,76"/>
-<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="DynabyteSoftware::Collections\l::IEnumerator" alt="" coords="5,76,208,117"/>
+<area shape="rect" id="node5" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html" title="Base class for objects that can enumerate through a sequence. " alt="" coords="5,76,208,117"/>
 <area shape="rect" id="node7" href="class_dynabyte_software_1_1_collections_1_1_i_value_enumerator.html" title="DynabyteSoftware::Collections\l::IValueEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="256,105,472,161"/>
 <area shape="rect" id="node6" href="class_dynabyte_software_1_1_collections_1_1_output_enumerator.html" title="DynabyteSoftware::Collections\l::OutputEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="520,185,739,241"/>
 <area shape="rect" id="node10" href="class_dynabyte_software_1_1_collections_1_1_forward_enumerator.html" title="DynabyteSoftware::Collections\l::ForwardEnumerator\&lt; IteratorType\l::value_type \&gt;" alt="" coords="787,195,1013,251"/>
@@ -205,7 +210,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a17f34647c054c7edd7a56995d0cea13b inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_input_iterator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html#a17f34647c054c7edd7a56995d0cea13b">operator!=</a> (const <a class="el" href="class_dynabyte_software_1_1_collections_1_1_iterator_wrapper.html">IteratorWrapper</a>&lt; IteratorType &gt; &amp;rhs) const</td></tr>
 <tr class="separator:a17f34647c054c7edd7a56995d0cea13b inherit pub_methods_class_dynabyte_software_1_1_collections_1_1_input_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><h3>template&lt;typename IteratorType&gt;<br />
+class DynabyteSoftware::Collections::IteratorWrapper&lt; IteratorType &gt;</h3>
+
+<p>Wraps an existing iterator into one that inherits from an IIterator template. </p>
+<p>:: </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="class_dynabyte_software_1_1_collections_1_1_forward_iterator.html" title="Base class for objects that can iterate through a sequence and write values to it. ">ForwardIterator</a></dd></dl>
+<p>Wraps an existing iterator into one that inheritis from the provided template that guarantees certain functionality </p>
+
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00027">27</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a004f252e70d9dfe9c5f89d220feedc3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a004f252e70d9dfe9c5f89d220feedc3c">&#9670;&nbsp;</a></span>IteratorWrapper()</h2>
 
@@ -238,6 +252,8 @@ template&lt;typename IteratorType &gt; </div>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00043">43</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -269,6 +285,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_enumerator.html#a0ee373d4d262775ba158588bb964082f">DynabyteSoftware::Collections::InputEnumerator&lt; IteratorType::value_type &gt;</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00074">74</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
+
 </div>
 </div>
 <a id="acc1f2f8f263e2d13694c9a71665eb2d6"></a>
@@ -299,6 +317,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_i_enumerator.html#ae4fa89c7d7dee6b53318aa9aaaf507f4">DynabyteSoftware::Collections::IEnumerator</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00054">54</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
+
 </div>
 </div>
 <a id="a974a200eb0c9d07627e665b6d509a5b1"></a>
@@ -328,6 +348,8 @@ template&lt;typename IteratorType &gt; </div>
 <p>Retrieves address of value </p><dl class="section return"><dt>Returns</dt><dd>a pointer to the value being pointed to by the iterator </dd></dl>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_enumerator.html#a9c2791413d7aa91ae6eb8b47499f398f">DynabyteSoftware::Collections::InputEnumerator&lt; IteratorType::value_type &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00083">83</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
 
 </div>
 </div>
@@ -360,6 +382,8 @@ template&lt;typename IteratorType &gt; </div>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_iterator.html#ad854c9fdf1c4a0e73dc6eabb6b94bf9f">DynabyteSoftware::Collections::Iterator&lt; IteratorWrapper&lt; IteratorType &gt; &gt;</a>.</p>
 
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00064">64</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
+
 </div>
 </div>
 <a id="a0e11a1ca3450367c42ba8d6d11b9d64b"></a>
@@ -390,6 +414,8 @@ template&lt;typename IteratorType &gt; </div>
 <p>Compares this iterator wrapper to another </p><dl class="section return"><dt>Returns</dt><dd>true if the container iterators match </dd></dl>
 
 <p>Implements <a class="el" href="class_dynabyte_software_1_1_collections_1_1_input_iterator.html#a8b6e0baf95270efd8e3c047dab614403">DynabyteSoftware::Collections::InputIterator&lt; IteratorType::value_type, IteratorWrapper&lt; IteratorType &gt; &gt;</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_container_wrapper_8h_source.html#l00092">92</a> of file <a class="el" href="_container_wrapper_8h_source.html">ContainerWrapper.h</a>.</p>
 
 </div>
 </div>

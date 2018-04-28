@@ -24,7 +24,6 @@ var annotated_dup =
       [ "Console", "class_dynabyte_software_1_1_console.html", null ],
       [ "ConsoleKeyInfo", "struct_dynabyte_software_1_1_console_key_info.html", "struct_dynabyte_software_1_1_console_key_info" ],
       [ "DateTime", "class_dynabyte_software_1_1_date_time.html", "class_dynabyte_software_1_1_date_time" ],
-      [ "Exception", "class_dynabyte_software_1_1_exception.html", "class_dynabyte_software_1_1_exception" ],
-      [ "Log", "class_dynabyte_software_1_1_log.html", "class_dynabyte_software_1_1_log" ]
+      [ "Exception", "class_dynabyte_software_1_1_exception.html", "class_dynabyte_software_1_1_exception" ]
     ] ]
 ];
