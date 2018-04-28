@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/*******************************************************************************************************************//**
 * @file IEnumerator.h
 * @author Rod Leonard
 * @version 0.0.1
@@ -16,7 +16,7 @@ namespace DynabyteSoftware
   namespace Collections
   {
     #pragma region IEnumerator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class IEnumerator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can enumerate through a sequence
@@ -42,7 +42,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region Iterator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class Iterator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class to help iterators iterate through a sequence
@@ -74,7 +74,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region IValueEnumerator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class IValueEnumerator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can enumerate through a sequence of a particular value type
@@ -94,7 +94,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region InputEnumerator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class InputEnumerator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can enumerate through a sequence and read values from it
@@ -125,7 +125,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region InputIterator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class InputIterator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can enumerate through a sequence and read values from it
@@ -159,7 +159,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region OutputEnumerator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class OutputEnumerator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can enumerate through a sequence and write values to it
@@ -190,7 +190,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region OutputIterator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class OutputIterator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can iterator through a sequence and write values to it
@@ -207,7 +207,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region ForwardEnumerator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class ForwardEnumerator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can enumerate through a sequence and write values to it
@@ -228,7 +228,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region ForwardIterator
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class ForwardIterator
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for objects that can iterate through a sequence and write values to it

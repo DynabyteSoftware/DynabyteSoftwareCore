@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/*******************************************************************************************************************//**
 * @file ContainerTransformWrapper-decl.h
 * @author Rod Leonard
 * @version 0.0.1
@@ -14,7 +14,7 @@ namespace DynabyteSoftware
 {
   namespace Collections
   {
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class ContainerTransformWrapper
     * @ingroup DynabyteSoftware::Collections
     * @brief Wraps an existing container into one that transforms the contents into a different type

@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/******************************************************************************************************************//**
  * @defgroup DynabyteSoftwareCore DynabyteSoftware Core
  * @brief Core library with generally useful utilities
  * @author Rod Leonard
@@ -9,7 +9,7 @@
  * @details
  * This library contains a collection of C++ classes so useful, there's no reason to ever not include them as a way
  * of keeping executable size down.
- * ********************************************************************************************************************/
+ * *******************************************************************************************************************/
 
 /**
  * @file CoreExports.h

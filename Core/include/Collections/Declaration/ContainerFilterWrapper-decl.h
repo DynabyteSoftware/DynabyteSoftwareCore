@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/*******************************************************************************************************************//**
 * @file ContainerFilterWrapper-decl.h
 * @author Rod Leonard
 * @version 0.0.1
@@ -14,7 +14,7 @@ namespace DynabyteSoftware
 {
   namespace Collections
   {
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
      * @class ContainerFilterWrapper
      * @ingroup DynabyteSoftware::Collections
      * @brief Wraps an existing container into one that filters contents based on a given filter

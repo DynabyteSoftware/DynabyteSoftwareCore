@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/*******************************************************************************************************************//**
 * @file TransformEnumerator.h
 * @author Rod Leonard
 * @version 0.0.1
@@ -15,7 +15,7 @@ namespace DynabyteSoftware
 {
   namespace Collections
   {
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class TransformEnumerator
     * @ingroup DynabyteSoftware::Collections
     * @brief Wraps an existing iterator into one that performs a transformation on the values it iterates through

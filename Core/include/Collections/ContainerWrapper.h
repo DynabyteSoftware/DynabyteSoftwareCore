@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/*******************************************************************************************************************//**
 * @file ContainerWrapper.h
 * @author Rod Leonard
 * @version 0.0.1
@@ -14,7 +14,7 @@ namespace DynabyteSoftware
   namespace Collections
   {
     #pragma region Iterator Wrapper
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class IteratorWrapper
     * @ingroup DynabyteSoftware::Collections
     * @brief Wraps an existing iterator into one that inherits from an IIterator template
@@ -100,7 +100,7 @@ namespace DynabyteSoftware
     #pragma endregion
 
     #pragma region ContainerWrapper
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class ContainerFilterWrapper
     * @ingroup DynabyteSoftware::Collections
     * @brief Wraps an existing container into one that inhertis from IEnumerable and provides additional functionality

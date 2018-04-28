@@ -1,4 +1,4 @@
-/***********************************************************************************************************************
+/*******************************************************************************************************************//**
 * @file IEnumerable-decl.h
 * @author Rod Leonard
 * @version 0.0.1
@@ -19,7 +19,7 @@ namespace DynabyteSoftware
     template<typename> class ContainerFilterWrapper;
     template<typename,typename> class ContainerTransformWrapper;
 
-    /******************************************************************************************************************
+    /**************************************************************************************************************//**
     * @class IEnumerable
     * @ingroup DynabyteSoftware::Collections
     * @brief Base class for containers that provide additional features than stl containers
