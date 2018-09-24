@@ -33,6 +33,7 @@ Exception::Exception(const string& exceptionName, const string& functionName, co
            _sourceFilename(sourceFilename), _sourceLineNumber(sourceLineNumber)
 {
   createStringValue();
+  clog << endl;
   clog << Log::Error << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << " " << what()
        << endl;
 }
