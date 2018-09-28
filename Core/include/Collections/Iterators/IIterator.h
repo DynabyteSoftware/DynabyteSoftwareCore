@@ -23,7 +23,7 @@ namespace DynabyteSoftware
         virtual IIterator<T>& operator++() = 0;
         virtual IIterator<T>& operator++(int) = 0;
         #pragma endregion
-      protected:
+
         #pragma region Cloneable
         virtual std::unique_ptr< IIterator<T> > clone() const = 0;
         #pragma endregion

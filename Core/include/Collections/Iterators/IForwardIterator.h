@@ -10,8 +10,7 @@ namespace DynabyteSoftware
     {
       template<typename T>
       class IForwardIterator
-        : public virtual IInputIterator<T>,
-          public virtual IOutputIterator<T>
+        : public virtual IInputIterator<T>
       {
 
       };
