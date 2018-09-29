@@ -1,5 +1,5 @@
 #pragma once
-#include "Collections/ForwardEnumerator.h"
+#include "Collections/Enumerator.h"
 
 namespace DynabyteSoftware
 {
@@ -11,18 +11,17 @@ namespace DynabyteSoftware
     public:
       inline virtual ~IEnumerable() {};
 
-      ForwardEnumerator<T> begin() const
+      Enumerator<T> begin() const
       {
         return getEnumerator();
       }
 
-      ForwardEnumerator<T> end() const
+      Enumerator<T> end() const
       {
-        const auto& iterator = getEnumerator().getEnd();
-        return ForwardEnumerator<T>(iterator, iterator);
+        return getEnumerator().getEnd();
       }
 
-      virtual ForwardEnumerator<T> getEnumerator() const = 0;
+      virtual Enumerator<T> getEnumerator() const = 0;
     };
   }
 }

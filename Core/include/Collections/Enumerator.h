@@ -1,5 +1,5 @@
 #pragma once
-#include "Collections/Iterators/IIterator.h"
+#include "Collections/Iterators/IForwardIterator.h"
 #include "Exception.h"
 #include <memory>
 
@@ -8,55 +8,44 @@ namespace DynabyteSoftware
   namespace Collections
   {
     template<typename T>
-    class Enumerator : public virtual Iterators::IIterator<T>
+    class Enumerator final : public virtual Iterators::IForwardIterator<T>
     {
     public:
       #pragma region Constructors
-      Enumerator(const Iterators::IIterator<T>& begin, const Iterators::IIterator<T>& end)
-        : Enumerator(begin, begin, end)
-      {
-      }
-
       Enumerator(const Enumerator<T>& original)
-        : Enumerator(*original._begin, *original._current, *original._end)
+        : Enumerator(original._begin, *original._current, original._end)
       {
       }
 
       Enumerator(Enumerator<T>&& old)
-        : _begin(std::move(old._begin)), _current(std::move(old._current)), _end(std::move(old._end))
+        : _begin(std::move(old._begin)), _end(std::move(old._end)), _current(std::move(old._current))
       {
       }
       #pragma endregion
 
       #pragma region Observers
-      const Iterators::IIterator<T>& getBegin() const
+      const Enumerator<T> getEnd() const
       {
-        return *_begin;
-      }
-
-      const Iterators::IIterator<T>& getEnd() const
-      {
-        return *_end;
+        return Enumerator<T>(_begin, *_end, _end);
       }
       #pragma endregion
 
-      #pragma region IIterator
-      Enumerator<T>& operator=(const Iterators::IIterator<T>& rhs) override
+      #pragma region IForwardIterator
+      virtual void assign(const Iterators::IIterator<T>& rhs) override
       {
         if(const auto* iterator = dynamic_cast<const Enumerator<T>*>(&rhs))
         {
-          _begin = iterator->_begin->clone(getUniversalKey());
-          _end = iterator->_end->clone(getUniversalKey());
-          _current = iterator->_current->clone(getUniversalKey());
-          return *this;
+          _begin = iterator->_begin;
+          _end = iterator->_end;
+          *_current = *iterator->_current;
         }
-
-        THROW(Exception, "iterator not an enumerator")
+        else
+          THROW(Exception, "iterator not an enumerator")
       }
 
       Enumerator<T>& operator++() override
       {
-        if(_current.get() == _end.get())
+        if(*_current == *_end)
           THROW(Exception, "Attempted to advance past end of container")
 
         _current->operator++();
@@ -65,44 +54,83 @@ namespace DynabyteSoftware
 
       Enumerator<T>& operator++(int value) override
       {
-        if(_current.get() == _end.get())
+        if(*_current == *_end)
           THROW(Exception, "Attempted to advance past end of container")
 
         _current->operator++(value);
         return *this;
       }
-      #pragma endregion
-    protected:
-      #pragma region Constructors
-      Enumerator(const Iterators::IIterator<T>& begin, const Iterators::IIterator<T>& current,
-                 const Iterators::IIterator<T>& end)
-        : _begin(begin.clone(getUniversalKey())), _end(end.clone(getUniversalKey())),
-          _current(current.clone(getUniversalKey()))
+
+      #pragma region Equatable
+      virtual bool operator==(const IInputIterator<T>& rhs) const override
       {
+        if(const auto* iterator = dynamic_cast<const Enumerator<T>*>(&rhs))
+        {
+          return *iterator->_current == *_current;
+        }
+
+        return false;
       }
       #pragma endregion
 
-      #pragma region Observers
-      template<typename IteratorType>
-      IteratorType* castCurrent()
+      #pragma region R-Value Dereferenceable
+      virtual std::add_lvalue_reference_t<T> operator*() const override
       {
-        return dynamic_cast<IteratorType*>(_current.get());
+        return _current->operator*();
+      }
+
+      virtual std::add_pointer_t< std::remove_reference_t<T> > operator->() const override
+      {
+        return _current->operator->();
       }
       #pragma endregion
-    private:
-      #pragma region Variables
-      std::unique_ptr< const Iterators::IIterator<T> > _begin;
-      std::unique_ptr< const Iterators::IIterator<T> > _end;
-      std::unique_ptr<Iterators::IIterator<T>> _current;
-      #pragma endregion
 
-      #pragma region IIterator
-      std::unique_ptr<Iterators::IIterator<T>>
-      clone(const typename AccessControl::AccessKeychain< Iterators::IIterator<T> >::AccessKey&) const override
+      #pragma region Cloneable
+      virtual std::unique_ptr< Iterators::IIterator<T> > clone() const override
       {
         return std::make_unique< Enumerator<T> >(*this);
       }
       #pragma endregion
+      #pragma endregion
+
+      #pragma region Observers
+      template<typename IteratorType>
+      IteratorType& castCurrent()
+      {
+        return dynamic_cast<IteratorType&>(*_current);
+      }
+      #pragma endregion
+    private:
+      #pragma region Variables
+      std::shared_ptr< const Iterators::IForwardIterator<T> > _begin;
+      std::shared_ptr< const Iterators::IForwardIterator<T> > _end;
+      std::unique_ptr< Iterators::IForwardIterator<T> > _current;
+      #pragma endregion
+
+      #pragma region Constructors
+      #pragma warning(push)
+      #pragma warning(disable:4436)
+      Enumerator(const std::shared_ptr< const Iterators::IForwardIterator<T> >& begin,
+                 const Iterators::IForwardIterator<T>& current,
+                 const std::shared_ptr< const Iterators::IForwardIterator<T> >& end)
+        : _begin(begin), _end(end),
+          _current(dynamic_cast< Iterators::IForwardIterator<T>* >(current.clone().release()))
+      {
+      }
+      #pragma warning(pop)
+      #pragma endregion
+
+      #pragma region Friend Declarations
+      template<typename U=T, template<typename> typename IteratorType >
+      friend Enumerator<U> make_enumerator(const IteratorType<U>& begin, const IteratorType<U>& end);
+      #pragma endregion
     };
+
+    template<typename T, template<typename> typename IteratorType>
+    Enumerator<T> make_enumerator(const IteratorType<T>& begin, const IteratorType<T>& end)
+    {
+      return Enumerator<T>(std::make_shared< IteratorType<T> >(begin), begin,
+                           std::make_shared< IteratorType<T> >(end));
+    }
   }
 }

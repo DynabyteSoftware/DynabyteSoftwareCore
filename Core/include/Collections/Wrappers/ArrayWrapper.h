@@ -1,6 +1,5 @@
 #pragma once
 #include "Collections/IEnumerable.h"
-#include "Collections/RandomAccessEnumerator.h"
 #include "Collections/Wrappers/PointerIterator.h"
 
 namespace DynabyteSoftware
@@ -21,11 +20,11 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region IEnumerable
-        virtual ForwardEnumerator<T> getEnumerator() const override
+        virtual Enumerator<T> getEnumerator() const override
         {
           T* end = _arrayObject + _arraySize;
-          return ForwardEnumerator<T>(PointerIterator<T>(_arrayObject, _arrayObject, end),
-                                      PointerIterator<T>(_arrayObject, end, end));
+          return make_enumerator(PointerIterator<T>(_arrayObject, _arrayObject, end),
+                                 PointerIterator<T>(_arrayObject, end, end));
         }
         #pragma endregion
       private:

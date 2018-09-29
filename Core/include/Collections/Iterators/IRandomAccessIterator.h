@@ -11,6 +11,14 @@ namespace DynabyteSoftware
       class IRandomAccessIterator : public virtual IBidirectionalIterator<T>
       {
       public:
+        #pragma region Assignable
+        IRandomAccessIterator<T>& operator=(const IRandomAccessIterator<T>& rhs)
+        {
+          assign(rhs);
+          return *this;
+        }
+        #pragma endregion
+
         #pragma region Arithmetic Operators
         virtual IRandomAccessIterator<T>& operator+=(int offset) = 0;
         virtual IRandomAccessIterator<T>& operator-=(int offset) = 0;

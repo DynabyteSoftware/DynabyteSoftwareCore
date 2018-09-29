@@ -18,10 +18,23 @@ namespace DynabyteSoftware
                         std::add_pointer_t< std::remove_reference_t<T> > end)
           : _begin(begin), _current(current), _end(end)
         {}
+
+        class PointerIterator(const PointerIterator<T>& original)
+          : PointerIterator(original._begin, original._current, original._end)
+        {
+        }
+
+        class PointerIterator(PointerIterator<T>&& old)
+          : _begin(old._begin), _current(old._current), _end(old._end)
+        {
+          old._begin = nullptr;
+          old._current = nullptr;
+          old._end = nullptr;
+        }
         #pragma endregion
 
         #pragma region IRandomAccessIterator
-        virtual PointerIterator& operator=(const IIterator<T>& rhs) override
+        virtual void assign(const IIterator<T>& rhs) override
         {
           if (const auto* iterator = dynamic_cast<const PointerIterator*>(&rhs))
           {
@@ -33,31 +46,31 @@ namespace DynabyteSoftware
           THROW(Exception, "Not a pointer iterator type")
         }
 
-        virtual PointerIterator& operator++() override
+        virtual PointerIterator<T>& operator++() override
         {
           ++_current;
           return *this;
         }
 
-        virtual PointerIterator& operator++(int) override
+        virtual PointerIterator<T>& operator++(int) override
         {
           _current++;
           return *this;
         }
 
-        virtual PointerIterator& operator--() override
+        virtual PointerIterator<T>& operator--() override
         {
           --_current;
           return *this;
         }
 
-        virtual PointerIterator& operator--(int) override
+        virtual PointerIterator<T>& operator--(int) override
         {
           _current--;
           return *this;
         }
 
-        virtual PointerIterator& operator+=(int offset) override
+        virtual PointerIterator<T>& operator+=(int offset) override
         {
           _current += offset;
           if (_current > _end)
@@ -65,7 +78,7 @@ namespace DynabyteSoftware
           return *this;
         }
 
-        virtual PointerIterator& operator-=(int offset) override
+        virtual PointerIterator<T>& operator-=(int offset) override
         {
           _current -= offset;
           if (_current < _begin)
@@ -131,20 +144,25 @@ namespace DynabyteSoftware
 
           THROW(ArgumentOutOfRangeException, "location")
         }
+
+        virtual std::unique_ptr< Iterators::IIterator<T> > clone() const override
+        {
+          return std::make_unique< PointerIterator<T> >(*this);
+        }
+
+        #pragma region Assignable
+        PointerIterator<T>& operator=(const PointerIterator<T>& rhs)
+        {
+          assign(rhs);
+          return *this;
+        }
+        #pragma endregion
         #pragma endregion
       private:
         #pragma region Variables
         std::add_pointer_t< std::remove_reference_t<T> > _begin;
         std::add_pointer_t< std::remove_reference_t<T> > _current;
         std::add_pointer_t< std::remove_reference_t<T> > _end;
-        #pragma endregion
-
-        #pragma region IRandomAccessIterator
-        virtual std::unique_ptr< IIterator<T> >
-        clone(const typename AccessControl::AccessKeychain< IIterator<T> >::AccessKey&) const override
-        {
-          return std::make_unique< PointerIterator<T> >(_begin, _current, _end);
-        }
         #pragma endregion
       };
     }

@@ -12,7 +12,14 @@ namespace DynabyteSoftware
       class IForwardIterator
         : public virtual IInputIterator<T>
       {
-
+      public:
+        #pragma region Assignable
+        IForwardIterator<T>& operator=(const IForwardIterator<T>& rhs)
+        {
+          assign(rhs);
+          return *this;
+        }
+        #pragma endregion
       };
     }
   }

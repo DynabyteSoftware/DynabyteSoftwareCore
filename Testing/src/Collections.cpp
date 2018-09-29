@@ -40,10 +40,9 @@ int main()
   clog << "Creating pointer iterator..." << endl;
   int testArray[5] = { 2,3,5,7,11 };
   PointerIterator<int> iteratorTest(&testArray[0], &testArray[0], &testArray[5]);
-  //Enumerator<IRandomAccessIterator<int>> enumeratorTest(iteratorTest);
   tryIterator(iteratorTest);
 
-  clog << "Iterate through array wrapper" << endl;
+  clog << Log::Information << "Iterate through array wrapper" << endl;
   ArrayWrapper<int> arrayWrapper(testArray, 5);
   for(const auto& number : arrayWrapper)
   {

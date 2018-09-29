@@ -12,6 +12,14 @@ namespace DynabyteSoftware
       class IInputIterator : public virtual IIterator<T>
       {
       public:
+        #pragma region Assignable
+        IInputIterator<T>& operator=(const IInputIterator<T>& rhs)
+        {
+          assign(rhs);
+          return *this;
+        }
+        #pragma endregion
+
         #pragma region Equatable
         virtual bool operator==(const IInputIterator<T>& rhs) const = 0;
         inline bool operator!=(const IInputIterator<T>& rhs) const { return !operator==(rhs); }
