@@ -1,27 +1,28 @@
 #pragma once
-#include "Enumerator.h"
+#include "Collections/ForwardEnumerator.h"
 
 namespace DynabyteSoftware
 {
   namespace Collections
   {
-    template<typename IteratorType>
+    template<typename T>
     class IEnumerable
     {
     public:
       inline virtual ~IEnumerable() {};
 
-      IteratorType& begin()
+      ForwardEnumerator<T> begin() const
       {
         return getEnumerator();
       }
 
-      const IteratorType& end()
+      ForwardEnumerator<T> end() const
       {
-        return getEnumerator().end();
+        const auto& iterator = getEnumerator().getEnd();
+        return ForwardEnumerator<T>(iterator, iterator);
       }
 
-      virtual Enumerator<IteratorType> getEnumerator() const = 0;
+      virtual ForwardEnumerator<T> getEnumerator() const = 0;
     };
   }
 }

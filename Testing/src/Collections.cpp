@@ -45,10 +45,10 @@ int main()
 
   clog << "Iterate through array wrapper" << endl;
   ArrayWrapper<int> arrayWrapper(testArray, 5);
-  /*for(const auto& number : arrayWrapper)
+  for(const auto& number : arrayWrapper)
   {
     clog << number << endl;
-  }*/
+  }
 
   clog << "Done" << endl;
 

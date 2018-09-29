@@ -1,4 +1,5 @@
 #pragma once
+#include "AccessControl/AccessKey.h"
 #include <memory>
 
 namespace DynabyteSoftware
@@ -22,10 +23,6 @@ namespace DynabyteSoftware
         #pragma region Incrementable
         virtual IIterator<T>& operator++() = 0;
         virtual IIterator<T>& operator++(int) = 0;
-        #pragma endregion
-
-        #pragma region Cloneable
-        virtual std::unique_ptr< IIterator<T> > clone() const = 0;
         #pragma endregion
       };
     }

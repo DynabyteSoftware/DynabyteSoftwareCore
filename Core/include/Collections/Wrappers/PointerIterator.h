@@ -140,7 +140,8 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region IRandomAccessIterator
-        virtual std::unique_ptr< IIterator<T> > clone() const override
+        virtual std::unique_ptr< IIterator<T> >
+        clone(const typename AccessControl::AccessKeychain< IIterator<T> >::AccessKey&) const override
         {
           return std::make_unique< PointerIterator<T> >(_begin, _current, _end);
         }

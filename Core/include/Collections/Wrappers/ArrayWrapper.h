@@ -1,5 +1,6 @@
 #pragma once
 #include "Collections/IEnumerable.h"
+#include "Collections/RandomAccessEnumerator.h"
 #include "Collections/Wrappers/PointerIterator.h"
 
 namespace DynabyteSoftware
@@ -9,7 +10,7 @@ namespace DynabyteSoftware
     namespace Wrappers
     {
       template<typename T>
-      class ArrayWrapper : public IEnumerable<Iterators::IRandomAccessIterator<T>>
+      class ArrayWrapper : public IEnumerable<T>
       {
       public:
         #pragma region Constructors
@@ -20,11 +21,11 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region IEnumerable
-        virtual Enumerator<Iterators::IRandomAccessIterator<T>> getEnumerator() const override
+        virtual ForwardEnumerator<T> getEnumerator() const override
         {
           T* end = _arrayObject + _arraySize;
-          return Enumerator<Iterators::IRandomAccessIterator<T>>(PointerIterator<T>(_arrayObject, _arrayObject, end),
-                                                                 PointerIterator<T>(_arrayObject, end, end));
+          return ForwardEnumerator<T>(PointerIterator<T>(_arrayObject, _arrayObject, end),
+                                      PointerIterator<T>(_arrayObject, end, end));
         }
         #pragma endregion
       private:

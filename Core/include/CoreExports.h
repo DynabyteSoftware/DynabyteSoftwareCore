@@ -18,6 +18,7 @@
  */
 
 #pragma once
+#pragma warning(disable:4250)
 #ifdef _WIN32
 #define SHARED_EXPORT __declspec(dllexport)
 #define SHARED_IMPORT __declspec(dllimport)
