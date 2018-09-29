@@ -1,6 +1,5 @@
 #pragma once
 #include "Collections/Iterators/IInputIterator.h"
-#include "Collections/Iterators/IOutputIterator.h"
 
 namespace DynabyteSoftware
 {

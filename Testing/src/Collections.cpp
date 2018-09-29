@@ -37,19 +37,18 @@ int main()
   clog << Log::Information;
   clog << "Collections Unit Test" << endl;
 
-  clog << "Creating pointer iterator..." << endl;
   int testArray[5] = { 2,3,5,7,11 };
-  PointerIterator<int> iteratorTest(&testArray[0], &testArray[0], &testArray[5]);
-  tryIterator(iteratorTest);
 
   clog << Log::Information << "Iterate through array wrapper" << endl;
   ArrayWrapper<int> arrayWrapper(testArray, 5);
+  *arrayWrapper.getEnumerator() = 13;
   for(const auto& number : arrayWrapper)
   {
-    clog << number << endl;
+    clog << number << ' ';
   }
-
   clog << "Done" << endl;
+
+  clog << Log::Information << "Get first number: " << arrayWrapper.first() << endl;
 
   return 0;
 }

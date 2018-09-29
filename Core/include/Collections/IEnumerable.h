@@ -9,8 +9,11 @@ namespace DynabyteSoftware
     class IEnumerable
     {
     public:
+      #pragma region Destructors
       inline virtual ~IEnumerable() {};
+      #pragma endregion
 
+      #pragma region Container
       Enumerator<T> begin() const
       {
         return getEnumerator();
@@ -20,8 +23,18 @@ namespace DynabyteSoftware
       {
         return getEnumerator().getEnd();
       }
+      #pragma endregion
 
+      #pragma region Querying
+      T first() const
+      {
+        return *getEnumerator();
+      }
+      #pragma endregion
+
+      #pragma region Enumeration
       virtual Enumerator<T> getEnumerator() const = 0;
+      #pragma endregion
     };
   }
 }
