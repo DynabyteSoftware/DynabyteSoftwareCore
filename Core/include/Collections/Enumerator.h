@@ -43,6 +43,25 @@ namespace DynabyteSoftware
           THROW(Exception, "iterator not an enumerator")
       }
 
+      virtual std::unique_ptr< IIterator< std::add_const_t<T> > > getConst() const override
+      {
+        struct IteratorCast
+        {
+          typedef std::add_const_t<T> ConstT;
+          typedef Iterators::IForwardIterator< ConstT > ConstIterator;
+          
+          static std::shared_ptr< ConstIterator > cast(const Iterators::IForwardIterator< T >& iterator)
+          {
+            return std::shared_ptr< ConstIterator >(dynamic_cast<ConstIterator*>(iterator.getConst().release()));
+          }
+        };
+        
+        auto* constIterator = new Enumerator< std::add_const_t<T> >(IteratorCast::cast(*_begin),
+                                                                    *IteratorCast::cast(*_current),
+                                                                    IteratorCast::cast(*_end));
+        return std::unique_ptr< Enumerator< std::add_const_t<T> > >(constIterator);
+      }
+
       Enumerator<T>& operator++() override
       {
         if(*_current == *_end)
@@ -123,6 +142,7 @@ namespace DynabyteSoftware
       #pragma region Friend Declarations
       template<typename U=T, template<typename> typename IteratorType >
       friend Enumerator<U> make_enumerator(const IteratorType<U>& begin, const IteratorType<U>& end);
+      template<typename> friend class Enumerator;
       #pragma endregion
     };
 

@@ -150,6 +150,11 @@ namespace DynabyteSoftware
           return std::make_unique< PointerIterator<T> >(*this);
         }
 
+        virtual std::unique_ptr< IIterator< std::add_const_t<T> > > getConst() const override
+        {
+          return std::make_unique< PointerIterator< std::add_const_t<T> > >(_begin, _current, _end);
+        }
+
         #pragma region Assignable
         PointerIterator<T>& operator=(const PointerIterator<T>& rhs)
         {

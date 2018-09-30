@@ -29,11 +29,11 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region Cloneable
-        virtual std::unique_ptr< IIterator<T> > clone() const = 0;
+        virtual std::unique_ptr< IIterator<T> > clone() const = 0;        
+        virtual std::unique_ptr< IIterator< std::add_const_t<T> > > getConst() const = 0;
         #pragma endregion
       protected:        
-        virtual void assign(const IIterator<T>& rhs) = 0;        
-        virtual std::unique_ptr< IIterator< std::add_const_t<T> > > getConst() const = 0;
+        virtual void assign(const IIterator<T>& rhs) = 0;
       };
     }
   }
