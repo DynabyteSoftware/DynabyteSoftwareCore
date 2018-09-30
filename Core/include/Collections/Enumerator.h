@@ -45,6 +45,11 @@ namespace DynabyteSoftware
 
       virtual std::unique_ptr< IIterator< std::add_const_t<T> > > getConst() const override
       {
+        return std::make_unique< Enumerator< std::add_const_t<T> > >(this->operator Enumerator<std::add_const_t<T>>());
+      }
+
+      operator Enumerator< std::add_const_t<T> >() const
+      {
         struct IteratorCast
         {
           typedef std::add_const_t<T> ConstT;
@@ -56,10 +61,8 @@ namespace DynabyteSoftware
           }
         };
         
-        auto* constIterator = new Enumerator< std::add_const_t<T> >(IteratorCast::cast(*_begin),
-                                                                    *IteratorCast::cast(*_current),
-                                                                    IteratorCast::cast(*_end));
-        return std::unique_ptr< Enumerator< std::add_const_t<T> > >(constIterator);
+        return Enumerator< std::add_const_t<T> >(IteratorCast::cast(*_begin), *IteratorCast::cast(*_current),
+                                                 IteratorCast::cast(*_end));
       }
 
       Enumerator<T>& operator++() override

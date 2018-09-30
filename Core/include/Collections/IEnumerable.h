@@ -9,26 +9,41 @@ namespace DynabyteSoftware
     class IEnumerable
     {
     public:
+      #pragma region Type Definitions
+      typedef Enumerator<T> iterator;
+      typedef Enumerator< std::add_const_t<T> > const_iterator;
+      #pragma endregion
+
       #pragma region Destructors
       inline virtual ~IEnumerable() {};
       #pragma endregion
 
       #pragma region Container
-      Enumerator<T> begin() const
+      iterator begin() const
       {
         return getEnumerator();
       }
 
-      Enumerator<T> end() const
+      const_iterator cbegin() const
+      {
+        return begin();
+      }
+
+      iterator end() const
       {
         return getEnumerator().getEnd();
+      }
+
+      const_iterator cend() const
+      {
+        return end();
       }
       #pragma endregion
 
       #pragma region Querying
       T first() const
       {
-        return *getEnumerator();
+        return *cbegin();
       }
       #pragma endregion
 
