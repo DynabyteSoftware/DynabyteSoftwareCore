@@ -1,55 +1,72 @@
 #pragma once
-#include "Collections/Enumerator.h"
+#include "Collections/TemplateDeclarations/IEnumerable-decl.h"
+#include "Collections/Wrappers/EnumeratorWrapper.h"
 
 namespace DynabyteSoftware
 {
   namespace Collections
   {
+    #pragma region Container
     template<typename T>
-    class IEnumerable
+    typename IEnumerable<T>::iterator IEnumerable<T>::begin() const
     {
-    public:
-      #pragma region Type Definitions
-      typedef Enumerator<T> iterator;
-      typedef Enumerator< std::add_const_t<T> > const_iterator;
-      #pragma endregion
+      return getEnumerator();
+    }
 
-      #pragma region Destructors
-      inline virtual ~IEnumerable() {};
-      #pragma endregion
+    template<typename T>
+    typename IEnumerable<T>::const_iterator IEnumerable<T>::cbegin() const
+    {
+      return begin();
+    }
 
-      #pragma region Container
-      iterator begin() const
-      {
-        return getEnumerator();
-      }
+    template<typename T>
+    typename IEnumerable<T>::iterator IEnumerable<T>::end() const
+    {
+      return getEnumerator().getEnd();
+    }
 
-      const_iterator cbegin() const
-      {
-        return begin();
-      }
+    template<typename T>
+    typename IEnumerable<T>::const_iterator IEnumerable<T>::cend() const
+    {
+      return end();
+    }
+    #pragma endregion
 
-      iterator end() const
-      {
-        return getEnumerator().getEnd();
-      }
+    #pragma region Querying
+    template<typename T>
+    bool IEnumerable<T>::all(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                    ::filter_function& filter) const
+    {
+      for (auto it = cbegin(); it != cend(); ++it)
+        if (!filter(*it))
+          return false;
 
-      const_iterator cend() const
-      {
-        return end();
-      }
-      #pragma endregion
+      return true;
+    }
 
-      #pragma region Querying
-      T first() const
-      {
-        return *cbegin();
-      }
-      #pragma endregion
+    template<typename T>
+    bool IEnumerable<T>::any(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                    ::filter_function& filter) const
+    {
+      for (auto it = cbegin(); it != cend(); ++it)
+        if (filter(*it))
+          return true;
 
-      #pragma region Enumeration
-      virtual Enumerator<T> getEnumerator() const = 0;
-      #pragma endregion
-    };
+      return false;
+    }
+
+    template<typename T>
+    T IEnumerable<T>::first() const
+    {
+      return *cbegin();
+    }
+
+    template<typename T>
+    Wrappers::EnumeratorWrapper<T> IEnumerable<T>::where(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                                                ::filter_function& filter) const
+    {
+      return make_enumerator(FilterIterator<T>(begin(), filter), FilterIterator<T>(end(), filter));
+    }
+    #pragma endregion
   }
 }

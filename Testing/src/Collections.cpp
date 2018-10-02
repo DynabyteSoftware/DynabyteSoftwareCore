@@ -41,7 +41,6 @@ int main()
 
   clog << Log::Information << "Iterate through array wrapper" << endl;
   ArrayWrapper<int> arrayWrapper(testArray, 5);
-  *arrayWrapper.getEnumerator() = 13;
   for(const auto& number : arrayWrapper)
   {
     clog << number << ' ';
@@ -50,5 +49,10 @@ int main()
 
   clog << Log::Information << "Get first number: " << arrayWrapper.first() << endl;
 
+  clog << Log::Information << "Check any function:" << endl;
+  clog << Log::Information << "\tAny numbers below 13: "
+       << arrayWrapper.any([](const int& value) {return value < 13; }) << endl;
+  clog << Log::Information << "\tAny numbers above 13: "
+       << arrayWrapper.any([](const int& value) {return value > 13; }) << endl;
   return 0;
 }
