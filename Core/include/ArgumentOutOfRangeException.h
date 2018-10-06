@@ -19,7 +19,7 @@ namespace DynabyteSoftware
   * @details
   * Exception thrown when an argument has a value outisde expected range.
   ********************************************************************************************************************/
-  class ArgumentOutOfRangeException : public virtual Exception//, public virtual std::out_of_range
+  class ArgumentOutOfRangeException : public virtual Exception
   {
   public:
     /**

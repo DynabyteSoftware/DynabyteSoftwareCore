@@ -62,5 +62,13 @@ int main()
   }
   clog << endl;
 
+  try
+  {
+    arrayWrapper.end()++;
+  }
+  catch(...)
+  {
+  }
+
   return 0;
 }

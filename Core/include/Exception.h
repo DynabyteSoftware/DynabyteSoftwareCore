@@ -59,7 +59,7 @@ namespace DynabyteSoftware
 	 * the required parameters.  This setup ensures your exceptions will be able to use the THROW macro to automatically
 	 * populate that information
 	 ********************************************************************************************************************/
-	class Exception : public virtual std::exception
+	class Exception : public std::exception
 	{
 	public:
 		/**

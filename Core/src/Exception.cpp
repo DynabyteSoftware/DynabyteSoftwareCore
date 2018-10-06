@@ -1,19 +1,12 @@
 #include <iostream>
 #include <sstream>
-#include "DateTime.h"
 #include "Exception.h"
 #include "Log.h"
 
 using namespace DynabyteSoftware;
-using std::clog;
-using std::endl;
-using std::string;
-using std::stringstream;
-using std::exception;
+using namespace std;
 
 static constexpr const char* const EXCEPTION_NAME = "Exception";
-static constexpr const char* const TIME_OPEN_BRACKET = "[";
-static constexpr const char* const TIME_CLOSE_BRACKET = "]";
 static constexpr const char* const EXCEPTION_TYPE_DELIMITER = ": ";
 static constexpr const char* const DETAIL_OPEN_BRACKET = "(";
 static constexpr const char* const DETAIL_CLOSE_BRACKET = ")";
@@ -34,8 +27,7 @@ Exception::Exception(const string& exceptionName, const string& functionName, co
 {
   createStringValue();
   clog << endl;
-  clog << Log::Error << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << " " << what()
-       << endl;
+  clog << Log::Error << what() << endl;
 }
 
 Exception::~Exception()
