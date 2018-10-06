@@ -54,5 +54,13 @@ int main()
        << arrayWrapper.any([](const int& value) {return value < 13; }) << endl;
   clog << Log::Information << "\tAny numbers above 13: "
        << arrayWrapper.any([](const int& value) {return value > 13; }) << endl;
+
+  clog << Log::Information << "Iterate through all numbers above 5" << endl;
+  for(const auto& number : arrayWrapper.where([](const int& value){return value > 5;}))
+  {
+    clog << number << ' ';
+  }
+  clog << "Done" << endl;
+
   return 0;
 }

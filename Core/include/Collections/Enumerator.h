@@ -122,6 +122,14 @@ namespace DynabyteSoftware
         return dynamic_cast<IteratorType&>(*_current);
       }
       #pragma endregion
+
+      #pragma region Operators
+      Enumerator<T>& operator=(const Enumerator<T>& rhs)
+      {
+        assign(rhs);
+        return *this;
+      }
+      #pragma endregion
     private:
       #pragma region Variables
       std::shared_ptr< const Iterators::IForwardIterator<T> > _begin;
