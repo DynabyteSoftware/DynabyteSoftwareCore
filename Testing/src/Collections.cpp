@@ -39,28 +39,28 @@ int main()
 
   int testArray[5] = { 2,3,5,7,11 };
 
-  clog << Log::Information << "Iterate through array wrapper" << endl;
+  clog << Log::Information << "Iterate through array wrapper\n\t";
   ArrayWrapper<int> arrayWrapper(testArray, 5);
   for(const auto& number : arrayWrapper)
   {
     clog << number << ' ';
   }
-  clog << "Done" << endl;
+  clog << endl;
 
   clog << Log::Information << "Get first number: " << arrayWrapper.first() << endl;
 
-  clog << Log::Information << "Check any function:" << endl;
+  clog << Log::Information << "Check any function:\n";
   clog << Log::Information << "\tAny numbers below 13: "
-       << arrayWrapper.any([](const int& value) {return value < 13; }) << endl;
+       << arrayWrapper.any([](const int& value) {return value < 13; }) << "\n";
   clog << Log::Information << "\tAny numbers above 13: "
        << arrayWrapper.any([](const int& value) {return value > 13; }) << endl;
 
-  clog << Log::Information << "Iterate through all numbers above 5" << endl;
+  clog << Log::Information << "Iterate through all numbers above 5\n\t";
   for(const auto& number : arrayWrapper.where([](const int& value){return value > 5;}))
   {
     clog << number << ' ';
   }
-  clog << "Done" << endl;
+  clog << endl;
 
   return 0;
 }

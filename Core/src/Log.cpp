@@ -1,15 +1,12 @@
+#include "DateTime.h"
 #include "Log.h"
 #include<iostream>
 
-using std::cerr;
-using std::clog;
-using std::ios;
-using std::ostream;
-using std::ofstream;
-using std::flush;
-using std::endl;
-
+using namespace std;
 using namespace DynabyteSoftware;
+
+static constexpr const char* const TIME_OPEN_BRACKET = "(";
+static constexpr const char* const TIME_CLOSE_BRACKET = ")]";
 
 Log* Log::m_pLogger = nullptr;
 
@@ -82,17 +79,17 @@ int Log::sync()
   switch(m_eCurrentLogType)
   {    
     case Information:
-      *pStream << "[Information] ";
+      *pStream << "[Information ";
       break;
     case Warning:
-      *pStream << "[Warning] ";
+      *pStream << "[Warning ";
       break;
     case Error:
-      *pStream << "[Error] ";
+      *pStream << "[Error ";
       break;
   }
   
-  *pStream << m_sBuffer << flush;
+  *pStream << TIME_OPEN_BRACKET << DateTime::now(DateTimeKind::UTC) << TIME_CLOSE_BRACKET << ' ' << m_sBuffer << flush;
   m_sBuffer.erase();
   
   return 0;
