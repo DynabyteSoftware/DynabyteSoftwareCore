@@ -151,8 +151,10 @@ namespace DynabyteSoftware
       #pragma endregion
 
       #pragma region Friend Declarations
-      template<typename U=T, template<typename> typename IteratorType >
+      template<typename U=T, template<typename> typename IteratorType>
       friend Enumerator<U> make_enumerator(const IteratorType<U>& begin, const IteratorType<U>& end);
+      template<typename U=T, typename V, template<typename,typename> typename IteratorType>
+      friend Enumerator<U> make_enumerator(const IteratorType<U, V>& begin, const IteratorType<U, V>& end);
       template<typename> friend class Enumerator;
       #pragma endregion
     };
@@ -162,6 +164,13 @@ namespace DynabyteSoftware
     {
       return Enumerator<T>(std::make_shared< IteratorType<T> >(begin), begin,
                            std::make_shared< IteratorType<T> >(end));
+    }
+
+    template<typename T, typename U, template<typename,typename> typename IteratorType>
+    Enumerator<T> make_enumerator(const IteratorType<T, U>& begin, const IteratorType<T, U>& end)
+    {
+      return Enumerator<T>(std::make_shared< IteratorType<T, U> >(begin), begin,
+                           std::make_shared< IteratorType<T, U> >(end));
     }
   }
 }

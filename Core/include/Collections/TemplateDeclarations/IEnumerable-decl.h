@@ -1,6 +1,7 @@
 #pragma once
 #include "Collections/Enumerator.h"
 #include "Collections/Wrappers/FilterIterator.h"
+#include "Collections/Wrappers/TransformIterator.h"
 
 namespace DynabyteSoftware
 {
@@ -37,6 +38,9 @@ namespace DynabyteSoftware
       T first() const;
       Wrappers::EnumeratorWrapper<T> where(const typename Wrappers::FilterIterator< std::add_const_t<T> >
                                                                   ::filter_function& filter) const;
+      template<typename U>
+      Wrappers::EnumeratorWrapper<U> select(const typename Wrappers::TransformIterator<T, U>
+                                                                   ::transform_function& transform) const;
       #pragma endregion
 
       #pragma region Enumeration

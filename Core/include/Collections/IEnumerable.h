@@ -67,6 +67,15 @@ namespace DynabyteSoftware
     {
       return make_enumerator(FilterIterator<T>(begin(), filter), FilterIterator<T>(end(), filter));
     }
+
+    template<typename T>
+    template<typename U>
+    Wrappers::EnumeratorWrapper<U> IEnumerable<T>::select(const typename Wrappers::TransformIterator<T, U>
+                                                                                 ::transform_function& transform) const
+    {
+      return make_enumerator(Wrappers::TransformIterator<T, U>(begin(), transform),
+                             Wrappers::TransformIterator<T, U>(end(), transform));
+    }
     #pragma endregion
   }
 }
