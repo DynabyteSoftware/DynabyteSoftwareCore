@@ -38,9 +38,11 @@ int main()
   clog << "Collections Unit Test" << endl;
 
   int testArray[5] = { 2,3,5,7,11 };
+  int* testPointerArray[5] = { &testArray[0], &testArray[1], &testArray[2], &testArray[3], &testArray[4] };
 
   clog << Log::Information << "Iterate through array wrapper\n\t";
   ArrayWrapper<int> arrayWrapper(testArray, 5);
+  ArrayWrapper<int*> arrayPointerWrapper(testPointerArray, 5);
   for(const auto& number : arrayWrapper)
   {
     clog << number << ' ';
@@ -51,7 +53,7 @@ int main()
 
   clog << Log::Information << "Check any function:\n";
   clog << Log::Information << "\tAny numbers below 13: "
-       << arrayWrapper.any([](const int& value) {return value < 13; }) << "\n";
+       << arrayPointerWrapper.any([](const int* value) {return *value < 13; }) << "\n";
   clog << Log::Information << "\tAny numbers above 13: "
        << arrayWrapper.any([](const int& value) {return value > 13; }) << endl;
 

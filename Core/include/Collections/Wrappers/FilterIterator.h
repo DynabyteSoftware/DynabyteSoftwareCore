@@ -24,16 +24,6 @@ namespace DynabyteSoftware
           if (!(_filterFunction(*_enumerator) || _enumerator == _enumerator.getEnd()))
             operator++();
         }
-
-        /*FilterIterator(const FilterIterator& original)
-          : _enumerator(original._enumerator), _filterFunction(original._filterFunction)
-        {
-        }
-
-        FilterIterator(FilterIterator&& old)
-          : _enumerator(std::move(old._enumerator)), _filterFunction(std::move(old._filterFunction))
-        {
-        }*/
         #pragma endregion
 
         #pragma region IForwardIterator
@@ -47,8 +37,9 @@ namespace DynabyteSoftware
 
         virtual FilterIterator<T>& operator++(int) override
         {
-          while(!(_filterFunction(*_enumerator) || _enumerator == _enumerator.getEnd()))
+          do
             _enumerator++;
+          while (!(_filterFunction(*_enumerator) || _enumerator == _enumerator.getEnd()));
           return *this;
         }
 
