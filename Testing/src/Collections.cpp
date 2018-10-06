@@ -43,7 +43,7 @@ int main()
   }
   clog << endl;
   
-  clog << Log::Information << "Get resulting Euclie numbers\n\t";
+  clog << Log::Information << "Get resulting Euclid numbers\n\t";
   int primeProduct = 1;
   for (const auto& number : arrayWrapper.select<int>([&primeProduct](int& value)
                                                      {primeProduct *= value; return primeProduct + 1; }))
