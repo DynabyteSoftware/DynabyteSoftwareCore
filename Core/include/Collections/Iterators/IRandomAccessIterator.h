@@ -11,6 +11,10 @@ namespace DynabyteSoftware
       class IRandomAccessIterator : public virtual IBidirectionalIterator<T>
       {
       public:
+        #pragma region Type Definitions
+        typedef std::random_access_iterator_tag iterator_category;
+        #pragma endregion
+
         #pragma region Assignable
         IRandomAccessIterator<T>& operator=(const IRandomAccessIterator<T>& rhs)
         {
@@ -32,7 +36,7 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region Dereference Operator
-        virtual std::add_lvalue_reference_t<T> operator[](size_t location) const = 0;
+        virtual reference operator[](size_t location) const = 0;
         #pragma endregion
       };
     }

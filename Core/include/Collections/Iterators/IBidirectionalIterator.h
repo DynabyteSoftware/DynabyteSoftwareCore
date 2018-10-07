@@ -11,6 +11,10 @@ namespace DynabyteSoftware
       class IBidirectionalIterator : public virtual IIterator<T>
       {
       public:
+        #pragma region Type Definitions
+        typedef std::bidirectional_iterator_tag iterator_category;
+        #pragma endregion
+
         #pragma region Assignable
         IBidirectionalIterator<T>& operator=(const IBidirectionalIterator<T>& rhs)
         {

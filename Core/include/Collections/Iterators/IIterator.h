@@ -11,6 +11,14 @@ namespace DynabyteSoftware
       class IIterator
       {
       public:
+        #pragma region Type Definitions
+        typedef std::ptrdiff_t difference_type;
+        typedef T value_type;
+        typedef std::add_pointer_t< std::remove_reference_t<T> > pointer;
+        typedef std::add_lvalue_reference_t<T> reference;
+        typedef std::forward_iterator_tag iterator_category;
+        #pragma endregion
+
         #pragma region Destructible
         inline virtual ~IIterator() {};
         #pragma endregion
@@ -34,8 +42,8 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region R-Value Dereferenceable
-        virtual std::add_lvalue_reference_t<T> operator*() const = 0;
-        virtual std::add_pointer_t< std::remove_reference_t<T> > operator->() const = 0;
+        virtual reference operator*() const = 0;
+        virtual pointer operator->() const = 0;
         #pragma endregion
 
         #pragma region Cloneable

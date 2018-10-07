@@ -96,12 +96,12 @@ namespace DynabyteSoftware
       #pragma endregion
 
       #pragma region R-Value Dereferenceable
-      virtual std::add_lvalue_reference_t<T> operator*() const override
+      virtual reference operator*() const override
       {
         return _current->operator*();
       }
 
-      virtual std::add_pointer_t< std::remove_reference_t<T> > operator->() const override
+      virtual pointer operator->() const override
       {
         return _current->operator->();
       }
