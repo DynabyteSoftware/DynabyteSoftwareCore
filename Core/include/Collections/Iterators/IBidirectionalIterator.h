@@ -1,5 +1,5 @@
 #pragma once
-#include "Collections/Iterators/IForwardIterator.h"
+#include "Collections/Iterators/IIterator.h"
 
 namespace DynabyteSoftware
 {
@@ -8,7 +8,7 @@ namespace DynabyteSoftware
     namespace Iterators
     {
       template<typename T>
-      class IBidirectionalIterator : public virtual IForwardIterator<T>
+      class IBidirectionalIterator : public virtual IIterator<T>
       {
       public:
         #pragma region Assignable

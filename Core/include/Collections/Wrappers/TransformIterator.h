@@ -1,6 +1,5 @@
 #pragma once
 #include "Collections/Enumerator.h"
-#include "Collections/Iterators/IForwardIterator.h"
 #include <functional>
 
 namespace DynabyteSoftware
@@ -10,7 +9,7 @@ namespace DynabyteSoftware
     namespace Wrappers
     {
       template<typename T, typename U>
-      class TransformIterator final : public Iterators::IForwardIterator<U>
+      class TransformIterator final : public Iterators::IIterator<U>
       {
       public:
         #pragma region Transform Function
@@ -34,7 +33,7 @@ namespace DynabyteSoftware
         }
         #pragma endregion
 
-        #pragma region IForwardIterator
+        #pragma region IIterator
         virtual TransformIterator<T, U>& operator++() override
         {
           ++_enumerator;
@@ -47,7 +46,7 @@ namespace DynabyteSoftware
           return *this;
         }
 
-        virtual bool operator==(const Iterators::IInputIterator<U>& rhs) const override
+        virtual bool operator==(const Iterators::IIterator<U>& rhs) const override
         {
           if (const auto* iterator = dynamic_cast<const TransformIterator<T,U>*>(&rhs))
             return _enumerator == iterator->_enumerator;

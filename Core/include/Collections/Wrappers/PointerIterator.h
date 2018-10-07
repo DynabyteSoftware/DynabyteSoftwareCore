@@ -86,7 +86,7 @@ namespace DynabyteSoftware
           return *this;
         }
 
-        virtual bool operator==(const IInputIterator<T>& rhs) const override
+        virtual bool operator==(const IIterator<T>& rhs) const override
         {
           if (const auto* iterator = dynamic_cast<const PointerIterator*>(&rhs))
             return _current == iterator->_current;

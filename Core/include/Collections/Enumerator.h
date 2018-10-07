@@ -1,5 +1,5 @@
 #pragma once
-#include "Collections/Iterators/IForwardIterator.h"
+#include "Collections/Iterators/IIterator.h"
 #include "Exception.h"
 #include <memory>
 
@@ -8,7 +8,7 @@ namespace DynabyteSoftware
   namespace Collections
   {
     template<typename T>
-    class Enumerator final : public virtual Iterators::IForwardIterator<T>
+    class Enumerator final : public virtual Iterators::IIterator<T>
     {
     public:
       #pragma region Constructors
@@ -30,7 +30,7 @@ namespace DynabyteSoftware
       }
       #pragma endregion
 
-      #pragma region IForwardIterator
+      #pragma region IIterator
       virtual void assign(const Iterators::IIterator<T>& rhs) override
       {
         if(const auto* iterator = dynamic_cast<const Enumerator<T>*>(&rhs))
@@ -53,9 +53,9 @@ namespace DynabyteSoftware
         struct IteratorCast
         {
           typedef std::add_const_t<T> ConstT;
-          typedef Iterators::IForwardIterator< ConstT > ConstIterator;
+          typedef Iterators::IIterator< ConstT > ConstIterator;
           
-          static std::shared_ptr< ConstIterator > cast(const Iterators::IForwardIterator< T >& iterator)
+          static std::shared_ptr< ConstIterator > cast(const Iterators::IIterator< T >& iterator)
           {
             return std::shared_ptr< ConstIterator >(dynamic_cast<ConstIterator*>(iterator.getConst().release()));
           }
@@ -84,7 +84,7 @@ namespace DynabyteSoftware
       }
 
       #pragma region Equatable
-      virtual bool operator==(const IInputIterator<T>& rhs) const override
+      virtual bool operator==(const IIterator<T>& rhs) const override
       {
         if(const auto* iterator = dynamic_cast<const Enumerator<T>*>(&rhs))
         {
@@ -132,19 +132,19 @@ namespace DynabyteSoftware
       #pragma endregion
     private:
       #pragma region Variables
-      std::shared_ptr< const Iterators::IForwardIterator<T> > _begin;
-      std::shared_ptr< const Iterators::IForwardIterator<T> > _end;
-      std::unique_ptr< Iterators::IForwardIterator<T> > _current;
+      std::shared_ptr< const Iterators::IIterator<T> > _begin;
+      std::shared_ptr< const Iterators::IIterator<T> > _end;
+      std::unique_ptr< Iterators::IIterator<T> > _current;
       #pragma endregion
 
       #pragma region Constructors
       #pragma warning(push)
       #pragma warning(disable:4436)
-      Enumerator(const std::shared_ptr< const Iterators::IForwardIterator<T> >& begin,
-                 const Iterators::IForwardIterator<T>& current,
-                 const std::shared_ptr< const Iterators::IForwardIterator<T> >& end)
+      Enumerator(const std::shared_ptr< const Iterators::IIterator<T> >& begin,
+                 const Iterators::IIterator<T>& current,
+                 const std::shared_ptr< const Iterators::IIterator<T> >& end)
         : _begin(begin), _end(end),
-          _current(dynamic_cast< Iterators::IForwardIterator<T>* >(current.clone().release()))
+          _current(dynamic_cast< Iterators::IIterator<T>* >(current.clone().release()))
       {
       }
       #pragma warning(pop)
