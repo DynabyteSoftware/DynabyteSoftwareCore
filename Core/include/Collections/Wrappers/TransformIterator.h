@@ -78,8 +78,8 @@ namespace DynabyteSoftware
             _constTransformFunction = iterator->_constTransformFunction;
             _cache = iterator->_cache;
           }
-
-          THROW(Exception, "Not a transform iterator type")
+          else
+            THROW(Exception, "Not a transform iterator type")
         }
 
         virtual std::unique_ptr< Iterators::IIterator<U> > clone() const override

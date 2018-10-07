@@ -19,9 +19,18 @@ int main()
   int testArray[5] = { 2,3,5,7,11 };
   int* testPointerArray[5] = { &testArray[0], &testArray[1], &testArray[2], &testArray[3], &testArray[4] };
 
-  clog << Log::Information << "Iterate through array wrapper\n\t";
   ArrayWrapper<int> arrayWrapper(testArray, 5);
   ArrayWrapper<int*> arrayPointerWrapper(testPointerArray, 5);
+
+  auto loc = std::find(arrayWrapper.begin(), arrayWrapper.end(), 7);
+  auto noLoc = std::find(arrayWrapper.begin(), arrayWrapper.end(), 4);
+
+  if (loc != arrayWrapper.end())
+    clog << "found " << *loc << endl;;
+  if (noLoc == arrayWrapper.end())
+    clog << "did not find 4" << endl;
+
+  clog << Log::Information << "Iterate through array wrapper\n\t";
   for(const auto& number : arrayWrapper)
   {
     clog << number << ' ';

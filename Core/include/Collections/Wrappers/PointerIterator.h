@@ -42,8 +42,8 @@ namespace DynabyteSoftware
             _current = iterator->_current;
             _end = iterator->_end;
           }
-
-          THROW(Exception, "Not a pointer iterator type")
+          else
+            THROW(Exception, "Not a pointer iterator type")
         }
 
         virtual PointerIterator<T>& operator++() override

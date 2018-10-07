@@ -67,8 +67,8 @@ namespace DynabyteSoftware
             _enumerator = iterator->_enumerator;
             _filterFunction = iterator->_filterFunction;
           }
-
-          THROW(Exception, "Not a filter iterator type")
+          else
+            THROW(Exception, "Not a filter iterator type")
         }
 
         virtual std::unique_ptr< Iterators::IIterator<T> > clone() const override
