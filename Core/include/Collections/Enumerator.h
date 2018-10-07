@@ -159,6 +159,7 @@ namespace DynabyteSoftware
       #pragma endregion
     };
 
+    #pragma region Functions to create enumerators
     template<typename T, template<typename> typename IteratorType>
     Enumerator<T> make_enumerator(const IteratorType<T>& begin, const IteratorType<T>& end)
     {
@@ -172,5 +173,6 @@ namespace DynabyteSoftware
       return Enumerator<T>(std::make_shared< IteratorType<T, U> >(begin), begin,
                            std::make_shared< IteratorType<T, U> >(end));
     }
+    #pragma endregion
   }
 }
