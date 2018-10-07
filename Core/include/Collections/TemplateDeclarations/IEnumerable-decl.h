@@ -38,6 +38,9 @@ namespace DynabyteSoftware
       typename iterator::reference first() const;
       typename iterator::reference first(const typename Wrappers::FilterIterator< std::add_const_t<T> >
                                                                 ::filter_function& filter) const;
+      std::remove_reference_t<T> firstOrDefault() const;
+      std::remove_reference_t<T> firstOrDefault(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                                       ::filter_function& filter) const;
       Wrappers::EnumeratorWrapper<T> where(const typename Wrappers::FilterIterator< std::add_const_t<T> >
                                                                   ::filter_function& filter) const;
       template<typename U>

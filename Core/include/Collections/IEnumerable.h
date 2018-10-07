@@ -70,6 +70,27 @@ namespace DynabyteSoftware
     }
 
     template<typename T>
+    std::remove_reference_t<T> IEnumerable<T>::firstOrDefault() const
+    {
+      auto loc = begin();
+      if (loc != end())
+        return *loc;
+      return T{};
+    }
+
+    template<typename T>
+    std::remove_reference_t<T>
+    IEnumerable<T>::firstOrDefault(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                          ::filter_function& filter) const
+    {
+      auto filtered = where(filter);
+      auto loc = where.begin();
+      if (loc != filtered.end())
+        return *loc;
+      return T{};
+    }
+
+    template<typename T>
     Wrappers::EnumeratorWrapper<T> IEnumerable<T>::where(const typename Wrappers::FilterIterator< std::add_const_t<T> >
                                                                                 ::filter_function& filter) const
     {
