@@ -56,9 +56,17 @@ namespace DynabyteSoftware
     }
 
     template<typename T>
-    T IEnumerable<T>::first() const
+    typename IEnumerable<T>::iterator::reference IEnumerable<T>::first() const
     {
-      return *cbegin();
+      return *begin();
+    }
+
+    template<typename T>
+    typename IEnumerable<T>::iterator::reference
+    IEnumerable<T>::first(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                 ::filter_function& filter) const
+    {
+      return where(filter).first();
     }
 
     template<typename T>

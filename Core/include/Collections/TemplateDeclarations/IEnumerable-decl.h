@@ -35,7 +35,9 @@ namespace DynabyteSoftware
       #pragma region Querying
       bool all(const typename Wrappers::FilterIterator< std::add_const_t<T> >::filter_function& filter) const;
       bool any(const typename Wrappers::FilterIterator< std::add_const_t<T> >::filter_function& filter) const;
-      T first() const;
+      typename iterator::reference first() const;
+      typename iterator::reference first(const typename Wrappers::FilterIterator< std::add_const_t<T> >
+                                                                ::filter_function& filter) const;
       Wrappers::EnumeratorWrapper<T> where(const typename Wrappers::FilterIterator< std::add_const_t<T> >
                                                                   ::filter_function& filter) const;
       template<typename U>
