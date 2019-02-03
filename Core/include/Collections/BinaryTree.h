@@ -53,7 +53,12 @@ namespace DynabyteSoftware
           {
             auto current = _current.lock();
             if (current->RightChild)
-              _current = current->RightChild;
+            {
+              current = current->RightChild;
+              while (current->LeftChild)
+                current = current->LeftChild;
+              _current = current;
+            }
             else
             {
               if (current->Parent.expired())

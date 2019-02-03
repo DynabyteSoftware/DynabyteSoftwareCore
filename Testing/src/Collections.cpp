@@ -73,6 +73,7 @@ int main()
   tree.insert(3);
   tree.insert(2);
   tree.insert(5);
+  tree.insert(4);
 
   clog << Log::Information << "Get binary tree numbers\n\t";
   for(const auto& number : tree)
