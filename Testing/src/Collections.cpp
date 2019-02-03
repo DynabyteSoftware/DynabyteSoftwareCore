@@ -69,5 +69,17 @@ int main()
   {
   }
 
+  BinaryTree<int> tree;
+  tree.insert(3);
+  tree.insert(2);
+  tree.insert(5);
+
+  clog << Log::Information << "Get binary tree numbers\n\t";
+  for(const auto& number : tree)
+  {
+    clog << number << ' ';
+  }
+  clog << endl;
+
   return 0;
 }

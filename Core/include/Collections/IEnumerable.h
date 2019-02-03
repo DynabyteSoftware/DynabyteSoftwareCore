@@ -1,5 +1,5 @@
 #pragma once
-#include "Collections/TemplateDeclarations/IEnumerable-decl.h"
+#include "Collections/BinaryTree.h"
 #include "Collections/Wrappers/EnumeratorWrapper.h"
 
 namespace DynabyteSoftware
