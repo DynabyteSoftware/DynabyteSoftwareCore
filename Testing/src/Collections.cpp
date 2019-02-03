@@ -82,5 +82,18 @@ int main()
   }
   clog << endl;
 
+  BinaryTree<int&> referenceTree;
+  int one = 1;
+  int two = 2;
+  referenceTree.insert(two);
+  referenceTree.insert(one);
+
+  clog << Log::Information << "Get binary tree numbers\n\t";
+  for(const auto& number : referenceTree)
+  {
+    clog << number << ' ';
+  }
+  clog << endl;
+
   return 0;
 }

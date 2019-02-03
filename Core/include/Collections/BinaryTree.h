@@ -10,7 +10,8 @@ namespace DynabyteSoftware
     {
     public:
       #pragma region Modifiers
-      void insert(std::add_lvalue_reference_t< std::add_const_t<T> > value)
+      void insert(std::conditional_t<std::is_reference_v<T> || std::is_pointer_v<T>,
+                                     T, std::add_lvalue_reference_t< std::add_const_t<T> > > value)
       {
         insert(_root, value);
       }
@@ -27,6 +28,11 @@ namespace DynabyteSoftware
       #pragma region Types
       struct Node
       {
+        Node(T value)
+          : Value(value)
+        {
+        }
+
         T Value;
         std::weak_ptr<Node> Parent;
         std::shared_ptr<Node> LeftChild;
@@ -160,7 +166,9 @@ namespace DynabyteSoftware
       #pragma endregion
 
       #pragma region Modifiers
-      void insert(std::shared_ptr<Node>& parent, std::add_lvalue_reference_t< std::add_const_t<T> > value)
+      void insert(std::shared_ptr<Node>& parent,
+                  std::conditional_t<std::is_reference_v<T> || std::is_pointer_v<T>,
+                                     T, std::add_lvalue_reference_t< std::add_const_t<T> > > value)
       {
         if(parent)
         {
@@ -178,8 +186,7 @@ namespace DynabyteSoftware
           }
           else
           {
-            std::shared_ptr<Node> newNode(new Node());
-            newNode->Value = value;
+            std::shared_ptr<Node> newNode(new Node(value));
             newNode->Parent = parent->Parent;
             newNode->RightChild = std::move(parent->RightChild);
             newNode->LeftChild = std::move(parent);
@@ -188,8 +195,7 @@ namespace DynabyteSoftware
         }
         else
         {
-          std::shared_ptr<Node> newNode(new Node());
-          newNode->Value = value;
+          std::shared_ptr<Node> newNode(new Node(value));
           parent = newNode;
         }
       }
