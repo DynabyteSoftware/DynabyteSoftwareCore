@@ -12,4 +12,5 @@ enable_testing()
 set(CMAKE_CXX_STANDARD 20)
 
 add_subdirectory(Core)
+add_subdirectory(Networking)
 add_subdirectory(Testing)
