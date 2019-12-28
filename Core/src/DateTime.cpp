@@ -16,6 +16,32 @@ static constexpr const char* const TIME_ZONE_FORMAT = "%Z";
 
 static mutex timeMutex;
 
+#pragma region Static
+DateTime DateTime::now(DateTimeKind kind)
+{
+  system_clock::time_point exactTime = system_clock::now();
+  system_clock::duration sinceEpoch = exactTime.time_since_epoch();
+  time_t time = system_clock::to_time_t(exactTime);
+
+  #pragma warning(push)
+  #pragma warning(disable:4996) //microsoft warnts to use non-standard localtime_s and gmtime_s functions
+  struct tm date;
+  lock_guard<mutex> lock(timeMutex); //localtime and gmtime are not threadsafe
+  if (kind == DateTimeKind::Local)
+    date = *localtime(&time);
+  else
+    date = *gmtime(&time);
+  #pragma warning(pop)
+
+  return
+    DateTime(date,
+      static_cast<unsigned int>((duration_cast<milliseconds>(sinceEpoch) -
+        duration_cast<seconds>(sinceEpoch)).count()),
+      kind);
+}
+#pragma endregion
+
+#pragma region Constructors
 DateTime::DateTime(unsigned short year, unsigned short month, unsigned short day, unsigned short hour,
                    unsigned short minute, unsigned short second, unsigned int millisecond,
                    DateTimeKind kind)
@@ -57,7 +83,9 @@ DateTime::DateTime(const struct tm& date, unsigned int millisecond, DateTimeKind
         : _date(date), _millisecond(millisecond), _kind(kind)
 {
 }
+#pragma endregion
 
+#pragma region Observers
 unsigned short DateTime::getYear() const
 {
   return _date.tm_year + EPOCH_YEAR;
@@ -132,30 +160,29 @@ DateTime DateTime::toUniversalTime() const
   return DateTime(*gmtime(&utc), _millisecond, DateTimeKind::UTC);
   #pragma warning(pop)
 }
+#pragma endregion
 
-DateTime DateTime::now(DateTimeKind kind)
+#pragma region IEquatable
+bool DateTime::operator==(const DateTime& other) const
 {
-  system_clock::time_point exactTime = system_clock::now();
-  system_clock::duration sinceEpoch = exactTime.time_since_epoch();
-  time_t time = system_clock::to_time_t(exactTime);
-  
-  #pragma warning(push)
-  #pragma warning(disable:4996) //microsoft warnts to use non-standard localtime_s and gmtime_s functions
-  struct tm date;
-  lock_guard<mutex> lock(timeMutex); //localtime and gmtime are not threadsafe
-  if(kind == DateTimeKind::Local)
-    date = *localtime(&time);
-  else
-    date = *gmtime(&time);
-  #pragma warning(pop)
+  //if we're comparing apples to apples
+  if(_kind == other._kind)
+    return _date.tm_hour == other._date.tm_hour &&
+           _date.tm_mday == other._date.tm_mday &&
+           _date.tm_min == other._date.tm_min &&
+           _date.tm_mon == other._date.tm_mon &&
+           _date.tm_sec == other._date.tm_sec &&
+           _date.tm_year == other._date.tm_year &&
+           _millisecond == other._millisecond;
 
-  return
-    DateTime(date,
-             static_cast<unsigned int>((duration_cast<milliseconds>(sinceEpoch) -
-                                        duration_cast<seconds>(sinceEpoch)).count()),
-             kind);
+  //otherwise turn oranges into apples
+  if (_kind == DateTimeKind::Local)
+    return operator==(other.toLocalTime());  
+  return operator==(other.toUniversalTime());
 }
+#pragma endregion
 
+#pragma region Operators
 namespace DynabyteSoftware
 {
   ostream& operator<<(ostream& stream, const DateTime& dateTime)
@@ -168,3 +195,4 @@ namespace DynabyteSoftware
     return stream;
   }
 }
+#pragma endregion

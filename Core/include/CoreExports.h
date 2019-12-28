@@ -19,6 +19,7 @@
 
 #pragma once
 #ifdef _WIN32
+#include "SDKDDKVer.h"
 #define SHARED_EXPORT __declspec(dllexport)
 #define SHARED_IMPORT __declspec(dllimport)
 #else
