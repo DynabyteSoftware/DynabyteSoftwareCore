@@ -17,7 +17,9 @@ int main()
   clog << "converted: " << utc.toLocalTime() << endl;
   DateTime local = DateTime::now(DateTimeKind::Local);
   clog << local << endl;
-  clog << "converted: " << local.toUniversalTime() << endl;
+  DateTime utcConverted = local.toUniversalTime();
+  clog << "converted: " << utcConverted << endl;
+  clog << "Comparing local to UTC of the same time: " << ((utcConverted == local) ? "true" : "false") << endl;
   DateTime postEpoch(1971, 10, 29);
   clog << postEpoch << endl;
   
