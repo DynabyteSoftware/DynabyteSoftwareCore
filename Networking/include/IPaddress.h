@@ -20,9 +20,9 @@ namespace DynabyteSoftware
       #pragma endregion
 
       #pragma region IIPaddress
-      virtual AddressFamily getAddressFamily() const override;
-      virtual std::vector<std::byte> getAddressBytes() const override;
-      virtual std::string toString() const override;
+      inline virtual AddressFamily getAddressFamily() const override;
+      inline virtual std::vector<std::byte> getAddressBytes() const override;
+      inline virtual std::string toString() const override;
       #pragma endregion
 
       #pragma region IAssignable
