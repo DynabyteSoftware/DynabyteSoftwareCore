@@ -30,7 +30,7 @@ IPaddress::IPaddress(const IPaddress& original)
 {
 }
 
-IPaddress::IPaddress(IPaddress&& old)
+IPaddress::IPaddress(IPaddress&& old) noexcept
          : _implementation(move(old._implementation))
 {
 }
@@ -60,7 +60,7 @@ IPaddress& IPaddress::operator=(const IPaddress& rhs)
   return *this;
 }
 
-IPaddress& IPaddress::operator=(IPaddress&& rhs)
+IPaddress& IPaddress::operator=(IPaddress&& rhs) noexcept
 {
   _implementation = move(rhs._implementation);
   return *this;

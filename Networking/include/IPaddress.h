@@ -16,7 +16,7 @@ namespace DynabyteSoftware
       IPaddress(const std::string& address);
 
       IPaddress(const IPaddress& original);
-      IPaddress(IPaddress&& old);
+      IPaddress(IPaddress&& old) noexcept;
       #pragma endregion
 
       #pragma region IIPaddress
@@ -27,7 +27,7 @@ namespace DynabyteSoftware
 
       #pragma region IAssignable
       virtual IPaddress& operator=(const IPaddress& rhs) override;
-      virtual IPaddress& operator=(IPaddress&& rhs) override;
+      virtual IPaddress& operator=(IPaddress&& rhs) noexcept override;
       #pragma endregion
     private:
       #pragma region Variables

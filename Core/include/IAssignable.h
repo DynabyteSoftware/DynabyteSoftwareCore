@@ -12,7 +12,7 @@ namespace DynabyteSoftware
 
     #pragma region Modifiers
     virtual T& operator=(const T& rhs) = 0;
-    virtual T& operator=(T&& rhs) = 0;
+    virtual T& operator=(T&& rhs) noexcept = 0;
     #pragma endregion
   };
 }
