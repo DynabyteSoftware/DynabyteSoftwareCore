@@ -36,7 +36,8 @@ IPendpoint::IPendpoint(const IIPaddress& address, uint32_t port, TransportProtoc
 #pragma region Modifiers
 void IPendpoint::setAddress(const IIPaddress& ipAddress)
 {
-  visit([&ipAddress](auto&& arg) {arg.address(make_address(ipAddress.toString())); }, _endpoint);
+  _address = ipAddress.toString();
+  visit([this](auto&& arg) {arg.address(_address); }, _endpoint);
 }
 
 void IPendpoint::setPort(uint32_t port)
