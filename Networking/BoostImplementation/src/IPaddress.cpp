@@ -51,3 +51,15 @@ unique_ptr<IIPaddress> IPaddress::clone() const
   return make_unique<IPaddress>(*this);
 }
 #pragma endregion
+
+#pragma region Operators
+IPaddress::operator boost::asio::ip::address&()
+{
+  return _address;
+}
+
+IPaddress::operator const boost::asio::ip::address&() const
+{
+  return _address;
+}
+#pragma endregion

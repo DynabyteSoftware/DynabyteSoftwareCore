@@ -24,6 +24,11 @@ namespace DynabyteSoftware
         virtual std::string toString() const override;
         virtual std::unique_ptr<Internal::IIPaddress> clone() const override;
         #pragma endregion
+
+        #pragma region Operators
+        operator boost::asio::ip::address&();
+        operator const boost::asio::ip::address&() const;
+        #pragma endregion
       private:
         boost::asio::ip::address _address;
       };

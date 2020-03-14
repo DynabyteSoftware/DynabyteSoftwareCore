@@ -1,6 +1,8 @@
 #pragma once
 #include <cstdint>
 #include <string>
+#include "ICloneable.h"
+#include "TransportProtocol.h"
 
 namespace DynabyteSoftware
 {
@@ -11,7 +13,7 @@ namespace DynabyteSoftware
       class IIPaddress;
 
       class IIPendpoint
-        : protected ICloneable<IIPendpoint>
+        : public ICloneable<IIPendpoint>
       {
       public:
         #pragma region Constants
@@ -19,14 +21,16 @@ namespace DynabyteSoftware
         #pragma endregion
 
         #pragma region Modifiers
-        void setAddress(const IIPaddress& ipAddress) = 0;
-        void setPort(uint32_t port) = 0;
+        virtual void setAddress(const IIPaddress& ipAddress) = 0;
+        virtual void setPort(uint32_t port) = 0;
+        virtual void setTransportProtocol(TransportProtocol protocol) = 0;
         #pragma endregion
 
         #pragma region Observers
-        const IIPaddress& getAddress() const = 0;
-        uint32_t getPort() const = 0;
-        std::string toString() const = 0;
+        virtual const IIPaddress& getAddress() const = 0;
+        virtual uint32_t getPort() const = 0;
+        virtual std::string toString() const = 0;
+        virtual TransportProtocol getTransportProtocol() const = 0;
         #pragma endregion
       };
     }

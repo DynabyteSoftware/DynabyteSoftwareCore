@@ -6,7 +6,7 @@ namespace DynabyteSoftware
 {
   namespace Networking
   {
-    class IPaddress
+    class IPaddress final
       : public Internal::IIPaddress, public virtual IAssignable<IPaddress>
     {
     public:
