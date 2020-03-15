@@ -31,6 +31,7 @@ namespace DynabyteSoftware
         virtual uint32_t getPort() const override;
         virtual std::string toString() const override;
         virtual TransportProtocol getTransportProtocol() const override;
+        virtual std::unique_ptr<Internal::IIPendpoint> clone() const override;
         #pragma endregion
         #pragma endregion
       private:

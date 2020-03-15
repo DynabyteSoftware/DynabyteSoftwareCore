@@ -26,8 +26,8 @@ namespace DynabyteSoftware
       #pragma endregion
 
       #pragma region IAssignable
-      virtual IPaddress& operator=(const IPaddress& rhs) override;
-      virtual IPaddress& operator=(IPaddress&& rhs) noexcept override;
+      inline virtual IPaddress& operator=(const IPaddress& rhs) override;
+      inline virtual IPaddress& operator=(IPaddress&& rhs) noexcept override;
       #pragma endregion
     private:
       #pragma region Variables

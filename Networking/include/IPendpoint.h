@@ -12,19 +12,19 @@ namespace DynabyteSoftware
     {
     public:
       #pragma region Constructors
-      IPendpoint(const IPaddress& address, uint32_t port);
+      IPendpoint(const IPaddress& address, uint32_t port, TransportProtocol protocol = TransportProtocol::TCP);
       #pragma endregion
 
       #pragma region IIPendpoint
       #pragma region Modifiers
-      virtual void setAddress(const Internal::IIPaddress& ipAddress) override;
-      virtual void setPort(uint32_t port) override;
+      inline virtual void setAddress(const Internal::IIPaddress& ipAddress) override;
+      inline virtual void setPort(uint32_t port) override;
       #pragma endregion
 
       #pragma region Observers
-      virtual const IPaddress& getAddress() const override;
-      virtual uint32_t getPort() const override;
-      virtual std::string toString() const override;
+      inline virtual const Internal::IIPaddress& getAddress() const override;
+      inline virtual uint32_t getPort() const override;
+      inline virtual std::string toString() const override;
       #pragma endregion
       #pragma endregion
     private:

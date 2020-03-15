@@ -91,5 +91,10 @@ TransportProtocol IPendpoint::getTransportProtocol() const
                 [](const udp::endpoint&)->TransportProtocol {return TransportProtocol::UDP; },
     }, _endpoint);
 }
+
+unique_ptr<IIPendpoint> IPendpoint::clone() const
+{
+  return make_unique<IPendpoint>(*this);
+}
 #pragma endregion
 #pragma endregion
