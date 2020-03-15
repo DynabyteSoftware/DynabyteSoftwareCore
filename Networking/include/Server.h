@@ -17,7 +17,7 @@ namespace DynabyteSoftware
       inline virtual std::future<Connection> accept() override;
       #pragma endregion
     private:
-      #pragma Variables
+      #pragma region Variables
       std::unique_ptr<Internal::IServer> _implementation;
       #pragma endregion
     };
