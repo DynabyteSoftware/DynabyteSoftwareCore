@@ -1,17 +1,13 @@
 #include "BoostImplementation/IPendpoint.h"
 #include "Internal/IIPaddress.h"
 #include "Exception.h"
+#include "VisitorTemplates.h"
 
 using namespace DynabyteSoftware::Networking;
 using namespace DynabyteSoftware::Networking::BoostImplementation;
 using namespace DynabyteSoftware::Networking::Internal;
 using namespace boost::asio::ip;
 using namespace std;
-
-#pragma region Variant Visitor
-template<typename... Ts> struct overloaded : Ts... {using Ts::operator()...; };
-template<typename... Ts> overloaded(Ts...)->overloaded<Ts...>;
-#pragma endregion
 
 #pragma region Constructors
 IPendpoint::IPendpoint(const IIPaddress& address, uint32_t port, TransportProtocol protocol)
