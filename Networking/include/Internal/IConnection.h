@@ -8,8 +8,6 @@ namespace DynabyteSoftware
     {
       class IConnection
       {
-      public:
-
       };
     }
   }

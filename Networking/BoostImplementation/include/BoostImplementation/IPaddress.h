@@ -1,6 +1,10 @@
 #pragma once
 #include "Internal/IIPaddress.h"
+
+#pragma warning(push)
+#pragma warning(disable:26812 6385 6255 6387 6258 6001 26495 26444 26451 28251)
 #include "boost/asio/ip/address.hpp"
+#pragma warning(pop)
 
 namespace DynabyteSoftware
 {

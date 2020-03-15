@@ -1,8 +1,13 @@
 #pragma once
 #include "Internal/IIPendpoint.h"
 #include "BoostImplementation/IPaddress.h"
+
+#pragma warning(push)
+#pragma warning(disable:26812 6385 6255 6387 6258 6001 26495 26444 26451 28251)
 #include "boost/asio/ip/tcp.hpp"
 #include "boost/asio/ip/udp.hpp"
+#pragma warning(pop)
+
 #include <variant>
 
 namespace DynabyteSoftware
