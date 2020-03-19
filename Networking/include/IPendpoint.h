@@ -14,6 +14,8 @@ namespace DynabyteSoftware
       #pragma region Constructors
       NETWORKING_EXPORT IPendpoint(const IPaddress& address, uint16_t port,
                                    TransportProtocol protocol = TransportProtocol::TCP);
+      NETWORKING_EXPORT IPendpoint(const IPendpoint& original);
+      NETWORKING_EXPORT IPendpoint(IPendpoint&& old);
       #pragma endregion
 
       #pragma region IIPendpoint
@@ -34,10 +36,6 @@ namespace DynabyteSoftware
     private:
       #pragma region Variables
       std::unique_ptr<Internal::IIPendpoint> _implementation;
-      #pragma endregion
-
-      #pragma region Constructors
-      IPendpoint();
       #pragma endregion
     };
   }

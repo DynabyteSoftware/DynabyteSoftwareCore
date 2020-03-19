@@ -17,7 +17,13 @@ IPendpoint::IPendpoint(const IPaddress& address, uint16_t port, TransportProtoco
 #endif
 
 #pragma region Constructors
-IPendpoint::IPendpoint()
+IPendpoint::IPendpoint(const IPendpoint& original)
+          : _implementation(original._implementation->clone())
+{
+}
+
+IPendpoint::IPendpoint(IPendpoint&& old)
+          : _implementation(move(old._implementation))
 {
 }
 #pragma endregion
@@ -62,9 +68,7 @@ string IPendpoint::toString() const
 
 unique_ptr<Internal::IIPendpoint> IPendpoint::clone() const
 {
-  auto endpoint = unique_ptr<IPendpoint>(new IPendpoint());
-  endpoint->_implementation = _implementation->clone();
-  return endpoint;
+  return make_unique<IPendpoint>(*this);
 }
 #pragma endregion
 #pragma endregion
