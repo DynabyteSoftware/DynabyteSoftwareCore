@@ -28,6 +28,18 @@ IPendpoint::IPendpoint(const IIPaddress& address, uint32_t port, TransportProtoc
 }
 #pragma endregion
 
+#pragma region Operators
+IPendpoint::operator tcp::endpoint& ()
+{
+  return get<tcp::endpoint>(_endpoint);
+}
+
+IPendpoint::operator udp::endpoint& ()
+{
+  return get<udp::endpoint>(_endpoint);
+}
+#pragma endregion
+
 #pragma region IIPendpoint
 #pragma region Modifiers
 void IPendpoint::setAddress(const IIPaddress& ipAddress)

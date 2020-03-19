@@ -1,4 +1,5 @@
 #pragma once
+#include "AddressFamily.h"
 #include "Internal/IConnection.h"
 #include "Internal/IIPendpoint.h"
 
@@ -20,16 +21,25 @@ namespace DynabyteSoftware
       class Connection : public virtual Internal::IConnection
       {
       public:
+        #pragma region Types
+        typedef std::variant < std::unique_ptr<boost::asio::ip::tcp::socket>,
+                               std::unique_ptr<boost::asio::ip::udp::socket> > Socket;
+        #pragma endregion
+
         #pragma region Constructors
-        //Connection(const Internal::IIPendpoint& endpoint, TransportProtocol protocol = TransportProtocol::TCP);
-        //Connection(const std::shared_ptr<boost::asio::io_context>& context);
+        Connection(const Internal::IIPendpoint& endpoint);
+        Connection(const std::shared_ptr<boost::asio::io_context>& context, TransportProtocol protocol,
+                   AddressFamily addressFamily);
+        #pragma endregion
+
+        #pragma region Modifiers
+        Socket& getSocket();
         #pragma endregion
 
       private:
         #pragma region Variables
         std::shared_ptr<boost::asio::io_context> _context;
-        std::variant < std::unique_ptr<boost::asio::ip::tcp::socket>,
-                       std::unique_ptr<boost::asio::ip::udp::socket> > _socket;
+        Socket _socket;
         #pragma endregion
 
         #pragma region Constructors

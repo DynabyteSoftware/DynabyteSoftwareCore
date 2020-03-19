@@ -1,4 +1,5 @@
 #pragma once
+#include "Key.h"
 #include "TransportProtocol.h"
 #include<future>
 
@@ -15,9 +16,13 @@ namespace DynabyteSoftware
         #pragma region Modifiers
         virtual std::future<Connection> accept() = 0;
         #pragma endregion
-
-        #pragma region Observers
-        virtual TransportProtocol getTransportProtocol() const = 0;
+      protected:
+        #pragma region AccessKey
+        inline static const Key<IServer>& key()
+        {
+          static const Key<IServer> _key;
+          return _key;
+        }
         #pragma endregion
       };
     }

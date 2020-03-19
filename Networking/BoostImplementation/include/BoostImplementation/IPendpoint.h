@@ -24,6 +24,11 @@ namespace DynabyteSoftware
         IPendpoint(const Internal::IIPaddress& address, uint32_t port, TransportProtocol protocol);
         #pragma endregion
 
+        #pragma region Operators
+        operator boost::asio::ip::tcp::endpoint& ();
+        operator boost::asio::ip::udp::endpoint& ();
+        #pragma endregion
+
         #pragma region IIPendpoint
         #pragma region Modifiers
         virtual void setAddress(const Internal::IIPaddress& ipAddress) override;

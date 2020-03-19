@@ -1,24 +1,33 @@
 #include "BoostImplementation/Server.h"
+#include "BoostImplementation/Connection.h"
+#include "Connection.h"
+#include "VisitorTemplates.h"
 
 using namespace boost::asio;
 using namespace boost::asio::ip;
-using namespace DynabyteSoftware::Networking;
 using namespace DynabyteSoftware::Networking::BoostImplementation;
 using namespace DynabyteSoftware::Networking::Internal;
 using namespace std;
 
+using DynabyteSoftware::Networking::TransportProtocol;
+using ConnectionWrapper = DynabyteSoftware::Networking::Connection;
+
 #pragma region Constructors
-Server::Server(uint16_t port, TransportProtocol protocol)
-      : _context(make_shared<io_context>())
+Server::Server(uint16_t port)
+      : _context(make_shared<io_context>()), _acceptor(*_context, tcp::endpoint(tcp::v4(), port))
 {
-  switch (protocol)
-  {
-  case TransportProtocol::TCP:
-    _acceptor = make_unique<tcp::acceptor>(*_context, tcp::endpoint(tcp::v4(), port));
-    break;
-  case TransportProtocol::UDP:
-    _acceptor = make_unique<udp::socket>(*_context, udp::endpoint(udp::v4(), port));
-    break;
-  }
+}
+#pragma endregion
+
+#pragma region IServer
+std::future<ConnectionWrapper> Server::accept()
+{
+  return async(launch::async,
+               [this]()
+               {
+                 auto connection = make_shared<Connection>(_context, TransportProtocol::TCP, AddressFamily::IPv4);
+                 _acceptor.accept(*get<unique_ptr<tcp::socket>>(connection->getSocket()));                 
+                 return ConnectionWrapper(connection, key());
+               });
 }
 #pragma endregion
