@@ -1,6 +1,7 @@
 #include "IPaddress.h"
 
 using namespace DynabyteSoftware::Networking;
+using namespace DynabyteSoftware::Networking::Internal;
 using namespace std;
 
 #ifdef USE_BOOST
@@ -50,6 +51,11 @@ vector<byte> IPaddress::getAddressBytes() const
 string IPaddress::toString() const
 {
   return _implementation->toString();
+}
+
+unique_ptr<IIPaddress> IPaddress::clone() const
+{
+  return make_unique<IPaddress>(*this);
 }
 #pragma endregion
 

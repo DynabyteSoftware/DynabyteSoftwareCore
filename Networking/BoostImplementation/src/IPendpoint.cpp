@@ -10,7 +10,7 @@ using namespace boost::asio::ip;
 using namespace std;
 
 #pragma region Constructors
-IPendpoint::IPendpoint(const IIPaddress& address, uint32_t port, TransportProtocol protocol)
+IPendpoint::IPendpoint(const IIPaddress& address, uint16_t port, TransportProtocol protocol)
           : _address(address.toString())
 {
   if(port > MaxPort)
@@ -48,7 +48,7 @@ void IPendpoint::setAddress(const IIPaddress& ipAddress)
   visit([this](auto&& arg) {arg.address(_address); }, _endpoint);
 }
 
-void IPendpoint::setPort(uint32_t port)
+void IPendpoint::setPort(uint16_t port)
 {
   visit([&port](auto&& arg) {arg.port(port); }, _endpoint);
 }
@@ -82,7 +82,7 @@ const IPaddress& IPendpoint::getAddress() const
   return _address;
 }
 
-uint32_t IPendpoint::getPort() const
+uint16_t IPendpoint::getPort() const
 {
   return visit([](auto&& arg)->uint32_t {return arg.port();}, _endpoint);
 }

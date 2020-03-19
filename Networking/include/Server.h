@@ -10,7 +10,7 @@ namespace DynabyteSoftware
     {
     public:
       #pragma region Constructors
-      NETWORKING_EXPORT Server(uint32_t port);
+      NETWORKING_EXPORT Server(uint16_t port);
       #pragma endregion
 
       #pragma region IServer

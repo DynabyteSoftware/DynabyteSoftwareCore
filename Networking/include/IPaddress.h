@@ -24,6 +24,7 @@ namespace DynabyteSoftware
       NETWORKING_EXPORT inline virtual AddressFamily getAddressFamily() const override;
       NETWORKING_EXPORT inline virtual std::vector<std::byte> getAddressBytes() const override;
       NETWORKING_EXPORT inline virtual std::string toString() const override;
+      NETWORKING_EXPORT inline virtual std::unique_ptr<IIPaddress> clone() const override;
       #pragma endregion
 
       #pragma region IAssignable
