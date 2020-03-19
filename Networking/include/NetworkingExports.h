@@ -1,0 +1,10 @@
+#pragma once
+#include "CoreExports.h"
+
+#ifdef NETWORKING_STATIC
+#define NETWORKING_EXPORT
+#elif NETWORKING_DYNAMIC
+#define NETWORKING_EXPORT SHARED_EXPORT
+#else
+#define NETWORKING_EXPORT SHARED_IMPORT
+#endif

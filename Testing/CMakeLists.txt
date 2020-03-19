@@ -2,7 +2,7 @@ file(GLOB TESTS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 foreach(testSrc ${TESTS})
 	get_filename_component(testName ${testSrc} NAME_WE)
 	add_executable(${testName} ${testSrc})
-	target_link_libraries(${testName} CoreDynamic)
+	target_link_libraries(${testName} NetworkingDynamic)
 	add_test(NAME ${testName} COMMAND ${testName})
 endforeach(testSrc)
 

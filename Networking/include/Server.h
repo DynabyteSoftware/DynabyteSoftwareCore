@@ -10,11 +10,11 @@ namespace DynabyteSoftware
     {
     public:
       #pragma region Constructors
-      Server(uint32_t port, TransportProtocol protocol = TransportProtocol::TCP);
+      NETWORKING_EXPORT Server(uint32_t port);
       #pragma endregion
 
       #pragma region IServer
-      inline virtual std::future<Connection> accept() override;
+      NETWORKING_EXPORT inline virtual std::future<Connection> accept() override;
       #pragma endregion
     private:
       #pragma region Variables

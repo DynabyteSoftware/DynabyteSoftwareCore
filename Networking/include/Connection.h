@@ -12,15 +12,15 @@ namespace DynabyteSoftware
     {
     public:
       #pragma region Constructors
-      Connection();
-      Connection(const IPendpoint& endpoint);
-      Connection(const std::shared_ptr<Internal::IConnection>& implementation, const Key<Internal::IServer>&);
-      //Connection(const Connection& original);
-      Connection(Connection&& old);
+      NETWORKING_EXPORT Connection();
+      NETWORKING_EXPORT Connection(const IPendpoint& endpoint);
+      NETWORKING_EXPORT Connection(const std::shared_ptr<Internal::IConnection>& implementation,
+                                   const Key<Internal::IServer>&);
+      NETWORKING_EXPORT Connection(Connection&& old);
       #pragma endregion
 
       #pragma region Operator
-      Connection& operator=(Connection&& old);
+      NETWORKING_EXPORT Connection& operator=(Connection&& old);
       #pragma endregion
     private:
       #pragma region Variables
