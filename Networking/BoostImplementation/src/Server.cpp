@@ -22,6 +22,7 @@ Server::Server(uint16_t port)
 #pragma region IServer
 std::future<ConnectionWrapper> Server::accept()
 {
+  _context->run();
   return async(launch::async,
                [this]()
                {

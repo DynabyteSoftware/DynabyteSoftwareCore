@@ -22,6 +22,11 @@ namespace DynabyteSoftware
       #pragma region Operator
       NETWORKING_EXPORT Connection& operator=(Connection&& old);
       #pragma endregion
+
+      #pragma region IConnection
+      virtual Connection& operator<<(const std::string& message) override;
+      virtual Connection& operator>>(std::string& message) override;
+      #pragma endregion
     private:
       #pragma region Variables
       std::shared_ptr<Internal::IConnection> _implementation;

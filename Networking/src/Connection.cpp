@@ -41,3 +41,17 @@ Connection& Connection::operator=(Connection&& old)
   return *this;
 }
 #pragma endregion
+
+#pragma region IConnection
+Connection& Connection::operator<<(const string& message)
+{
+  _implementation->operator<<(message);
+  return *this;
+}
+
+Connection& Connection::operator>>(string& message)
+{
+  _implementation->operator>>(message);
+  return *this;
+}
+#pragma endregion

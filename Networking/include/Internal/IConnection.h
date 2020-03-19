@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 namespace DynabyteSoftware
 {
@@ -8,6 +9,11 @@ namespace DynabyteSoftware
     {
       class IConnection
       {
+      public:
+        #pragma region Operators
+        virtual IConnection& operator<<(const std::string& message) = 0;
+        virtual IConnection& operator>>(std::string& message) = 0;
+        #pragma endregion
       };
     }
   }

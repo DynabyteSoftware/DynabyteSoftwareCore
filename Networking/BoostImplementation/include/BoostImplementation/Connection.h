@@ -36,6 +36,10 @@ namespace DynabyteSoftware
         Socket& getSocket();
         #pragma endregion
 
+        #pragma region IConnection
+        virtual Connection& operator<<(const std::string& message) override;
+        virtual Connection& operator>>(std::string& message) override;
+        #pragma endregion
       private:
         #pragma region Variables
         std::shared_ptr<boost::asio::io_context> _context;
