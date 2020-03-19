@@ -10,6 +10,10 @@ namespace DynabyteSoftware
       class IConnection
       {
       public:
+        #pragma region Destructors
+        inline virtual ~IConnection() {};
+        #pragma endregion
+
         #pragma region Operators
         virtual IConnection& operator<<(const std::string& message) = 0;
         virtual IConnection& operator>>(std::string& message) = 0;

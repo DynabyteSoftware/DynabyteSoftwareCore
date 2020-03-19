@@ -13,6 +13,10 @@ namespace DynabyteSoftware
       class IServer
       {
       public:
+        #pragma region Destructors
+        inline virtual ~IServer() {};
+        #pragma endregion
+
         #pragma region Modifiers
         virtual std::future<Connection> accept() = 0;
         #pragma endregion

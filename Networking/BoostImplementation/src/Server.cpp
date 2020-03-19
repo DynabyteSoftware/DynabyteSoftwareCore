@@ -12,10 +12,15 @@ using namespace std;
 using DynabyteSoftware::Networking::TransportProtocol;
 using ConnectionWrapper = DynabyteSoftware::Networking::Connection;
 
-#pragma region Constructors
+#pragma region Constructors and Destructors
 Server::Server(uint16_t port)
       : _context(make_shared<io_context>()), _acceptor(*_context, tcp::endpoint(tcp::v4(), port))
 {
+}
+
+Server::~Server()
+{
+  _acceptor.close();
 }
 #pragma endregion
 

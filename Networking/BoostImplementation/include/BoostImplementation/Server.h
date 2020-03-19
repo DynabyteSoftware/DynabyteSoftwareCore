@@ -15,11 +15,12 @@ namespace DynabyteSoftware
   {
     namespace BoostImplementation
     {
-      class Server : public virtual Internal::IServer
+      class Server final : public virtual Internal::IServer
       {
       public:
-        #pragma region Constructors
+        #pragma region Constructors and Destructors
         Server(uint16_t port);
+        ~Server();
         #pragma endregion
 
         #pragma region IServer
