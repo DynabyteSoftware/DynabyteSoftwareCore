@@ -6,6 +6,18 @@ using namespace DynabyteSoftware::Networking::Internal;
 using namespace boost::asio::ip;
 using namespace std;
 
+#pragma region Template Utility Functions
+template<typename AddressType>
+vector<byte> convertAddressType(const AddressType& boostAddress)
+{
+  vector<byte> address;
+  for(const auto& addressByte : boostAddress)
+    address.push_back(static_cast<byte>(addressByte));
+  return address;
+}
+
+#pragma endregion
+
 #pragma region Constructors
 IPaddress::IPaddress(const array<byte, 4>& bytesIPv4)
          : _address(make_address_v4(reinterpret_cast<const address_v4::bytes_type&>(bytesIPv4)))
@@ -30,15 +42,11 @@ AddressFamily IPaddress::getAddressFamily() const
 }
 
 vector<byte> IPaddress::getAddressBytes() const
-{
+{  
   if (_address.is_v4())
-  {
-    const auto bytes = reinterpret_cast<const array<byte, 4>&>(_address.to_v4().to_bytes());
-    return vector<byte>(bytes.cbegin(), bytes.cend());
-  }
+    return convertAddressType(_address.to_v4().to_bytes());
 
-  const auto bytes = reinterpret_cast<const array<byte, 8>&>(_address.to_v6().to_bytes());
-  return vector<byte>(bytes.cbegin(), bytes.cend());
+  return convertAddressType(_address.to_v6().to_bytes());
 }
 
 string IPaddress::toString() const
